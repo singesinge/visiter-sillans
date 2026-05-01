@@ -1,0 +1,298 @@
+{
+  "pois": [
+    {
+      "id": "poi-01",
+      "ordre": 1,
+      "titre": "Début du circuit",
+      "lieu": "Église de Sillans-la-Cascade",
+      "theme": "securite",
+      "description": "Au niveau de l'église, point de repère central du village. Départ officiel du circuit de découverte de l'ENS de Sillans-la-Cascade.",
+      "contenu": "Informations sur le niveau de difficulté de la randonnée, le temps du parcours et le dénivelé. Rappel des consignes de sécurité : déconseillé aux personnes enceintes et cardiaques. Prévoir de bonnes chaussures et de l'eau.",
+      "especes": [],
+      "coords": { "lat": 43.566905655396, "lng": 6.180326638101701 },
+      "icone": "bouclier",
+      "capsule": null
+    },
+    {
+      "id": "poi-02",
+      "ordre": 2,
+      "titre": "Le Bastidon et l'oliveraie",
+      "lieu": "Bastidon",
+      "theme": "histoire",
+      "description": "Témoins de l'exploitation agricole du site. Le bastidon et l'oliveraie témoignent de l'histoire agricole de ce territoire méditerranéen.",
+      "contenu": "Le bastidon est une petite construction rurale caractéristique de la Provence. L'oliveraie environnante rappelle que ce site était autrefois intensément cultivé. L'olivier, arbre millénaire, rythme encore le paysage.",
+      "especes": ["Olea europaea (Olivier)"],
+      "coords": { "lat": 43.56564240070982, "lng": 6.180873808740747 },
+      "icone": "histoire",
+      "capsule": null
+    },
+    {
+      "id": "poi-03",
+      "ordre": 3,
+      "titre": "Canaux d'irrigation creusés dans le travertin",
+      "lieu": "Canaux du travertin",
+      "theme": "geologie",
+      "description": "Suite de l'exploitation agricole : enjeu important d'irrigation des terres sur un territoire difficile à mettre en culture.",
+      "contenu": "Ces canaux creusés à même la roche de travertin témoignent du génie hydraulique des habitants. Le travertin, roche calcaire poreuse, est formé par les dépôts minéraux de l'eau de la Bresque. Cette technique d'irrigation permettait de cultiver des terres en pente dans un climat semi-aride.",
+      "especes": [],
+      "coords": { "lat": 43.56435385363771, "lng": 6.182708439707105 },
+      "icone": "geologie",
+      "capsule": null
+    },
+    {
+      "id": "poi-04",
+      "ordre": 4,
+      "titre": "Le tuff",
+      "lieu": "Murets en tuf",
+      "theme": "geologie",
+      "description": "Présence de murets en tuf qui permettent de présenter cette roche poreuse et de faible densité.",
+      "contenu": "Le tuf (ou travertin) est une roche sédimentaire calcaire formée par précipitation du calcaire dissous dans l'eau. Sa porosité et sa légèreté en font un matériau de construction traditionnel en Provence. Les fontaines pétrifiantes de Sillans sont un exemple remarquable de formation de travertin actif.",
+      "especes": [],
+      "coords": { "lat": 43.56299725393612, "lng": 6.183228788256204 },
+      "icone": "geologie",
+      "capsule": null
+    },
+    {
+      "id": "poi-05",
+      "ordre": 5,
+      "titre": "Panorama",
+      "lieu": "Belvédère de la cascade",
+      "theme": "biodiversite",
+      "description": "Vue sur la cascade. Présentation du phénomène des fontaines pétrifiantes et fragilité de ces concrétions calcaires cassantes.",
+      "contenu": "La cascade de Sillans tombe de 44 mètres dans un bassin d'eau turquoise. La couleur de l'eau est due à la présence de particules calcaires en suspension. La baignade est strictement interdite : risques de chutes de blocs et courants dangereux. Les concrétions calcaires qui bordent la cascade sont extrêmement fragiles.",
+      "especes": ["Adiantum capillus-veneris (Capillaire de Montpellier)"],
+      "coords": { "lat": 43.56262214289663, "lng": 6.18436336266873 },
+      "icone": "biodiversite",
+      "capsule": "cascade"
+    },
+    {
+      "id": "poi-06",
+      "ordre": 6,
+      "titre": "L'attente devant la passerelle",
+      "lieu": "Zone d'attente passerelle",
+      "theme": "biodiversite",
+      "description": "Sur la zone d'attente, présentation de la ripisylve, de ses richesses et de sa protection pour les générations futures.",
+      "contenu": "La ripisylve est la forêt qui borde les cours d'eau. À Sillans, elle abrite une biodiversité exceptionnelle : martins-pêcheurs, loutres, libellules, grenouilles. Cette forêt galerie joue un rôle crucial dans la protection des berges et la régulation thermique de la Bresque.",
+      "especes": ["Alcedo atthis (Martin-pêcheur)", "Lutra lutra (Loutre d'Europe)", "Populus nigra (Peuplier noir)"],
+      "coords": { "lat": 43.5630341818396, "lng": 6.184750941871262 },
+      "icone": "biodiversite",
+      "capsule": null
+    },
+    {
+      "id": "poi-07",
+      "ordre": 7,
+      "titre": "Au niveau du belvédère",
+      "lieu": "Belvédère et zone d'attente",
+      "theme": "biodiversite",
+      "description": "Présentation des cavités nombreuses dans la roche et de la richesse en chiroptères : variété des espèces et site de mise-bas.",
+      "contenu": "Les falaises de travertin abritent de nombreuses cavités naturelles, refuges idéaux pour les chauves-souris. On y recense plusieurs espèces de chiroptères dont le Grand rhinolophe et le Murin de Daubenton. Ces grottes constituent des sites de mise-bas protégés. La couleur turquoise de l'eau s'explique par les particules calcaires en suspension.",
+      "especes": ["Rhinolophus ferrumequinum (Grand rhinolophe)", "Myotis daubentonii (Murin de Daubenton)", "Tadarida teniotis (Molosse de Cestoni)"],
+      "coords": { "lat": 43.56350452473594, "lng": 6.18524983274767 },
+      "icone": "biodiversite",
+      "capsule": "chauves-souris"
+    },
+    {
+      "id": "poi-08",
+      "ordre": 8,
+      "titre": "L'usine hydroélectrique",
+      "lieu": "Usine hydroélectrique",
+      "theme": "histoire",
+      "description": "Sur le chemin du retour, histoire de l'électrification de la Commune en lien avec la présence de la Bresque et du dénivelé important.",
+      "contenu": "En 1910, la commune de Sillans a été l'une des premières de la région à bénéficier de l'électricité grâce à cette usine hydroélectrique. Le dénivelé important de la Bresque permettait de produire suffisamment d'énergie pour alimenter le village. La conduite forcée est encore visible sur le chemin du retour.",
+      "especes": [],
+      "coords": { "lat": 43.564340248922086, "lng": 6.186403182624231 },
+      "icone": "histoire",
+      "capsule": null
+    },
+    {
+      "id": "poi-09",
+      "ordre": 9,
+      "titre": "La Bresque",
+      "lieu": "Bords de la Bresque",
+      "theme": "biodiversite",
+      "description": "Évoquer sa source, son régime et la biodiversité qu'on y trouve.",
+      "contenu": "La Bresque prend sa source dans le massif de la Sainte-Baume et rejoint l'Argens. Rivière méditerranéenne à régime torrentiel, elle peut être à sec en été et en crue en automne. Elle abrite une faune aquatique remarquable : truites fario, écrevisses à pattes blanches, lamproies de Planer.",
+      "especes": ["Salmo trutta (Truite fario)", "Austropotamobius pallipes (Écrevisse à pattes blanches)", "Lampetra planeri (Lamproie de Planer)"],
+      "coords": { "lat": 43.566336222332936, "lng": 6.1828546200970464 },
+      "icone": "biodiversite",
+      "capsule": null
+    },
+    {
+      "id": "poi-10",
+      "ordre": 10,
+      "titre": "L'ancienne gare d'Aups-Sillans",
+      "lieu": "Ancienne gare",
+      "theme": "histoire",
+      "description": "Histoire du développement de la commune, lien avec la préfecture et le reste du département.",
+      "contenu": "La gare d'Aups-Sillans faisait partie du réseau de chemins de fer du Var, inauguré à la fin du XIXe siècle. Elle reliait les villages de l'arrière-pays varois à Draguignan et Toulon. Fermée en 1950, elle témoigne de l'histoire économique et sociale de la région avant l'essor de l'automobile.",
+      "especes": [],
+      "coords": { "lat": 43.56777631397367, "lng": 6.182091531633692 },
+      "icone": "histoire",
+      "capsule": null
+    },
+    {
+      "id": "poi-11",
+      "ordre": 11,
+      "titre": "Le lavoir communal",
+      "lieu": "Lavoir communal",
+      "theme": "histoire",
+      "description": "Une fois la Bresque traversée, emprunter la Rue des Remparts pour rejoindre le lavoir communal.",
+      "contenu": "Le lavoir communal était un lieu de vie sociale essentiel au village. Les femmes s'y retrouvaient quotidiennement pour laver le linge et échanger les nouvelles. Alimenté par une source naturelle, il est encore en état de fonctionnement. Il témoigne de l'organisation communautaire villageoise traditionnelle.",
+      "especes": [],
+      "coords": { "lat": 43.56834504803349, "lng": 6.179949452645335 },
+      "icone": "histoire",
+      "capsule": null
+    },
+    {
+      "id": "poi-12",
+      "ordre": 12,
+      "titre": "Le pied des remparts",
+      "lieu": "Remparts médiévaux",
+      "theme": "histoire",
+      "description": "Les remparts médiévaux de Sillans-la-Cascade témoignent de l'organisation défensive du village au Moyen Âge.",
+      "contenu": "Sillans était un village fortifié typique de l'arrière-pays provençal. Ses remparts datent du XIIe-XIVe siècle. Au pied des remparts, on peut observer les fondations des tours de guet et les vestiges des douves. Le site a été habité depuis l'Antiquité, comme en témoignent les trouvailles archéologiques à proximité.",
+      "especes": [],
+      "coords": { "lat": 43.56778474441505, "lng": 6.1781734948136355 },
+      "icone": "histoire",
+      "capsule": null
+    },
+    {
+      "id": "poi-13",
+      "ordre": 13,
+      "titre": "La Mairie",
+      "lieu": "Mairie de Sillans-la-Cascade",
+      "theme": "histoire",
+      "description": "L'ancien château seigneurial reconverti en mairie, symbole du passage de la féodalité à la République.",
+      "contenu": "La mairie de Sillans occupe l'ancien château seigneurial des seigneurs de Sillans. Construit au XIVe siècle, il a été transformé après la Révolution française en lieu de pouvoir municipal. Sa façade sobre et ses salles voûtées rappellent son origine médiévale. Le bâtiment abrite aujourd'hui les services administratifs de la commune.",
+      "especes": [],
+      "coords": { "lat": 43.567414521766175, "lng": 6.179422063109964 },
+      "icone": "histoire",
+      "capsule": null
+    },
+    {
+      "id": "poi-14",
+      "ordre": 14,
+      "titre": "La grande rue",
+      "lieu": "Grande rue, Sillans-la-Cascade",
+      "theme": "histoire",
+      "description": "Au croisement avec la grande place et la rue de l'abreuvoir — cœur historique du village.",
+      "contenu": "La grande rue est l'artère principale du village médiéval. Elle relie la porte du village à la place centrale et à l'église. Les maisons en pierre calcaire qui la bordent datent pour la plupart du XVIIe et XVIIIe siècle. L'abreuvoir à l'intersection témoigne de l'importance de l'eau dans la vie quotidienne du village.",
+      "especes": [],
+      "coords": { "lat": 43.56795576513286, "lng": 6.179297340390951 },
+      "icone": "histoire",
+      "capsule": null
+    }
+  ],
+  "qcm": [
+    {
+      "id": "q01",
+      "question": "Quelle est la hauteur de la cascade de Sillans ?",
+      "reponses": [
+        { "id": "r1", "texte": "44 mètres", "correcte": true },
+        { "id": "r2", "texte": "22 mètres", "correcte": false },
+        { "id": "r3", "texte": "67 mètres", "correcte": false },
+        { "id": "r4", "texte": "30 mètres", "correcte": false }
+      ],
+      "explication": "La cascade de Sillans tombe de 44 mètres dans un bassin naturel, ce qui en fait l'une des plus hautes cascades permanentes de Provence."
+    },
+    {
+      "id": "q02",
+      "question": "Pourquoi l'eau du bassin de la cascade est-elle turquoise ?",
+      "reponses": [
+        { "id": "r1", "texte": "Présence de particules calcaires en suspension", "correcte": true },
+        { "id": "r2", "texte": "Pollution par des algues bleues", "correcte": false },
+        { "id": "r3", "texte": "Reflet du ciel méditerranéen", "correcte": false },
+        { "id": "r4", "texte": "Minéraux ferreux dans la roche", "correcte": false }
+      ],
+      "explication": "La teinte turquoise vient des particules de calcaire en suspension dans l'eau, diffusant la lumière. Ce phénomène est typique des cascades pétrifiantes."
+    },
+    {
+      "id": "q03",
+      "question": "Pourquoi la baignade est-elle interdite à la cascade ?",
+      "reponses": [
+        { "id": "r1", "texte": "Risques de chutes de blocs et courants dangereux", "correcte": true },
+        { "id": "r2", "texte": "L'eau est trop froide", "correcte": false },
+        { "id": "r3", "texte": "Présence de méduses", "correcte": false },
+        { "id": "r4", "texte": "Site classé en réserve naturelle intégrale", "correcte": false }
+      ],
+      "explication": "Les concrétions calcaires sont très instables et peuvent se décrocher sans prévenir. Les courants dans le bassin sont également dangereux. La baignade est donc interdite pour la sécurité des visiteurs."
+    },
+    {
+      "id": "q04",
+      "question": "Comment se nomme la roche poreuse formée par les dépôts calcaires de l'eau ?",
+      "reponses": [
+        { "id": "r1", "texte": "Travertin (ou tuf)", "correcte": true },
+        { "id": "r2", "texte": "Granite", "correcte": false },
+        { "id": "r3", "texte": "Grès", "correcte": false },
+        { "id": "r4", "texte": "Basalte", "correcte": false }
+      ],
+      "explication": "Le travertin est une roche calcaire sédimentaire formée par précipitation du carbonate de calcium. Sa porosité le rend léger — il était utilisé comme matériau de construction traditionnel."
+    },
+    {
+      "id": "q05",
+      "question": "Quel groupe d'animaux trouve refuge dans les cavités des falaises de travertin ?",
+      "reponses": [
+        { "id": "r1", "texte": "Les chauves-souris (chiroptères)", "correcte": true },
+        { "id": "r2", "texte": "Les faucons pèlerins", "correcte": false },
+        { "id": "r3", "texte": "Les lézards ocellés", "correcte": false },
+        { "id": "r4", "texte": "Les hérons cendrés", "correcte": false }
+      ],
+      "explication": "Les falaises abritent de nombreuses espèces de chauves-souris, dont le Grand rhinolophe et le Murin de Daubenton. Ces sites de mise-bas sont protégés par la loi."
+    },
+    {
+      "id": "q06",
+      "question": "Combien de visiteurs l'ENS de Sillans-la-Cascade accueille-t-il chaque été ?",
+      "reponses": [
+        { "id": "r1", "texte": "Environ 96 000 visiteurs", "correcte": true },
+        { "id": "r2", "texte": "Environ 10 000 visiteurs", "correcte": false },
+        { "id": "r3", "texte": "Environ 250 000 visiteurs", "correcte": false },
+        { "id": "r4", "texte": "Environ 45 000 visiteurs", "correcte": false }
+      ],
+      "explication": "L'ENS reçoit environ 96 000 visiteurs entre juillet et août. Cette fréquentation élevée nécessite une sensibilisation forte aux bons comportements pour protéger le site."
+    },
+    {
+      "id": "q07",
+      "question": "Qu'est-ce que la ripisylve ?",
+      "reponses": [
+        { "id": "r1", "texte": "La forêt qui borde les cours d'eau", "correcte": true },
+        { "id": "r2", "texte": "Une espèce d'algue aquatique", "correcte": false },
+        { "id": "r3", "texte": "Un type de cascade temporaire", "correcte": false },
+        { "id": "r4", "texte": "Un système d'irrigation romain", "correcte": false }
+      ],
+      "explication": "La ripisylve est l'écosystème forestier qui longe les rivières. Elle joue un rôle crucial : protection des berges, régulation thermique de l'eau, corridor écologique pour la faune."
+    },
+    {
+      "id": "q08",
+      "question": "Quelle rivière alimente la cascade de Sillans ?",
+      "reponses": [
+        { "id": "r1", "texte": "La Bresque", "correcte": true },
+        { "id": "r2", "texte": "L'Argens", "correcte": false },
+        { "id": "r3", "texte": "Le Verdon", "correcte": false },
+        { "id": "r4", "texte": "Le Gapeau", "correcte": false }
+      ],
+      "explication": "La Bresque prend sa source dans le massif de la Sainte-Baume et rejoint l'Argens. C'est elle qui, par son dénivelé, crée la cascade et permettait de faire fonctionner l'usine hydroélectrique."
+    },
+    {
+      "id": "q09",
+      "question": "Quel type d'énergie l'usine du site produisait-elle au début du XXe siècle ?",
+      "reponses": [
+        { "id": "r1", "texte": "De l'électricité hydroélectrique", "correcte": true },
+        { "id": "r2", "texte": "De la vapeur pour des moulins", "correcte": false },
+        { "id": "r3", "texte": "De l'huile pour l'éclairage", "correcte": false },
+        { "id": "r4", "texte": "Du charbon de bois", "correcte": false }
+      ],
+      "explication": "Vers 1910, la commune de Sillans fut l'une des premières de la région à avoir l'électricité, grâce à l'usine hydroélectrique qui exploitait le fort dénivelé de la Bresque."
+    },
+    {
+      "id": "q10",
+      "question": "Quelle espèce aquatique très rare vit dans la Bresque ?",
+      "reponses": [
+        { "id": "r1", "texte": "L'écrevisse à pattes blanches", "correcte": true },
+        { "id": "r2", "texte": "Le saumon atlantique", "correcte": false },
+        { "id": "r3", "texte": "L'esturgeon européen", "correcte": false },
+        { "id": "r4", "texte": "La carpe koï", "correcte": false }
+      ],
+      "explication": "L'écrevisse à pattes blanches (Austropotamobius pallipes) est une espèce en danger présente dans la Bresque. Indicatrice de la qualité de l'eau, sa présence témoigne de la bonne santé écologique de la rivière."
+    }
+  ]
+}
