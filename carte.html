@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#13433F">
+  <title>Carte — Visiter Sillans</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    html, body { height: 100%; margin: 0; padding: 0; }
+    body { display: flex; flex-direction: column; }
+    #map { flex: 1; min-height: 0; }
+    .leaflet-popup-content-wrapper {
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+    }
+    .popup-content { padding: 0.25rem; min-width: 160px; }
+    .popup-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6B7280;
+      margin-bottom: 0.1rem;
+    }
+    .popup-titre {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #13433F;
+      margin-bottom: 0.5rem;
+    }
+    .popup-btn {
+      display: block;
+      background: #13433F;
+      color: #F7F6F2;
+      text-align: center;
+      border-radius: 6px;
+      padding: 0.4rem 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header class="carte-header">
+  <span class="carte-title">🗺️ Carte</span>
+  <span class="carte-progress" id="progress-display">0 / 14</span>
+</header>
+
+<div class="legende">
+  <div class="legende-item">
+    <div class="legende-dot dot-biodiversite"></div>
+    Biodiversité
+  </div>
+  <div class="legende-item">
+    <div class="legende-dot dot-geologie"></div>
+    Géologie
+  </div>
+  <div class="legende-item">
+    <div class="legende-dot dot-histoire"></div>
+    Histoire
+  </div>
+  <div class="legende-item">
+    <div class="legende-dot dot-securite"></div>
+    Sécurité
+  </div>
+</div>
+
+<div id="map"></div>
+
+<nav class="bottom-nav">
+  <a href="carte.html" class="nav-item active">
+    <span class="nav-icon">🗺️</span>
+    <span>Carte</span>
+  </a>
+  <a href="regles.html" class="nav-item">
+    <span class="nav-icon">📋</span>
+    <span>Règles</span>
+  </a>
+  <a href="qcm.html" class="nav-item">
+    <span class="nav-icon">🎯</span>
+    <span>Quiz</span>
+  </a>
+  <a href="a-propos.html" class="nav-item">
+    <span class="nav-icon">ℹ️</span>
+    <span>À propos</span>
+  </a>
+</nav>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/progress.js"></script>
+<script src="js/app.js"></script>
+<script src="js/carte.js"></script>
+</body>
+</html>
