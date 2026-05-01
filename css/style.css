@@ -1,0 +1,254 @@
+/* ============================================
+   VISITER SILLANS — Design System
+   Palette: #13433F | #2CA6A4 | #A6CE39 | #DCC9B1 | #F7F6F2
+   Typo: Barlow Condensed (titres) / Helvetica (corps)
+   ============================================ */
+
+/* --- Import Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&display=swap');
+
+/* --- Variables CSS --- */
+:root {
+  --vert-profond: #13433F;
+  --turquoise: #2CA6A4;
+  --lime: #A6CE39;
+  --sable: #DCC9B1;
+  --blanc-casse: #F7F6F2;
+  --noir: #1A1A1A;
+  --gris: #6B7280;
+  --gris-clair: #E5E7EB;
+
+  /* Thèmes */
+  --theme-biodiversite: #A6CE39;
+  --theme-geologie: #DCC9B1;
+  --theme-histoire: #2CA6A4;
+  --theme-securite: #13433F;
+
+  /* Typo */
+  --font-titre: 'Barlow Condensed', Arial Narrow, sans-serif;
+  --font-corps: Helvetica, Arial, sans-serif;
+
+  /* Layout */
+  --nav-height: 64px;
+  --header-height: 56px;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font-corps);
+  background: var(--blanc-casse);
+  color: var(--noir);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* --- Typographie --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-titre);
+  line-height: 1.15;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+h1 { font-size: 2.4rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.1rem; }
+p { font-size: 0.95rem; line-height: 1.6; }
+
+/* --- Boutons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-titre);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-primary { background: var(--vert-profond); color: var(--blanc-casse); }
+.btn-primary:hover { background: #0e302d; transform: translateY(-1px); }
+.btn-secondary { background: var(--turquoise); color: white; }
+.btn-secondary:hover { background: #239a98; transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--vert-profond); border: 2px solid var(--vert-profond); }
+.btn-ghost:hover { background: var(--vert-profond); color: var(--blanc-casse); }
+.btn-full { width: 100%; justify-content: center; }
+
+/* --- Badges thèmes --- */
+.badge-theme {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-family: var(--font-titre);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-biodiversite { background: var(--lime); color: #2d4000; }
+.badge-geologie { background: var(--sable); color: #4a3a25; }
+.badge-histoire { background: var(--turquoise); color: white; }
+.badge-securite { background: var(--vert-profond); color: var(--blanc-casse); }
+
+/* --- Marqueurs Leaflet --- */
+.marker-user {
+  width: 18px;
+  height: 18px;
+  background: #3B82F6;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.3);
+}
+
+/* --- Page POI détail --- */
+.poi-header {
+  background: var(--vert-profond);
+  color: var(--blanc-casse);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: var(--header-height);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.poi-back-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: white; font-size: 1.2rem;
+}
+.poi-body { padding: 1.25rem; padding-bottom: calc(var(--nav-height) + 1.5rem); }
+.poi-numero { font-family: var(--font-titre); font-size: 0.75rem; font-weight: 700; color: var(--gris); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
+.poi-titre { font-family: var(--font-titre); font-size: 1.8rem; font-weight: 700; text-transform: uppercase; color: var(--vert-profond); margin-bottom: 0.5rem; }
+.poi-lieu { font-size: 0.875rem; color: var(--gris); margin-bottom: 1rem; }
+.poi-section-title { font-family: var(--font-titre); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gris); margin-bottom: 0.5rem; margin-top: 1.25rem; }
+.poi-especes { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+.poi-espece-tag { background: rgba(166,206,57,0.15); border: 1px solid var(--lime); color: #2d4000; border-radius: 999px; padding: 0.2rem 0.6rem; font-size: 0.78rem; font-style: italic; }
+.poi-nav-btns { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+.poi-nav-btns .btn { flex: 1; font-size: 0.875rem; }
+.visite-btn {
+  margin-top: 1.5rem; padding: 1rem;
+  background: var(--lime); color: #2d4000;
+  border-radius: var(--radius);
+  font-family: var(--font-titre); font-size: 1.1rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  width: 100%; text-align: center; border: none; cursor: pointer; transition: background 0.2s;
+}
+.visite-btn.deja-visite { background: var(--gris-clair); color: var(--gris); cursor: default; }
+
+/* --- QCM --- */
+.qcm-header { background: var(--vert-profond); color: var(--blanc-casse); padding: 1rem; min-height: var(--header-height); display: flex; align-items: center; gap: 0.75rem; position: sticky; top: 0; z-index: 100; }
+.qcm-body { padding: 1.25rem; padding-bottom: calc(var(--nav-height) + 1.5rem); }
+.qcm-dots { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.qcm-dot { width: 24px; height: 6px; border-radius: 3px; background: var(--gris-clair); transition: background 0.3s; }
+.qcm-dot.active { background: var(--turquoise); }
+.qcm-dot.correct { background: var(--lime); }
+.qcm-dot.incorrect { background: #EF4444; }
+.qcm-question { font-family: var(--font-titre); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; color: var(--vert-profond); line-height: 1.2; margin-bottom: 1.25rem; }
+.reponses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+.reponse-card {
+  background: white; border: 2px solid var(--gris-clair); border-radius: var(--radius);
+  padding: 0.875rem 0.75rem; font-size: 0.9rem; font-weight: 600; text-align: center;
+  cursor: pointer; transition: all 0.2s; line-height: 1.3; min-height: 64px;
+  display: flex; align-items: center; justify-content: center;
+}
+.reponse-card:hover { border-color: var(--turquoise); }
+.reponse-card.selected-correct { background: rgba(166,206,57,0.2); border-color: var(--lime); color: #2d4000; }
+.reponse-card.selected-incorrect { background: rgba(239,68,68,0.1); border-color: #EF4444; color: #991B1B; }
+.reponse-card.disabled { cursor: default; pointer-events: none; }
+.qcm-explication { background: rgba(44,166,164,0.1); border-left: 4px solid var(--turquoise); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 0.875rem 1rem; font-size: 0.875rem; line-height: 1.5; margin: 0.75rem 0; display: none; }
+.qcm-explication.visible { display: block; }
+.btn-suivant { display: none; margin-top: 0.75rem; }
+.btn-suivant.visible { display: flex; }
+
+/* --- Score --- */
+.score-screen { display: none; text-align: center; padding: 2rem 1.25rem; }
+.score-screen.visible { display: block; }
+.score-nombre { font-family: var(--font-titre); font-size: 4rem; font-weight: 700; color: var(--vert-profond); line-height: 1; }
+.score-niveau { font-family: var(--font-titre); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; color: var(--turquoise); margin: 0.5rem 0 1rem; }
+.score-desc { color: var(--gris); font-size: 0.95rem; margin-bottom: 1.5rem; }
+.score-mascotte { font-size: 4rem; margin: 1rem 0; }
+
+/* --- Navigation bas --- */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: var(--nav-height); background: white;
+  border-top: 1px solid var(--gris-clair);
+  display: flex; align-items: center; justify-content: space-around;
+  z-index: 200; box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+}
+.nav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 0.2rem;
+  padding: 0.5rem 1rem; color: var(--gris);
+  font-family: var(--font-titre); font-size: 0.7rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  text-decoration: none; transition: color 0.2s; flex: 1; text-align: center;
+}
+.nav-item .nav-icon { font-size: 1.4rem; }
+.nav-item.active { color: var(--vert-profond); }
+.nav-item.active .nav-icon { transform: scale(1.15); }
+
+/* --- Splash/onboarding --- */
+.progress-bar-outer { width: 100%; max-width: 280px; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px; overflow: hidden; margin-bottom: 0.75rem; }
+.progress-bar-inner { height: 100%; background: var(--lime); border-radius: 3px; width: 0%; transition: width 0.3s ease; }
+
+/* --- Carte --- */
+.carte-header { background: var(--vert-profond); color: var(--blanc-casse); padding: 0.875rem 1rem; display: flex; align-items: center; justify-content: space-between; min-height: var(--header-height); position: sticky; top: 0; z-index: 400; }
+.carte-title { font-family: var(--font-titre); font-size: 1.3rem; font-weight: 700; text-transform: uppercase; }
+.carte-progress { background: rgba(255,255,255,0.15); padding: 0.25rem 0.6rem; border-radius: 999px; font-family: var(--font-titre); font-size: 0.85rem; font-weight: 700; }
+#map { height: calc(100vh - var(--header-height) - var(--nav-height) - 36px); z-index: 1; }
+.legende { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.5rem 1rem; background: white; border-bottom: 1px solid var(--gris-clair); scrollbar-width: none; }
+.legende::-webkit-scrollbar { display: none; }
+.legende-item { display: flex; align-items: center; gap: 0.35rem; flex-shrink: 0; font-family: var(--font-titre); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--gris); }
+.legende-dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-biodiversite { background: var(--lime); }
+.dot-geologie { background: var(--sable); border: 1px solid #b5a188; }
+.dot-histoire { background: var(--turquoise); }
+.dot-securite { background: var(--vert-profond); }
+
+/* --- Règles --- */
+.regles-header { background: var(--vert-profond); color: var(--blanc-casse); padding: 1rem; min-height: var(--header-height); display: flex; align-items: center; }
+.regles-body { padding: 1.25rem; padding-bottom: calc(var(--nav-height) + 1.5rem); }
+.regle-card { background: white; border-radius: var(--radius); padding: 1.25rem; margin-bottom: 0.875rem; box-shadow: var(--shadow); border-left: 5px solid var(--lime); }
+.regle-card.danger { border-left-color: var(--turquoise); }
+.regle-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.regle-titre { font-family: var(--font-titre); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; color: var(--vert-profond); margin-bottom: 0.25rem; }
+.regle-desc { font-size: 0.9rem; color: var(--gris); line-height: 1.5; }
+
+/* --- À propos --- */
+.apropos-header { background: var(--vert-profond); color: var(--blanc-casse); padding: 1rem; min-height: var(--header-height); display: flex; align-items: center; }
+.apropos-body { padding: 1.25rem; padding-bottom: calc(var(--nav-height) + 1.5rem); }
+.apropos-section { background: white; border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1rem; box-shadow: var(--shadow); }
+.apropos-label { font-family: var(--font-titre); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gris); margin-bottom: 0.25rem; }
+.team-list { list-style: none; margin-top: 0.5rem; }
+.team-list li { padding: 0.4rem 0; border-bottom: 1px solid var(--gris-clair); font-size: 0.9rem; }
+.team-list li:last-child { border-bottom: none; }
+
+/* --- Animations --- */
+@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } }
+.animate-in { animation: fadeSlideUp 0.4s ease both; }
+.animate-pulse { animation: pulse 2s ease-in-out infinite; }
+
+/* --- Utilitaires --- */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
