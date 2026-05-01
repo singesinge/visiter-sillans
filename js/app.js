@@ -3,7 +3,8 @@
  * Chargement des données JSON + enregistrement Service Worker
  */
 
-const DATA_URL = 'data/poi.json';
+// Chemin absolu — fonctionne depuis n'importe quel sous-dossier (html/, racine)
+const DATA_URL = '/data/poi.json';
 let _poiData = null;
 
 /* --- Chargement des données --- */
@@ -49,10 +50,10 @@ function themeLabel(theme) {
 }
 
 /* --- Service Worker (hors-ligne) --- */
-
+// Chemin absolu — le SW doit toujours être enregistré depuis la racine
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js')
+    navigator.serviceWorker.register('/sw.js')
       .then(() => console.log('Service Worker enregistré'))
       .catch(err => console.warn('SW non disponible :', err));
   });

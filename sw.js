@@ -3,17 +3,17 @@
  * Stratégie : Cache First pour assets statiques, Network First pour poi.json
  */
 
-const CACHE_NAME = 'visiter-sillans-v1';
+const CACHE_NAME = 'visiter-sillans-v2';
 
 /* --- Assets à précacher à l'installation --- */
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
-  '/carte.html',
-  '/poi.html',
-  '/qcm.html',
-  '/regles.html',
-  '/a-propos.html',
+  '/html/carte.html',
+  '/html/poi.html',
+  '/html/qcm.html',
+  '/html/regles.html',
+  '/html/a-propos.html',
   '/css/style.css',
   '/js/app.js',
   '/js/progress.js',

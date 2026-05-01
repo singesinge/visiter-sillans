@@ -75,7 +75,7 @@
     ];
     let i = 0;
     const interval = setInterval(() => {
-      if (i >= steps.length) { clearInterval(interval); setTimeout(() => { window.location.href = 'carte.html'; }, 600); return; }
+      if (i >= steps.length) { clearInterval(interval); setTimeout(() => { window.location.href = 'html/carte.html'; }, 600); return; }
       bar.style.width = steps[i].pct + '%';
       label.textContent = steps[i].txt;
       i++;

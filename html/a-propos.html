@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#13433F">
+  <title>À propos — Visiter Sillans</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="apropos-header">
+  <div>
+    <div style="font-size:0.75rem;opacity:0.7;font-family:var(--font-titre);text-transform:uppercase;letter-spacing:0.08em;">Informations</div>
+    <div style="font-family:var(--font-titre);font-size:1.3rem;font-weight:700;text-transform:uppercase;color:var(--blanc-casse);">À propos</div>
+  </div>
+</header>
+
+<main class="apropos-body animate-in">
+
+  <!-- App info -->
+  <div class="apropos-section">
+    <div style="text-align:center;padding:1rem 0;">
+      <div style="font-size:3rem;margin-bottom:0.5rem;">🦇</div>
+      <div style="font-family:var(--font-titre);font-size:1.8rem;font-weight:700;text-transform:uppercase;color:var(--vert-profond);">Visiter Sillans</div>
+      <div style="font-size:0.85rem;color:var(--gris);margin-top:0.25rem;">ENS de Sillans-la-Cascade</div>
+    </div>
+    <p style="font-size:0.875rem;color:var(--gris);line-height:1.6;text-align:center;">
+      Application de médiation culturelle et naturelle pour explorer l'Espace Naturel Sensible de Sillans-la-Cascade à travers 14 points d'intérêt.
+    </p>
+  </div>
+
+  <!-- Commanditaire -->
+  <div class="apropos-section">
+    <div class="apropos-label">Commanditaire</div>
+    <strong style="font-size:1rem;">Département du Var</strong>
+    <p style="font-size:0.875rem;color:var(--gris);margin-top:0.25rem;">
+      Service Espaces Naturels Sensibles<br>
+      Contact : M. Thibaud Fabre
+    </p>
+  </div>
+
+  <!-- Équipe -->
+  <div class="apropos-section">
+    <div class="apropos-label">Équipe de création — BUT MMI 2025-2026</div>
+    <ul class="team-list">
+      <li>Thomas Bout — Direction artistique &amp; Développement web</li>
+      <li>Estevan Bigot — Captation photo &amp; vidéo</li>
+      <li>Noam Reny-Douart — Développement web</li>
+      <li>Lina Ben Hammouda — Graphisme &amp; Communication</li>
+      <li>Amir Barghouthi — Infographie</li>
+    </ul>
+  </div>
+
+  <!-- Contexte SAÉ -->
+  <div class="apropos-section">
+    <div class="apropos-label">Contexte académique</div>
+    <p style="font-size:0.875rem;color:var(--gris);line-height:1.6;">
+      Projet réalisé dans le cadre de la SAÉ 4 (Situation d'Apprentissage et d'Évaluation) du BUT Métiers du Multimédia et de l'Internet, IUT de Toulon — année universitaire 2025-2026.
+    </p>
+  </div>
+
+  <!-- Réinitialisation -->
+  <div class="apropos-section">
+    <div class="apropos-label">Données</div>
+    <p style="font-size:0.875rem;color:var(--gris);margin-bottom:1rem;line-height:1.5;">
+      Réinitialiser votre progression et vos scores de quiz.
+    </p>
+    <button class="btn btn-ghost btn-full" onclick="confirmerReset()" style="border-color:#EF4444;color:#EF4444;">
+      🗑️ Réinitialiser la progression
+    </button>
+  </div>
+
+</main>
+
+<nav class="bottom-nav">
+  <a href="carte.html" class="nav-item">
+    <span class="nav-icon">🗺️</span>
+    <span>Carte</span>
+  </a>
+  <a href="regles.html" class="nav-item">
+    <span class="nav-icon">📋</span>
+    <span>Règles</span>
+  </a>
+  <a href="qcm.html" class="nav-item">
+    <span class="nav-icon">🎯</span>
+    <span>Quiz</span>
+  </a>
+  <a href="a-propos.html" class="nav-item active">
+    <span class="nav-icon">ℹ️</span>
+    <span>À propos</span>
+  </a>
+</nav>
+
+<script src="../js/progress.js"></script>
+<script>
+  function confirmerReset() {
+    if (confirm('Réinitialiser toute votre progression ? Cette action est irréversible.')) {
+      resetProgression();
+      alert('Progression réinitialisée.');
+    }
+  }
+</script>
+</body>
+</html>
