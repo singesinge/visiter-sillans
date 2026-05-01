@@ -1,0 +1,59 @@
+# ============================================================
+# .htaccess — Visiter Sillans
+# Sécurité + HTTPS + cache + protection
+# ============================================================
+
+# --- Force HTTPS ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# --- En-têtes de sécurité ---
+<IfModule mod_headers.c>
+
+  # Empêche le navigateur de deviner le type MIME
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Interdit l'affichage dans une iframe externe (clickjacking)
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Politique de référent strict
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions : seul le GPS est autorisé (pour la carte)
+  Header always set Permissions-Policy "geolocation=(self), camera=(), microphone=(), payment=()"
+
+  # Content Security Policy
+  # 'unsafe-inline' nécessaire pour Leaflet (styles dynamiques) et les onclick inline
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.tile.openstreetmap.org https://unpkg.com; connect-src 'self'; worker-src 'self'; manifest-src 'self'; frame-ancestors 'none';"
+
+</IfModule>
+
+# --- Cache des assets statiques ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html                "access plus 1 hour"
+  ExpiresByType text/css                 "access plus 1 week"
+  ExpiresByType application/javascript   "access plus 1 week"
+  ExpiresByType application/json         "access plus 1 day"
+  ExpiresByType image/png                "access plus 1 month"
+  ExpiresByType image/jpeg               "access plus 1 month"
+  ExpiresByType image/svg+xml            "access plus 1 month"
+  ExpiresByType image/webp               "access plus 1 month"
+  ExpiresByType application/manifest+json "access plus 1 week"
+</IfModule>
+
+# --- Désactive le listing des dossiers ---
+Options -Indexes
+
+# --- Protège les fichiers sensibles ---
+<FilesMatch "(^\.htaccess|^\.gitignore|\.log$)">
+  Require all denied
+</FilesMatch>
+
+# --- Compression GZIP ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+</IfModule>
