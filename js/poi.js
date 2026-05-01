@@ -6,6 +6,17 @@
 let tousLesPOI = [];
 let poiActuel = null;
 
+/* --- Sécurité : échappe les caractères HTML avant insertion dans le DOM --- */
+function escapeHTML(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 async function initPOI() {
   const id = getPoiIdFromURL();
   if (!id) {
@@ -17,7 +28,7 @@ async function initPOI() {
   const poi = tousLesPOI.find(p => p.id === id);
 
   if (!poi) {
-    document.getElementById('poi-content').innerHTML = "<p style=\"padding:2rem;color:var(--gris);text-align:center;\">Point d'intérêt non trouvé.</p>";
+    document.getElementById('poi-content').innerHTML = '<p style="padding:2rem;color:var(--gris);text-align:center;">Point d\'intérêt non trouvé.</p>';
     return;
   }
 
@@ -26,20 +37,20 @@ async function initPOI() {
 }
 
 function afficherPOI(poi) {
-  // Header
+  // Header (via textContent — jamais d'innerHTML ici)
   document.getElementById('poi-header-num').textContent = `POI ${String(poi.ordre).padStart(2, '0')}`;
   document.getElementById('poi-header-titre').textContent = poi.titre;
-  document.title = `${poi.titre} — Visiter Sillans`;
+  document.title = `${escapeHTML(poi.titre)} — Visiter Sillans`;
 
   const visite = estVisite(poi.id);
 
-  // Espèces
+  // Espèces — chaque tag est échappé
   const especesHTML = poi.especes && poi.especes.length
     ? `<div class="poi-section-title">🌿 Espèces associées</div>
-       <ul class="poi-especes">${poi.especes.map(e => `<li class="poi-espece-tag">${e}</li>`).join('')}</ul>`
+       <ul class="poi-especes">${poi.especes.map(e => `<li class="poi-espece-tag">${escapeHTML(e)}</li>`).join('')}</ul>`
     : '';
 
-  // Navigation prev/next
+  // Navigation prev/next — ordre est un entier, pas de risque XSS
   const navPrev = poi.ordre > 1
     ? `<button class="btn btn-ghost" onclick="naviguerPOI(-1)">← POI ${poi.ordre - 1}</button>`
     : `<button class="btn btn-ghost" disabled style="opacity:0.3;">← Début</button>`;
@@ -48,25 +59,26 @@ function afficherPOI(poi) {
     ? `<button class="btn btn-secondary" onclick="naviguerPOI(1)">POI ${poi.ordre + 1} →</button>`
     : `<button class="btn btn-secondary" disabled style="opacity:0.3;">Fin →</button>`;
 
+  // Contenu principal — toutes les chaînes texte sont échappées
   document.getElementById('poi-content').innerHTML = `
     <div class="poi-numero">POI ${String(poi.ordre).padStart(2, '0')} / 14</div>
-    <h1 class="poi-titre">${poi.titre}</h1>
-    <p class="poi-lieu">📍 ${poi.lieu}</p>
+    <h1 class="poi-titre">${escapeHTML(poi.titre)}</h1>
+    <p class="poi-lieu">📍 ${escapeHTML(poi.lieu)}</p>
 
-    <span class="badge-theme badge-${poi.theme}">${themeLabel(poi.theme)}</span>
+    <span class="badge-theme badge-${escapeHTML(poi.theme)}">${themeLabel(poi.theme)}</span>
 
     <div class="poi-section-title" style="margin-top:1.25rem;">📖 Description</div>
-    <p>${poi.description}</p>
+    <p>${escapeHTML(poi.description)}</p>
 
     <div class="poi-section-title">🔍 Pour en savoir plus</div>
-    <p>${poi.contenu}</p>
+    <p>${escapeHTML(poi.contenu)}</p>
 
     ${especesHTML}
 
     <button
       class="visite-btn ${visite ? 'deja-visite' : ''}"
       id="btn-visite"
-      onclick="marquerVisite('${poi.id}')"
+      onclick="marquerVisite('${escapeHTML(poi.id)}')"
       ${visite ? 'disabled' : ''}
     >
       ${visite ? '✅ Déjà visité' : '✔ Marquer comme visité'}
@@ -99,7 +111,9 @@ function naviguerPOI(delta) {
   if (!poiActuel) return;
   const nouvelOrdre = poiActuel.ordre + delta;
   const cible = tousLesPOI.find(p => p.ordre === nouvelOrdre);
-  if (cible) window.location.href = `poi.html?id=${cible.id}`;
+  if (cible) {
+    window.location.href = `poi.html?id=${cible.id}`;
+  }
 }
 
 document.addEventListener('DOMContentLoaded', initPOI);
