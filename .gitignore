@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Médias lourds (à ne pas versionner)
+assets/videos/
+assets/photos-originales/
+
+# Secrets
+*.local
+config.local.js
+
+# IDE
+.vscode/
+.idea/
