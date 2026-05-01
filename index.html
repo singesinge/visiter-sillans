@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#13433F">
+  <title>Visiter Sillans-la-Cascade</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { margin: 0; padding: 0; overflow: hidden; }
+    .onboarding { min-height: 100vh; display: flex; flex-direction: column; }
+    .onboarding-hero {
+      flex: 1; background: var(--vert-profond);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 2.5rem 2rem; text-align: center; color: var(--blanc-casse);
+    }
+    .app-logo { font-family: var(--font-titre); font-size: 3rem; font-weight: 700; text-transform: uppercase; line-height: 1; letter-spacing: 0.02em; margin-bottom: 0.25rem; }
+    .app-logo span { color: var(--lime); }
+    .app-tagline { font-size: 0.95rem; opacity: 0.7; margin-bottom: 2rem; }
+    .mascotte-placeholder { font-size: 5rem; margin-bottom: 1.5rem; animation: pulse 3s ease-in-out infinite; }
+    .onboarding-bottom { background: var(--blanc-casse); padding: 2rem 1.5rem; }
+    .onboarding-bottom h2 { font-family: var(--font-titre); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; color: var(--vert-profond); margin-bottom: 0.5rem; }
+    .onboarding-bottom p { font-size: 0.9rem; color: var(--gris); margin-bottom: 1.5rem; line-height: 1.5; }
+    .download-zone { display: none; }
+    .download-zone.visible { display: block; }
+    .download-label { font-family: var(--font-titre); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gris); margin-bottom: 0.5rem; }
+  </style>
+</head>
+<body>
+
+<div class="onboarding">
+  <div class="onboarding-hero">
+    <div class="mascotte-placeholder">🦇</div>
+    <div class="app-logo">Visiter<br><span>Sillans</span></div>
+    <p class="app-tagline">ENS de Sillans-la-Cascade · Département du Var</p>
+  </div>
+
+  <div class="onboarding-bottom">
+    <div id="step-intro">
+      <h2>Explorez le sanctuaire</h2>
+      <p>14 points d'intérêt, des capsules multimédia et un quiz pour découvrir la biodiversité, la géologie et l'histoire de ce site exceptionnel.</p>
+      <button class="btn btn-primary btn-full" onclick="startDownload()">
+        📥 Préparer la visite
+      </button>
+      <p style="margin-top:0.75rem; font-size:0.8rem; color:var(--gris); text-align:center;">
+        Une connexion WiFi est recommandée pour le téléchargement initial.
+      </p>
+    </div>
+
+    <div id="step-download" class="download-zone">
+      <h2>Téléchargement...</h2>
+      <p>Préparation du contenu hors-ligne. Vous pourrez utiliser l'application sans connexion sur le site.</p>
+      <div class="download-label">Progression</div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="dl-progress"></div>
+      </div>
+      <p id="dl-label" style="margin-top:0.5rem; text-align:center; font-size:0.8rem; color:var(--gris);">Initialisation...</p>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  function startDownload() {
+    document.getElementById('step-intro').style.display = 'none';
+    document.getElementById('step-download').classList.add('visible');
+    const bar = document.getElementById('dl-progress');
+    const label = document.getElementById('dl-label');
+    const steps = [
+      { pct: 20, txt: 'Données des POI...' },
+      { pct: 45, txt: 'Cartes hors-ligne...' },
+      { pct: 70, txt: 'Médias...' },
+      { pct: 90, txt: 'Quiz...' },
+      { pct: 100, txt: 'Terminé !' }
+    ];
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i >= steps.length) { clearInterval(interval); setTimeout(() => { window.location.href = 'carte.html'; }, 600); return; }
+      bar.style.width = steps[i].pct + '%';
+      label.textContent = steps[i].txt;
+      i++;
+    }, 700);
+  }
+</script>
+</body>
+</html>
