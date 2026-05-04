@@ -50,6 +50,14 @@ function afficherPOI(poi) {
        <ul class="poi-especes">${poi.especes.map(e => `<li class="poi-espece-tag">${escapeHTML(e)}</li>`).join('')}</ul>`
     : '';
 
+  // Geste éco (conseil) — si présent dans le JSON
+  const conseilHTML = poi.conseil
+    ? `<div class="poi-conseil">
+         <span class="poi-conseil-label">💡 Geste éco</span>
+         <p>${escapeHTML(poi.conseil)}</p>
+       </div>`
+    : '';
+
   // Navigation prev/next — ordre est un entier, pas de risque XSS
   const navPrev = poi.ordre > 1
     ? `<button class="btn btn-ghost" onclick="naviguerPOI(-1)">← POI ${poi.ordre - 1}</button>`
@@ -74,6 +82,8 @@ function afficherPOI(poi) {
     <p>${escapeHTML(poi.contenu)}</p>
 
     ${especesHTML}
+
+    ${conseilHTML}
 
     <button
       class="visite-btn ${visite ? 'deja-visite' : ''}"
