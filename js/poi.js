@@ -44,6 +44,13 @@ function afficherPOI(poi) {
 
   const visite = estVisite(poi.id);
 
+  // Photo terrain — chemin absolu depuis la racine du site
+  const photoHTML = poi.photo
+    ? `<div class="poi-photo-wrap">
+         <img class="poi-photo" src="/${escapeHTML(poi.photo)}" alt="${escapeHTML(poi.titre)}" loading="lazy" onerror="this.parentElement.style.display='none'">
+       </div>`
+    : '';
+
   // Espèces — chaque tag est échappé
   const especesHTML = poi.especes && poi.especes.length
     ? `<div class="poi-section-title">🌿 Espèces associées</div>
@@ -69,6 +76,8 @@ function afficherPOI(poi) {
 
   // Contenu principal — toutes les chaînes texte sont échappées
   document.getElementById('poi-content').innerHTML = `
+    ${photoHTML}
+
     <div class="poi-numero">POI ${String(poi.ordre).padStart(2, '0')} / 14</div>
     <h1 class="poi-titre">${escapeHTML(poi.titre)}</h1>
     <p class="poi-lieu">📍 ${escapeHTML(poi.lieu)}</p>
