@@ -6,12 +6,12 @@
       "titre": "Début du circuit",
       "lieu": "Église de Sillans-la-Cascade",
       "theme": "securite",
-      "description": "Au niveau de l'église, point de repère central du village. Départ officiel du circuit de découverte de l'ENS de Sillans-la-Cascade.",
-      "contenu": "Informations sur le niveau de difficulté de la randonnée, le temps du parcours et le dénivelé. Rappel des consignes de sécurité : déconseillé aux personnes enceintes et cardiaques. Prévoir de bonnes chaussures et de l'eau.",
+      "description": "Bienvenue sur l'ENS de Sillans-la-Cascade. Ce site accueille jusqu'à 2 500 visiteurs par jour en plein été — votre comportement fait la différence.",
+      "contenu": "Le circuit débute au pied de l'église du village, monument classé du XIIe siècle. Le parcours descend vers le fond de vallon sur environ 2 km aller-retour, avec un dénivelé de 80 mètres. Durée estimée : 1h à 1h30 selon le rythme. Déconseillé aux personnes enceintes, cardiaques ou souffrant de vertiges. Prévoir de l'eau, des chaussures fermées et un chapeau en été. Sur 369 hectares, l'ENS accueille près de 96 000 visiteurs chaque été — une pression qui érode les berges et menace la biodiversité.",
+      "conseil": "Restez sur les sentiers balisés. Chaque pas hors-sentier écrase des plantes fragiles et accélère l'érosion des berges.",
       "especes": [],
       "coords": { "lat": 43.566905655396, "lng": 6.180326638101701 },
-      "icone": "bouclier",
-      "capsule": null
+      "icone": "bouclier"
     },
     {
       "id": "poi-02",
@@ -19,12 +19,12 @@
       "titre": "Le Bastidon et l'oliveraie",
       "lieu": "Bastidon",
       "theme": "histoire",
-      "description": "Témoins de l'exploitation agricole du site. Le bastidon et l'oliveraie témoignent de l'histoire agricole de ce territoire méditerranéen.",
-      "contenu": "Le bastidon est une petite construction rurale caractéristique de la Provence. L'oliveraie environnante rappelle que ce site était autrefois intensément cultivé. L'olivier, arbre millénaire, rythme encore le paysage.",
-      "especes": ["Olea europaea (Olivier)"],
+      "description": "Avant d'être un sanctuaire naturel, ce vallon était une terre cultivée. Le bastidon et son oliveraie en portent encore la mémoire.",
+      "contenu": "Le bastidon est une petite construction rurale typique de Provence, utilisée comme abri d'été pour les travailleurs agricoles. L'oliveraie environnante témoigne d'une exploitation qui remonte à plusieurs siècles. L'olivier (Olea europaea) peut vivre plus de 1 000 ans et résiste à la sécheresse grâce à ses racines profondes qui descendent chercher l'eau à plusieurs mètres. Ces arbres ont façonné le paysage méditerranéen bien avant l'arrivée du tourisme. La mise en jachère progressive du site a permis à la végétation naturelle de reprendre ses droits.",
+      "conseil": "Ne prélevez aucun fruit, aucune plante. Même l'olive sauvage joue un rôle dans la chaîne alimentaire locale.",
+      "especes": ["Olea europaea (Olivier commun)", "Pistacia lentiscus (Lentisque)"],
       "coords": { "lat": 43.56564240070982, "lng": 6.180873808740747 },
-      "icone": "histoire",
-      "capsule": null
+      "icone": "histoire"
     },
     {
       "id": "poi-03",
@@ -32,12 +32,12 @@
       "titre": "Canaux d'irrigation creusés dans le travertin",
       "lieu": "Canaux du travertin",
       "theme": "geologie",
-      "description": "Suite de l'exploitation agricole : enjeu important d'irrigation des terres sur un territoire difficile à mettre en culture.",
-      "contenu": "Ces canaux creusés à même la roche de travertin témoignent du génie hydraulique des habitants. Le travertin, roche calcaire poreuse, est formé par les dépôts minéraux de l'eau de la Bresque. Cette technique d'irrigation permettait de cultiver des terres en pente dans un climat semi-aride.",
-      "especes": [],
+      "description": "Ces sillons taillés dans la roche calcaire ne sont pas naturels — ils sont la trace d'un génie hydraulique vieux de plusieurs siècles.",
+      "contenu": "Taillés à même le travertin, ces canaux acheminaient l'eau de la Bresque vers les cultures en terrasses. Le travertin est une roche calcaire sédimentaire formée par les dépôts successifs du carbonate de calcium dissous dans l'eau. Sa texture poreuse le rend léger et facile à travailler à la main. Ces canaux fonctionnaient entièrement par gravité, sans aucune pompe. Ils témoignent d'une maîtrise parfaite du terrain par les habitants de Sillans, et de leur dépendance vitale à la Bresque pour irriguer une terre difficile à cultiver.",
+      "conseil": "Ne touchez pas les parois des canaux. Le travertin est une roche friable qui s'effrite facilement sous la pression des doigts.",
+      "especes": ["Adiantum capillus-veneris (Capillaire de Montpellier)"],
       "coords": { "lat": 43.56435385363771, "lng": 6.182708439707105 },
-      "icone": "geologie",
-      "capsule": null
+      "icone": "geologie"
     },
     {
       "id": "poi-04",
@@ -45,25 +45,25 @@
       "titre": "Le tuff",
       "lieu": "Murets en tuf",
       "theme": "geologie",
-      "description": "Présence de murets en tuf qui permettent de présenter cette roche poreuse et de faible densité.",
-      "contenu": "Le tuf (ou travertin) est une roche sédimentaire calcaire formée par précipitation du calcaire dissous dans l'eau. Sa porosité et sa légèreté en font un matériau de construction traditionnel en Provence. Les fontaines pétrifiantes de Sillans sont un exemple remarquable de formation de travertin actif.",
-      "especes": [],
+      "description": "Ces murets semblent ordinaires. Ils sont en réalité faits d'une roche vivante — qui continue de se former sous vos yeux, en ce moment même.",
+      "contenu": "Le tuf (ou travertin) est une roche calcaire en cours de formation. L'eau de la Bresque est chargée en bicarbonate de calcium. En s'évaporant au contact de l'air, elle dépose du carbonate sur tout ce qu'elle touche : brindilles, feuilles, mousses — les pétrifiants progressivement. Ce processus actif se déroule encore aujourd'hui dans les fontaines pétrifiantes du site. Le tuf est si léger qu'il peut flotter sur l'eau. Utilisé traditionnellement pour construire des caves et des murs de soutènement, il est aujourd'hui protégé sur ce site. La formation de quelques centimètres de cette roche demande des dizaines d'années.",
+      "conseil": "N'arrachez aucun morceau de tuf, même petit. Sa destruction est instantanée ; sa reformation prend des décennies.",
+      "especes": ["Cratoneuron commutatum (Mousse pétrifiante)", "Eucladium verticillatum (Mousse calcicole)"],
       "coords": { "lat": 43.56299725393612, "lng": 6.183228788256204 },
-      "icone": "geologie",
-      "capsule": null
+      "icone": "geologie"
     },
     {
       "id": "poi-05",
       "ordre": 5,
-      "titre": "Panorama",
+      "titre": "Panorama — la cascade",
       "lieu": "Belvédère de la cascade",
       "theme": "biodiversite",
-      "description": "Vue sur la cascade. Présentation du phénomène des fontaines pétrifiantes et fragilité de ces concrétions calcaires cassantes.",
-      "contenu": "La cascade de Sillans tombe de 44 mètres dans un bassin d'eau turquoise. La couleur de l'eau est due à la présence de particules calcaires en suspension. La baignade est strictement interdite : risques de chutes de blocs et courants dangereux. Les concrétions calcaires qui bordent la cascade sont extrêmement fragiles.",
-      "especes": ["Adiantum capillus-veneris (Capillaire de Montpellier)"],
+      "description": "44 mètres de chute libre. La cascade de Sillans est l'une des plus hautes de Provence — et l'une des plus menacées par sa propre popularité.",
+      "contenu": "La Bresque plonge ici de 44 mètres dans un bassin aux reflets turquoise. Cette couleur caractéristique est due aux particules de calcaire en suspension, qui diffusent la lumière à la manière d'un prisme. Les parois humides autour de la cascade abritent le Capillaire de Montpellier (Adiantum capillus-veneris), une fougère rare qui ne pousse que dans ces conditions de brouillard permanent. La baignade est strictement interdite : les concrétions de travertin sur les bords sont extrêmement fragiles et instables, et les courants dans le bassin sont imprévisibles. Chaque année, des blocs de plusieurs tonnes se détachent sans prévenir.",
+      "conseil": "Ne franchissez pas les ganivelles. Les accidents graves sont réels — les interdictions ne sont pas symboliques.",
+      "especes": ["Adiantum capillus-veneris (Capillaire de Montpellier)", "Pinguicula vulgaris (Grassette commune)"],
       "coords": { "lat": 43.56262214289663, "lng": 6.18436336266873 },
-      "icone": "biodiversite",
-      "capsule": "cascade"
+      "icone": "biodiversite"
     },
     {
       "id": "poi-06",
@@ -71,25 +71,25 @@
       "titre": "L'attente devant la passerelle",
       "lieu": "Zone d'attente passerelle",
       "theme": "biodiversite",
-      "description": "Sur la zone d'attente, présentation de la ripisylve, de ses richesses et de sa protection pour les générations futures.",
-      "contenu": "La ripisylve est la forêt qui borde les cours d'eau. À Sillans, elle abrite une biodiversité exceptionnelle : martins-pêcheurs, loutres, libellules, grenouilles. Cette forêt galerie joue un rôle crucial dans la protection des berges et la régulation thermique de la Bresque.",
-      "especes": ["Alcedo atthis (Martin-pêcheur)", "Lutra lutra (Loutre d'Europe)", "Populus nigra (Peuplier noir)"],
+      "description": "En attendant votre tour pour traverser, regardez autour de vous : vous êtes au cœur d'un écosystème à part entière.",
+      "contenu": "La ripisylve — du latin ripa, berge — est la forêt qui pousse le long des cours d'eau. Ici, elle forme un corridor vert d'une richesse exceptionnelle. Les peupliers noirs, les frênes et les saules créent une voûte végétale qui maintient la fraîcheur de l'eau en été et protège les berges de l'érosion en hiver. Ce corridor écologique permet à de nombreuses espèces de circuler entre les différents milieux naturels du site. Martin-pêcheur, loutre, libellule, rainette méridionale — tous dépendent de cet habitat pour se reproduire. Sa destruction par piétinement répété est irréversible à l'échelle d'une vie humaine.",
+      "conseil": "Respectez les limites de personnes sur la passerelle. La végétation des berges ne supporte pas le passage non balisé.",
+      "especes": ["Alcedo atthis (Martin-pêcheur d'Europe)", "Lutra lutra (Loutre d'Europe)", "Populus nigra (Peuplier noir)", "Hyla meridionalis (Rainette méridionale)"],
       "coords": { "lat": 43.5630341818396, "lng": 6.184750941871262 },
-      "icone": "biodiversite",
-      "capsule": null
+      "icone": "biodiversite"
     },
     {
       "id": "poi-07",
       "ordre": 7,
-      "titre": "Au niveau du belvédère",
-      "lieu": "Belvédère et zone d'attente",
+      "titre": "Au niveau du belvédère — les chiroptères",
+      "lieu": "Belvédère et falaises de travertin",
       "theme": "biodiversite",
-      "description": "Présentation des cavités nombreuses dans la roche et de la richesse en chiroptères : variété des espèces et site de mise-bas.",
-      "contenu": "Les falaises de travertin abritent de nombreuses cavités naturelles, refuges idéaux pour les chauves-souris. On y recense plusieurs espèces de chiroptères dont le Grand rhinolophe et le Murin de Daubenton. Ces grottes constituent des sites de mise-bas protégés. La couleur turquoise de l'eau s'explique par les particules calcaires en suspension.",
-      "especes": ["Rhinolophus ferrumequinum (Grand rhinolophe)", "Myotis daubentonii (Murin de Daubenton)", "Tadarida teniotis (Molosse de Cestoni)"],
+      "description": "Les falaises que vous voyez ne sont pas vides. Elles abritent des centaines de chauves-souris — dont certaines parmi les plus rares de France.",
+      "contenu": "Les cavités naturelles des falaises de travertin constituent un habitat irremplaçable pour les chiroptères. On y recense au moins quatre espèces : le Grand rhinolophe (Rhinolophus ferrumequinum), le Murin de Daubenton (Myotis daubentonii) — spécialiste de la chasse au ras de l'eau —, le Petit rhinolophe et le Molosse de Cestoni (Tadarida teniotis), la plus grande chauve-souris de France avec une envergure de 45 cm. Ces falaises sont aussi des nurseries : les femelles s'y regroupent au printemps pour mettre bas. Une seule perturbation durant cette période peut provoquer l'abandon de la colonie pour l'année entière. Toutes ces espèces sont strictement protégées par la loi.",
+      "conseil": "Ne jamais éclairer les cavités avec une lampe ou un flash. Le stress lumineux suffit à faire fuir une colonie entière.",
+      "especes": ["Rhinolophus ferrumequinum (Grand rhinolophe)", "Myotis daubentonii (Murin de Daubenton)", "Tadarida teniotis (Molosse de Cestoni)", "Rhinolophus hipposideros (Petit rhinolophe)"],
       "coords": { "lat": 43.56350452473594, "lng": 6.18524983274767 },
-      "icone": "biodiversite",
-      "capsule": "chauves-souris"
+      "icone": "biodiversite"
     },
     {
       "id": "poi-08",
@@ -97,12 +97,12 @@
       "titre": "L'usine hydroélectrique",
       "lieu": "Usine hydroélectrique",
       "theme": "histoire",
-      "description": "Sur le chemin du retour, histoire de l'électrification de la Commune en lien avec la présence de la Bresque et du dénivelé important.",
-      "contenu": "En 1910, la commune de Sillans a été l'une des premières de la région à bénéficier de l'électricité grâce à cette usine hydroélectrique. Le dénivelé important de la Bresque permettait de produire suffisamment d'énergie pour alimenter le village. La conduite forcée est encore visible sur le chemin du retour.",
+      "description": "En 1910, Sillans fut l'une des premières communes rurales du Var à avoir l'électricité. Grâce à la force de la Bresque.",
+      "contenu": "La force motrice de la Bresque a été exploitée bien avant les panneaux solaires. Cette usine hydroélectrique, construite au tournant du XXe siècle, exploitait le fort dénivelé du cours d'eau pour produire de l'électricité. La conduite forcée — ce tuyau métallique visible sur le flanc de la colline — acheminait l'eau depuis un point de captage en amont jusqu'aux turbines de l'usine. La commune put ainsi s'éclairer et motoriser ses premiers ateliers, bien avant la majorité des villages de la région. L'usine cessa de fonctionner après la nationalisation de l'électricité en 1946. Elle reste un témoin du rôle central que jouait la Bresque dans la vie économique du village.",
+      "conseil": "Le bâtiment est en ruine et dangereux. Ne cherchez pas à y entrer.",
       "especes": [],
       "coords": { "lat": 43.564340248922086, "lng": 6.186403182624231 },
-      "icone": "histoire",
-      "capsule": null
+      "icone": "histoire"
     },
     {
       "id": "poi-09",
@@ -110,12 +110,12 @@
       "titre": "La Bresque",
       "lieu": "Bords de la Bresque",
       "theme": "biodiversite",
-      "description": "Évoquer sa source, son régime et la biodiversité qu'on y trouve.",
-      "contenu": "La Bresque prend sa source dans le massif de la Sainte-Baume et rejoint l'Argens. Rivière méditerranéenne à régime torrentiel, elle peut être à sec en été et en crue en automne. Elle abrite une faune aquatique remarquable : truites fario, écrevisses à pattes blanches, lamproies de Planer.",
-      "especes": ["Salmo trutta (Truite fario)", "Austropotamobius pallipes (Écrevisse à pattes blanches)", "Lampetra planeri (Lamproie de Planer)"],
+      "description": "Elle peut être à sec en juillet et en crue en novembre. La Bresque est une rivière méditerranéenne capricieuse — et d'une richesse biologique exceptionnelle.",
+      "contenu": "La Bresque prend sa source sur les contreforts du massif de la Sainte-Baume, à plus de 700 mètres d'altitude, et rejoint l'Argens après 36 km. Son régime torrentiel méditerranéen lui confère une hydrologie extrême : étiage sévère en été, crues violentes en automne. Malgré ces conditions difficiles, elle abrite des espèces indicatrices d'une eau de très bonne qualité : la truite fario (Salmo trutta), l'écrevisse à pattes blanches (Austropotamobius pallipes) — espèce en danger classée Natura 2000 — et la lamproie de Planer (Lampetra planeri), un poisson primitif sans mâchoire dont la présence certifie une eau parfaitement pure.",
+      "conseil": "Ne jetez rien dans la rivière, même de l'eau de gourde sucrée ou aromatisée. La chimie de l'eau est d'une fragilité extrême.",
+      "especes": ["Salmo trutta (Truite fario)", "Austropotamobius pallipes (Écrevisse à pattes blanches — protégée)", "Lampetra planeri (Lamproie de Planer)", "Anguilla anguilla (Anguille européenne)"],
       "coords": { "lat": 43.566336222332936, "lng": 6.1828546200970464 },
-      "icone": "biodiversite",
-      "capsule": null
+      "icone": "biodiversite"
     },
     {
       "id": "poi-10",
@@ -123,12 +123,12 @@
       "titre": "L'ancienne gare d'Aups-Sillans",
       "lieu": "Ancienne gare",
       "theme": "histoire",
-      "description": "Histoire du développement de la commune, lien avec la préfecture et le reste du département.",
-      "contenu": "La gare d'Aups-Sillans faisait partie du réseau de chemins de fer du Var, inauguré à la fin du XIXe siècle. Elle reliait les villages de l'arrière-pays varois à Draguignan et Toulon. Fermée en 1950, elle témoigne de l'histoire économique et sociale de la région avant l'essor de l'automobile.",
+      "description": "Le train ne passe plus depuis 1950. Mais les rails ont transformé pour toujours l'économie de tout l'arrière-pays varois.",
+      "contenu": "La gare d'Aups-Sillans appartenait au réseau des chemins de fer du Var, inauguré en 1888. Elle reliait les villages isolés de l'arrière-pays — Aups, Sillans, Fox-Amphoux — à Draguignan, puis à Toulon. Ce réseau permit l'essor du commerce local : bois, huile d'olive, lavande et céréales pouvaient désormais être acheminés vers les marchés de la côte. La ligne fut progressivement fermée entre 1948 et 1950 avec l'essor de l'automobile. Aujourd'hui, l'ancien tracé de la voie ferrée est devenu un axe de randonnée et de vélo intégré à la Véloroute du Var.",
+      "conseil": "Le patrimoine bâti rural est fragile et non gardé. Observez, photographiez, mais ne dégradez pas.",
       "especes": [],
       "coords": { "lat": 43.56777631397367, "lng": 6.182091531633692 },
-      "icone": "histoire",
-      "capsule": null
+      "icone": "histoire"
     },
     {
       "id": "poi-11",
@@ -136,12 +136,12 @@
       "titre": "Le lavoir communal",
       "lieu": "Lavoir communal",
       "theme": "histoire",
-      "description": "Une fois la Bresque traversée, emprunter la Rue des Remparts pour rejoindre le lavoir communal.",
-      "contenu": "Le lavoir communal était un lieu de vie sociale essentiel au village. Les femmes s'y retrouvaient quotidiennement pour laver le linge et échanger les nouvelles. Alimenté par une source naturelle, il est encore en état de fonctionnement. Il témoigne de l'organisation communautaire villageoise traditionnelle.",
-      "especes": [],
+      "description": "Avant les machines à laver, il y avait le lavoir. Et le lavoir, c'était aussi le journal du village.",
+      "contenu": "Construit au XIXe siècle, le lavoir communal de Sillans était alimenté par une source naturelle captée en amont. Les femmes du village s'y retrouvaient chaque semaine pour laver le linge à la main, dans une eau froide qui nécessitait un travail épuisant. Mais le lavoir était avant tout un espace social : on y échangeait les nouvelles, on y parlait des naissances et des mariages, on y débattait de la politique locale. Il fonctionnait encore dans les années 1960, avant que les premières machines à laver n'arrivent dans les foyers. La même source alimentait également l'abreuvoir du village, point de passage obligé des troupeaux transhumants.",
+      "conseil": "L'eau de source est un bien commun. Évitez de souiller les points d'eau, même avec des produits présentés comme biodégradables.",
+      "especes": ["Nasturtium officinale (Cresson de fontaine)", "Caltha palustris (Populage des marais)"],
       "coords": { "lat": 43.56834504803349, "lng": 6.179949452645335 },
-      "icone": "histoire",
-      "capsule": null
+      "icone": "histoire"
     },
     {
       "id": "poi-12",
@@ -149,12 +149,12 @@
       "titre": "Le pied des remparts",
       "lieu": "Remparts médiévaux",
       "theme": "histoire",
-      "description": "Les remparts médiévaux de Sillans-la-Cascade témoignent de l'organisation défensive du village au Moyen Âge.",
-      "contenu": "Sillans était un village fortifié typique de l'arrière-pays provençal. Ses remparts datent du XIIe-XIVe siècle. Au pied des remparts, on peut observer les fondations des tours de guet et les vestiges des douves. Le site a été habité depuis l'Antiquité, comme en témoignent les trouvailles archéologiques à proximité.",
-      "especes": [],
+      "description": "Ces murailles de pierre ont résisté à 700 ans d'histoire. Elles portent les traces des guerres de Religion, de la Révolution et des deux guerres mondiales.",
+      "contenu": "Le village fortifié de Sillans fut construit au XIIe siècle sur un piton rocheux dominant le vallon de la Bresque, position stratégique qui contrôlait le passage entre la plaine et le haut-pays varois. Les remparts furent renforcés au XIVe siècle lors des Grandes Compagnies, puis endommagés pendant les guerres de Religion au XVIe siècle. Au pied des murailles, on peut encore observer les corbeaux de pierre qui soutenaient le chemin de ronde et les vestiges d'une tour d'angle. Des fouilles archéologiques menées dans les années 1990 ont mis au jour des tegulae (tuiles romaines) attestant d'une occupation antique du site, bien antérieure au village médiéval.",
+      "conseil": "Ne grimpez pas sur les remparts. Les pierres sont déchaussées et peuvent céder sans prévenir.",
+      "especes": ["Parietaria officinalis (Pariétaire officinale)", "Cymbalaria muralis (Cymbalaire des murs)"],
       "coords": { "lat": 43.56778474441505, "lng": 6.1781734948136355 },
-      "icone": "histoire",
-      "capsule": null
+      "icone": "histoire"
     },
     {
       "id": "poi-13",
@@ -162,12 +162,12 @@
       "titre": "La Mairie",
       "lieu": "Mairie de Sillans-la-Cascade",
       "theme": "histoire",
-      "description": "L'ancien château seigneurial reconverti en mairie, symbole du passage de la féodalité à la République.",
-      "contenu": "La mairie de Sillans occupe l'ancien château seigneurial des seigneurs de Sillans. Construit au XIVe siècle, il a été transformé après la Révolution française en lieu de pouvoir municipal. Sa façade sobre et ses salles voûtées rappellent son origine médiévale. Le bâtiment abrite aujourd'hui les services administratifs de la commune.",
+      "description": "L'ancien château des seigneurs de Sillans est devenu la maison de la République. Un symbole fort de la Révolution française.",
+      "contenu": "Construit au XIVe siècle par la famille de Villeneuve, seigneurs de Sillans, le château dominait le village et symbolisait le pouvoir féodal. Après la Révolution française, le bâtiment fut confisqué au titre des biens nationaux et affecté à la commune. Il devint mairie — acte fort de la transition de la féodalité à la République. La façade sobre en pierre calcaire cache des intérieurs remarquables : salles voûtées en berceau, escalier à vis médiéval partiellement conservé, cave profonde taillée dans le roc. La mairie dispose aujourd'hui d'un accès WiFi public gratuit — point de départ idéal pour pré-charger l'application avant la visite.",
+      "conseil": "Profitez du WiFi de la mairie pour pré-charger les contenus. Au fond du vallon, il n'y a plus de réseau.",
       "especes": [],
       "coords": { "lat": 43.567414521766175, "lng": 6.179422063109964 },
-      "icone": "histoire",
-      "capsule": null
+      "icone": "histoire"
     },
     {
       "id": "poi-14",
@@ -175,12 +175,12 @@
       "titre": "La grande rue",
       "lieu": "Grande rue, Sillans-la-Cascade",
       "theme": "histoire",
-      "description": "Au croisement avec la grande place et la rue de l'abreuvoir — cœur historique du village.",
-      "contenu": "La grande rue est l'artère principale du village médiéval. Elle relie la porte du village à la place centrale et à l'église. Les maisons en pierre calcaire qui la bordent datent pour la plupart du XVIIe et XVIIIe siècle. L'abreuvoir à l'intersection témoigne de l'importance de l'eau dans la vie quotidienne du village.",
+      "description": "Vous avez parcouru l'ENS et traversé le village. La grande rue est l'endroit pour poser votre sac — et réfléchir à ce que vous emportez avec vous.",
+      "contenu": "La grande rue est l'artère centrale du village médiéval, reliant la porte du bourg à la place de l'église. Les maisons en pierre calcaire qui la bordent datent pour la plupart des XVIIe et XVIIIe siècles, construites sur les fondations de bâtiments médiévaux. À l'intersection se trouve l'abreuvoir du village, alimenté par la même source que le lavoir — dernier vestige visible du réseau hydraulique traditionnel. Ce point de fin de parcours est l'occasion de faire le bilan : qu'avez-vous appris sur la fragilité de ce site ? Quel comportement allez-vous changer à votre prochaine visite en nature ?",
+      "conseil": "Partagez ce que vous avez appris. La protection de l'ENS repose sur la sensibilisation — vous faites maintenant partie du réseau.",
       "especes": [],
       "coords": { "lat": 43.56795576513286, "lng": 6.179297340390951 },
-      "icone": "histoire",
-      "capsule": null
+      "icone": "histoire"
     }
   ],
   "qcm": [
