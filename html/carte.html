@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#13433F">
-  <title>Carte — Visiter Sillans</title>
+  <meta name="description" content="Carte interactive des 14 points d'intérêt de l'ENS de Sillans-la-Cascade.">
+  <title>Carte — Visiter Sillans-la-Cascade</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="../css/style.css">
   <style>
@@ -51,47 +52,47 @@
 </head>
 <body>
 
-<header class="carte-header">
-  <span class="carte-title">🗺️ Carte</span>
-  <span class="carte-progress" id="progress-display">0 / 14</span>
+<header class="carte-header" role="banner">
+  <span class="carte-title">Carte du parcours</span>
+  <span class="carte-progress" id="progress-display" aria-label="Progression de la visite" aria-live="polite">0 / 14</span>
 </header>
 
-<div class="legende">
-  <div class="legende-item">
-    <div class="legende-dot dot-biodiversite"></div>
+<div class="legende" role="list" aria-label="Légende des thèmes">
+  <div class="legende-item" role="listitem">
+    <div class="legende-dot dot-biodiversite" aria-hidden="true"></div>
     Biodiversité
   </div>
-  <div class="legende-item">
-    <div class="legende-dot dot-geologie"></div>
+  <div class="legende-item" role="listitem">
+    <div class="legende-dot dot-geologie" aria-hidden="true"></div>
     Géologie
   </div>
-  <div class="legende-item">
-    <div class="legende-dot dot-histoire"></div>
+  <div class="legende-item" role="listitem">
+    <div class="legende-dot dot-histoire" aria-hidden="true"></div>
     Histoire
   </div>
-  <div class="legende-item">
-    <div class="legende-dot dot-securite"></div>
+  <div class="legende-item" role="listitem">
+    <div class="legende-dot dot-securite" aria-hidden="true"></div>
     Sécurité
   </div>
 </div>
 
-<div id="map"></div>
+<main id="map" aria-label="Carte interactive des points d'intérêt"></main>
 
-<nav class="bottom-nav">
-  <a href="carte.html" class="nav-item active">
-    <span class="nav-icon">🗺️</span>
+<nav class="bottom-nav" aria-label="Navigation principale">
+  <a href="carte.html" class="nav-item active" aria-current="page" aria-label="Carte du parcours">
+    <span class="nav-icon" aria-hidden="true">🗺️</span>
     <span>Carte</span>
   </a>
-  <a href="regles.html" class="nav-item">
-    <span class="nav-icon">📋</span>
+  <a href="regles.html" class="nav-item" aria-label="Règles du site">
+    <span class="nav-icon" aria-hidden="true">📋</span>
     <span>Règles</span>
   </a>
-  <a href="qcm.html" class="nav-item">
-    <span class="nav-icon">🎯</span>
+  <a href="qcm.html" class="nav-item" aria-label="Quiz de connaissances">
+    <span class="nav-icon" aria-hidden="true">🎯</span>
     <span>Quiz</span>
   </a>
-  <a href="a-propos.html" class="nav-item">
-    <span class="nav-icon">ℹ️</span>
+  <a href="a-propos.html" class="nav-item" aria-label="À propos et informations">
+    <span class="nav-icon" aria-hidden="true">ℹ️</span>
     <span>À propos</span>
   </a>
 </nav>
@@ -100,5 +101,6 @@
 <script src="../js/progress.js"></script>
 <script src="../js/app.js"></script>
 <script src="../js/carte.js"></script>
+<script src="../js/proximity.js"></script>
 </body>
 </html>
