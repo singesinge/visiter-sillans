@@ -4,16 +4,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#13433F">
-  <title>Visiter Sillans-la-Cascade</title>
+
+  <!-- SEO — indexation -->
+  <meta name="description" content="Explorez l'ENS de Sillans-la-Cascade : cascade de 44 mètres, biodiversité protégée, histoire médiévale. 14 points d'intérêt, carte GPS et quiz — utilisable hors connexion.">
+  <meta name="keywords" content="Sillans-la-Cascade, cascade, ENS, Var, Département du Var, randonnée, nature, Provence, Bresque, espace naturel sensible, médiation culturelle">
+  <meta name="author" content="Département du Var — Service Espaces Naturels Sensibles">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph — partage réseaux sociaux -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Visiter Sillans-la-Cascade — ENS du Var">
+  <meta property="og:description" content="Explorez la cascade de 44 mètres et les 14 points d'intérêt de l'ENS de Sillans-la-Cascade. Application de médiation culturelle du Département du Var.">
+  <meta property="og:image" content="/img/poi/poi-05.jpg">
+  <meta property="og:image:alt" content="La cascade de Sillans-la-Cascade, 44 mètres, Var, Provence">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Visiter Sillans-la-Cascade">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Visiter Sillans-la-Cascade — ENS du Var">
+  <meta name="twitter:description" content="Application de médiation culturelle pour l'ENS de Sillans-la-Cascade. 14 points d'intérêt, biodiversité, histoire, hors-ligne.">
+  <meta name="twitter:image" content="/img/poi/poi-05.jpg">
+
+  <!-- Données structurées — attraction touristique -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristAttraction",
+    "name": "ENS de Sillans-la-Cascade",
+    "description": "Espace Naturel Sensible de 369 hectares avec cascade de 44 mètres, géré par le Département du Var.",
+    "image": "/img/poi/poi-05.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sillans-la-Cascade",
+      "addressRegion": "Var",
+      "addressCountry": "FR",
+      "postalCode": "83690"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 43.5669,
+      "longitude": 6.1803
+    },
+    "managedBy": {
+      "@type": "Organization",
+      "name": "Département du Var",
+      "url": "https://www.var.fr"
+    },
+    "isAccessibleForFree": true,
+    "publicAccess": true
+  }
+  </script>
+
+  <title>Visiter Sillans-la-Cascade — ENS du Var</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
 
-    /* --- Reset page --- */
+    /* Lien d'évitement — accessibilité clavier */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--vert-profond);
+      color: var(--blanc-casse);
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+      font-family: var(--font-titre);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      z-index: 9999;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
     html, body { margin: 0; padding: 0; overflow-x: hidden; }
 
-    /* =============================================
-       HERO — photo cascade plein écran
-    ============================================= */
     .hero {
       position: relative;
       width: 100%;
@@ -24,7 +91,6 @@
       flex-direction: column;
       justify-content: flex-end;
     }
-
     .hero__photo {
       position: absolute;
       inset: 0;
@@ -33,7 +99,6 @@
       object-fit: cover;
       object-position: center 30%;
     }
-
     .hero::after {
       content: '';
       position: absolute;
@@ -45,7 +110,6 @@
         rgba(0,0,0,0.15) 100%
       );
     }
-
     .hero__badge {
       position: absolute;
       top: 1.25rem;
@@ -66,14 +130,12 @@
       letter-spacing: 0.06em;
       color: rgba(255,255,255,0.9);
     }
-
     .hero__content {
       position: relative;
       z-index: 2;
       padding: 0 1.5rem 2.5rem;
       color: var(--blanc-casse);
     }
-
     .hero__label {
       font-family: var(--font-titre);
       font-size: 0.75rem;
@@ -83,7 +145,6 @@
       color: var(--lime);
       margin-bottom: 0.5rem;
     }
-
     .hero__title {
       font-family: var(--font-titre);
       font-size: 3rem;
@@ -93,9 +154,7 @@
       letter-spacing: 0.01em;
       margin-bottom: 0.75rem;
     }
-
     .hero__title span { color: var(--lime); display: block; }
-
     .hero__desc {
       font-size: 0.9rem;
       color: rgba(255,255,255,0.75);
@@ -103,7 +162,6 @@
       max-width: 340px;
       margin-bottom: 1.75rem;
     }
-
     .hero__cta {
       display: inline-flex;
       align-items: center;
@@ -123,9 +181,12 @@
       justify-content: center;
       transition: background 0.2s, transform 0.15s;
     }
+    .hero__cta:focus-visible {
+      outline: 3px solid var(--lime);
+      outline-offset: 3px;
+    }
     .hero__cta:active { transform: scale(0.98); }
     .hero__cta:hover { background: #b8dc3a; }
-
     .hero__scroll {
       position: absolute;
       bottom: 5.5rem;
@@ -151,10 +212,6 @@
       0%, 100% { opacity: 0.5; transform: scaleY(1); }
       50%       { opacity: 1;   transform: scaleY(1.15); }
     }
-
-    /* =============================================
-       CHIFFRES CLÉS
-    ============================================= */
     .s-stats {
       background: var(--vert-profond);
       color: var(--blanc-casse);
@@ -182,10 +239,6 @@
       margin-top: 0.3rem;
       line-height: 1.3;
     }
-
-    /* =============================================
-       PRÉSENTATION
-    ============================================= */
     .s-intro { background: var(--blanc-casse); padding: 2rem 1.5rem; }
     .s-intro__tag {
       display: inline-block;
@@ -214,10 +267,6 @@
       line-height: 1.65;
       margin-bottom: 0.875rem;
     }
-
-    /* =============================================
-       GALERIE
-    ============================================= */
     .s-gallery { padding: 0 1.5rem 2rem; background: var(--blanc-casse); }
     .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
     .gallery-grid__item {
@@ -228,10 +277,6 @@
     }
     .gallery-grid__item--wide { grid-column: 1 / -1; aspect-ratio: 16/9; }
     .gallery-grid__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    /* =============================================
-       CIRCUIT
-    ============================================= */
     .s-circuit { background: white; padding: 2rem 1.5rem; border-top: 1px solid var(--gris-clair); }
     .circuit-tag {
       display: inline-block;
@@ -257,16 +302,8 @@
     .circuit-info { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
     .circuit-info__item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.88rem; color: var(--gris); }
     .circuit-info__icon { font-size: 1.1rem; width: 24px; text-align: center; flex-shrink: 0; }
-
-    /* =============================================
-       FOOTER CTA
-    ============================================= */
     .s-footer-cta { background: var(--vert-profond); padding: 2rem 1.5rem 3rem; text-align: center; }
     .s-footer-cta p { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 1rem; line-height: 1.5; }
-
-    /* =============================================
-       OVERLAY CHARGEMENT
-    ============================================= */
     .loading-overlay {
       display: none;
       position: fixed;
@@ -293,15 +330,22 @@
     .loading-overlay p { opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem; }
     .loading-overlay .progress-bar-outer { width: 100%; max-width: 280px; }
     #dl-label { margin-top: 0.75rem; font-size: 0.8rem; opacity: 0.6; }
-
   </style>
 </head>
 <body>
 
+<!-- Lien d'évitement — navigation clavier -->
+<a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
+
 <!-- HERO -->
-<section class="hero">
-  <img class="hero__photo" src="img/poi/poi-05.jpg" alt="La cascade de Sillans-la-Cascade" onerror="this.style.display='none'">
-  <div class="hero__badge">🌿 ENS · Département du Var</div>
+<section class="hero" aria-label="Présentation du site de Sillans-la-Cascade">
+  <img
+    class="hero__photo"
+    src="img/poi/poi-05.jpg"
+    alt="La cascade de Sillans-la-Cascade : chute de 44 mètres dans un bassin turquoise, Var, Provence"
+    onerror="this.style.display='none'"
+  >
+  <div class="hero__badge" aria-hidden="true">🌿 ENS · Département du Var</div>
   <div class="hero__scroll" aria-hidden="true">
     <div class="hero__scroll-line"></div>
     <span>Découvrir</span>
@@ -314,103 +358,111 @@
       un village médiéval perché dans le Var.
       Explorez le site avant de commencer votre visite.
     </p>
-    <button class="hero__cta" onclick="lancerVisite()">Commencer la visite →</button>
+    <button class="hero__cta" onclick="lancerVisite()" aria-label="Commencer la visite guidée de l'ENS">
+      Commencer la visite →
+    </button>
   </div>
 </section>
 
-<!-- CHIFFRES CLÉS -->
-<section class="s-stats">
-  <div class="stat">
-    <span class="stat__num">44 m</span>
-    <span class="stat__label">Hauteur de la cascade</span>
-  </div>
-  <div class="stat" style="border-left:1px solid rgba(255,255,255,0.12); border-right:1px solid rgba(255,255,255,0.12);">
-    <span class="stat__num">369 ha</span>
-    <span class="stat__label">Surface de l'ENS</span>
-  </div>
-  <div class="stat">
-    <span class="stat__num">96 k</span>
-    <span class="stat__label">Visiteurs par été</span>
-  </div>
-</section>
+<main id="contenu-principal">
 
-<!-- PRÉSENTATION -->
-<section class="s-intro">
-  <span class="s-intro__tag">Le site</span>
-  <h2 class="s-intro__title">Un sanctuaire naturel et historique</h2>
-  <p class="s-intro__text">
-    Nichée dans un vallon du Haut-Var, la cascade de Sillans-la-Cascade est
-    l'une des plus hautes cascades permanentes de Provence. La Bresque dévale
-    44 mètres dans un bassin aux reflets turquoise, coloré par les particules
-    calcaires en suspension.
-  </p>
-  <p class="s-intro__text">
-    Classé Espace Naturel Sensible par le Département du Var, ce site de
-    369 hectares abrite une biodiversité remarquable — chauves-souris protégées,
-    écrevisse à pattes blanches, fougères hygrophiles — et des vestiges
-    historiques qui témoignent de siècles d'occupation humaine.
-  </p>
-</section>
+  <!-- CHIFFRES CLÉS -->
+  <section class="s-stats" aria-label="Chiffres clés du site">
+    <div class="stat">
+      <span class="stat__num">44 m</span>
+      <span class="stat__label">Hauteur de la cascade</span>
+    </div>
+    <div class="stat" style="border-left:1px solid rgba(255,255,255,0.12); border-right:1px solid rgba(255,255,255,0.12);">
+      <span class="stat__num">369 ha</span>
+      <span class="stat__label">Surface de l'ENS</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">96 k</span>
+      <span class="stat__label">Visiteurs par été</span>
+    </div>
+  </section>
 
-<!-- GALERIE -->
-<section class="s-gallery">
-  <div class="gallery-grid">
-    <div class="gallery-grid__item gallery-grid__item--wide">
-      <img src="img/poi/poi-09.jpg" alt="La Bresque" onerror="this.parentElement.style.background='var(--gris-clair)'">
-    </div>
-    <div class="gallery-grid__item">
-      <img src="img/poi/poi-02.jpg" alt="Le bastidon et l'oliveraie" onerror="this.parentElement.style.background='var(--gris-clair)'">
-    </div>
-    <div class="gallery-grid__item">
-      <img src="img/poi/poi-11.jpg" alt="Le lavoir communal" onerror="this.parentElement.style.background='var(--gris-clair)'">
-    </div>
-  </div>
-</section>
+  <!-- PRÉSENTATION -->
+  <section class="s-intro" aria-label="Présentation du site naturel">
+    <span class="s-intro__tag">Le site</span>
+    <h2 class="s-intro__title">Un sanctuaire naturel et historique</h2>
+    <p class="s-intro__text">
+      Nichée dans un vallon du Haut-Var, la cascade de Sillans-la-Cascade est
+      l'une des plus hautes cascades permanentes de Provence. La Bresque dévale
+      44 mètres dans un bassin aux reflets turquoise, coloré par les particules
+      calcaires en suspension.
+    </p>
+    <p class="s-intro__text">
+      Classé Espace Naturel Sensible par le Département du Var, ce site de
+      369 hectares abrite une biodiversité remarquable — chauves-souris protégées,
+      écrevisse à pattes blanches, fougères hygrophiles — et des vestiges
+      historiques qui témoignent de siècles d'occupation humaine.
+    </p>
+  </section>
 
-<!-- CIRCUIT -->
-<section class="s-circuit">
-  <span class="circuit-tag">Le parcours</span>
-  <h2 class="circuit-title">14 points d'intérêt à découvrir</h2>
-  <div class="themes-list">
-    <span class="badge-theme badge-biodiversite">🌿 Biodiversité</span>
-    <span class="badge-theme badge-geologie">🪨 Géologie</span>
-    <span class="badge-theme badge-histoire">🏛 Histoire</span>
-    <span class="badge-theme badge-securite">🛡 Sécurité</span>
-  </div>
-  <div class="circuit-info">
-    <div class="circuit-info__item">
-      <span class="circuit-info__icon">📍</span>
-      <span>Circuit de 2 km aller-retour depuis le village</span>
+  <!-- GALERIE -->
+  <section class="s-gallery" aria-label="Photos du site">
+    <div class="gallery-grid" role="list">
+      <div class="gallery-grid__item gallery-grid__item--wide" role="listitem">
+        <img src="img/poi/poi-09.jpg" alt="La Bresque, rivière qui alimente la cascade" onerror="this.parentElement.style.background='var(--gris-clair)'">
+      </div>
+      <div class="gallery-grid__item" role="listitem">
+        <img src="img/poi/poi-02.jpg" alt="Le bastidon et l'oliveraie" onerror="this.parentElement.style.background='var(--gris-clair)'">
+      </div>
+      <div class="gallery-grid__item" role="listitem">
+        <img src="img/poi/poi-11.jpg" alt="Le lavoir communal de Sillans" onerror="this.parentElement.style.background='var(--gris-clair)'">
+      </div>
     </div>
-    <div class="circuit-info__item">
-      <span class="circuit-info__icon">⏱</span>
-      <span>1h à 1h30 selon le rythme</span>
-    </div>
-    <div class="circuit-info__item">
-      <span class="circuit-info__icon">📶</span>
-      <span>Application utilisable hors connexion sur le site</span>
-    </div>
-    <div class="circuit-info__item">
-      <span class="circuit-info__icon">🎯</span>
-      <span>Quiz de 10 questions en fin de parcours</span>
-    </div>
-  </div>
-  <button class="hero__cta" onclick="lancerVisite()" style="background:var(--vert-profond);color:var(--blanc-casse);">
-    Explorer le parcours →
-  </button>
-</section>
+  </section>
 
-<!-- FOOTER CTA -->
-<section class="s-footer-cta">
-  <button class="hero__cta" onclick="lancerVisite()">Commencer la visite →</button>
-  <p>Une connexion WiFi est recommandée<br>pour le chargement initial du contenu.</p>
-</section>
+  <!-- CIRCUIT -->
+  <section class="s-circuit" aria-label="Description du parcours">
+    <span class="circuit-tag">Le parcours</span>
+    <h2 class="circuit-title">14 points d'intérêt à découvrir</h2>
+    <div class="themes-list" aria-label="Thèmes abordés">
+      <span class="badge-theme badge-biodiversite">🌿 Biodiversité</span>
+      <span class="badge-theme badge-geologie">🪨 Géologie</span>
+      <span class="badge-theme badge-histoire">🏛 Histoire</span>
+      <span class="badge-theme badge-securite">🛡 Sécurité</span>
+    </div>
+    <ul class="circuit-info" aria-label="Informations pratiques">
+      <li class="circuit-info__item">
+        <span class="circuit-info__icon" aria-hidden="true">📍</span>
+        <span>Circuit de 2 km aller-retour depuis le village</span>
+      </li>
+      <li class="circuit-info__item">
+        <span class="circuit-info__icon" aria-hidden="true">⏱</span>
+        <span>1h à 1h30 selon le rythme</span>
+      </li>
+      <li class="circuit-info__item">
+        <span class="circuit-info__icon" aria-hidden="true">📶</span>
+        <span>Application utilisable hors connexion sur le site</span>
+      </li>
+      <li class="circuit-info__item">
+        <span class="circuit-info__icon" aria-hidden="true">🎯</span>
+        <span>Quiz de 10 questions en fin de parcours</span>
+      </li>
+    </ul>
+    <button class="hero__cta" onclick="lancerVisite()" style="background:var(--vert-profond);color:var(--blanc-casse);" aria-label="Accéder à la carte du parcours">
+      Explorer le parcours →
+    </button>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <section class="s-footer-cta" aria-label="Démarrer la visite">
+    <button class="hero__cta" onclick="lancerVisite()" aria-label="Commencer la visite guidée de l'ENS">
+      Commencer la visite →
+    </button>
+    <p>Une connexion WiFi est recommandée<br>pour le chargement initial du contenu.</p>
+  </section>
+
+</main>
 
 <!-- OVERLAY CHARGEMENT -->
-<div class="loading-overlay" id="loading-overlay">
-  <div class="app-logo">Visiter <span>Sillans</span></div>
+<div class="loading-overlay" id="loading-overlay" role="status" aria-live="polite" aria-label="Chargement du contenu hors-ligne">
+  <div class="app-logo" aria-hidden="true">Visiter <span>Sillans</span></div>
   <p>Préparation du contenu hors-ligne…</p>
-  <div class="progress-bar-outer">
+  <div class="progress-bar-outer" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="dl-progressbar">
     <div class="progress-bar-inner" id="dl-progress" style="transition: width 0.4s ease;"></div>
   </div>
   <div id="dl-label">Initialisation…</div>
@@ -419,58 +471,54 @@
 <script src="js/app.js"></script>
 <script>
 function lancerVisite() {
-  const overlay  = document.getElementById('loading-overlay');
-  const bar      = document.getElementById('dl-progress');
-  const label    = document.getElementById('dl-label');
+  const overlay   = document.getElementById('loading-overlay');
+  const bar       = document.getElementById('dl-progress');
+  const progressbar = document.getElementById('dl-progressbar');
+  const label     = document.getElementById('dl-label');
 
   overlay.classList.add('visible');
   bar.style.width = '5%';
 
+  function setProgress(pct, txt) {
+    bar.style.width = pct + '%';
+    progressbar.setAttribute('aria-valuenow', Math.round(pct));
+    if (txt) label.textContent = txt;
+  }
+
   function goToApp() {
-    bar.style.width = '100%';
-    label.textContent = '✓ Contenu disponible hors-ligne';
+    setProgress(100, '✓ Contenu disponible hors-ligne');
     setTimeout(() => { window.location.href = 'html/carte.html'; }, 700);
   }
 
-  // Pas de support SW → redirection directe
   if (!('serviceWorker' in navigator)) {
     label.textContent = 'Chargement…';
     setTimeout(goToApp, 800);
     return;
   }
 
-  // Enregistrement du SW
   navigator.serviceWorker.register('/sw.js')
     .then(registration => {
       const sw = registration.installing || registration.waiting;
 
       if (!sw) {
-        // SW déjà actif (visite suivante) — contenu déjà en cache
         label.textContent = 'Contenu en cache ✓';
         goToApp();
         return;
       }
 
-      // SW en cours d'installation — animation progressive jusqu'à 88%
-      bar.style.width = '15%';
-      label.textContent = 'Téléchargement des données…';
-
+      setProgress(15, 'Téléchargement des données…');
       let pct = 15;
-      const tick = setInterval(() => {
-        // Monte lentement, s'arrête à 88% pour laisser la place au "100% réel"
-        if (pct < 88) {
-          pct += (88 - pct) * 0.08; // progression logarithmique
-          bar.style.width = pct.toFixed(1) + '%';
 
-          // Labels progressifs pour donner de l'info
-          if (pct > 30 && pct < 45) label.textContent = 'Pages et carte…';
-          else if (pct > 45 && pct < 65) label.textContent = 'Photos des points d\'intérêt…';
-          else if (pct > 65 && pct < 80) label.textContent = 'Quiz et contenus…';
-          else if (pct >= 80) label.textContent = 'Finalisation…';
+      const tick = setInterval(() => {
+        if (pct < 88) {
+          pct += (88 - pct) * 0.08;
+          if (pct > 30 && pct < 45)      setProgress(pct, 'Pages et carte…');
+          else if (pct > 45 && pct < 65) setProgress(pct, 'Photos des points d\'intérêt…');
+          else if (pct > 65 && pct < 80) setProgress(pct, 'Quiz et contenus…');
+          else                            setProgress(pct, 'Finalisation…');
         }
       }, 300);
 
-      // Écoute le vrai événement d'activation du SW
       sw.addEventListener('statechange', e => {
         if (e.target.state === 'activated' || e.target.state === 'installed') {
           clearInterval(tick);
@@ -478,11 +526,9 @@ function lancerVisite() {
         }
       });
 
-      // Sécurité : timeout max 20s au cas où le SW bloquerait
       setTimeout(() => { clearInterval(tick); goToApp(); }, 20000);
     })
     .catch(() => {
-      // Échec d'enregistrement (HTTP local, etc.) → on passe quand même
       label.textContent = 'Mode connecté';
       setTimeout(goToApp, 600);
     });
