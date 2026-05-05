@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Visiter Sillans</title>
+  <link rel="icon" type="image/png" href="/img/logo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--vert-profond);
+      color: var(--blanc);
+      text-align: center;
+      padding: 2rem;
+      font-family: var(--font-corps);
+    }
+    .err-logo {
+      height: 56px;
+      margin-bottom: 2rem;
+    }
+    .err-code {
+      font-family: var(--font-titre);
+      font-size: 7rem;
+      font-weight: 700;
+      color: var(--lime);
+      line-height: 1;
+      margin: 0;
+    }
+    .err-title {
+      font-family: var(--font-titre);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0.5rem 0 1rem;
+      color: var(--blanc);
+    }
+    .err-desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 280px;
+      line-height: 1.5;
+      margin-bottom: 2.5rem;
+    }
+    .err-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--lime);
+      color: var(--vert-profond);
+      font-family: var(--font-titre);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .err-btn:active { opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <img src="/img/logo.png" alt="" class="err-logo" onerror="this.style.display='none'">
+  <p class="err-code">404</p>
+  <p class="err-title">Page introuvable</p>
+  <p class="err-desc">Cette page n'existe pas ou a été déplacée. Revenez à l'accueil pour continuer votre visite.</p>
+  <a href="/index.html" class="err-btn">← Retour à l'accueil</a>
+</body>
+</html>
