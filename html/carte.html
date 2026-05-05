@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#13433F">
-  <meta name="description" content="Carte interactive des 14 points d’intérêt de l’ENS de Sillans-la-Cascade.">
+  <meta name="description" content="Carte interactive des 14 points d'intérêt de l'ENS de Sillans-la-Cascade.">
   <link rel="icon" type="image/png" href="/img/logo.png">
   <title>Carte — Visiter Sillans-la-Cascade</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -22,25 +22,35 @@
 </head>
 <body>
 
-<nav class="top-nav" aria-label="Navigation principale">
-  <a href="../index.html" class="top-nav__brand" aria-label="Retour à l’accueil">
-    <img src="../img/logo.png" alt="" class="top-nav__logo" onerror="this.style.display='none'">
-    <span class="top-nav__name">Visiter <strong>Sillans</strong></span>
+<header class="app-header">
+  <a href="../index.html" class="app-header__logo" aria-label="Retour à l'accueil">
+    <img src="../img/logo-text.png" alt="Visiter Sillans"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
+    <span class="app-header__logo-fallback">Visiter <strong>Sillans</strong></span>
   </a>
-  <div class="top-nav__links" role="list">
-    <a href="carte.html" class="top-nav__item active" role="listitem" aria-current="page" aria-label="Carte">
-      <span class="top-nav__item-icon" aria-hidden="true">🗺️</span><span>Carte</span>
-    </a>
-    <a href="regles.html" class="top-nav__item" role="listitem" aria-label="Règles">
-      <span class="top-nav__item-icon" aria-hidden="true">📋</span><span>Règles</span>
-    </a>
-    <a href="qcm.html" class="top-nav__item" role="listitem" aria-label="Quiz">
-      <span class="top-nav__item-icon" aria-hidden="true">🎯</span><span>Quiz</span>
-    </a>
-    <a href="a-propos.html" class="top-nav__item" role="listitem" aria-label="À propos">
-      <span class="top-nav__item-icon" aria-hidden="true">ℹ️</span><span>À propos</span>
-    </a>
+  <button class="burger-btn" id="burger-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-drawer">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+<nav class="nav-drawer" id="nav-drawer" aria-label="Menu principal">
+  <div class="nav-drawer__header">
+    <div style="flex:1;display:flex;align-items:center;">
+      <img src="../img/logo-text.png" alt="Visiter Sillans" style="height:34px;"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <span class="nav-drawer__header-fallback">Visiter <strong>Sillans</strong></span>
+    </div>
+    <button class="nav-drawer__close" id="nav-close" aria-label="Fermer le menu">✕</button>
   </div>
+  <p class="nav-drawer__section">Navigation</p>
+  <ul class="nav-drawer__links">
+    <li><a href="carte.html" class="nav-drawer__item active" aria-current="page"><span class="nav-drawer__item-icon" aria-hidden="true">🗺️</span>Carte du parcours</a></li>
+    <li><a href="regles.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">📋</span>Règles de visite</a></li>
+    <li><a href="qcm.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">🎯</span>Quiz</a></li>
+    <li><a href="a-propos.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">ℹ️</span>À propos</a></li>
+  </ul>
+  <div class="nav-drawer__footer">ENS · Département du Var</div>
 </nav>
 
 <div class="legende" role="list" aria-label="Légende des thèmes">
@@ -48,10 +58,10 @@
   <div class="legende-item" role="listitem"><div class="legende-dot dot-geologie" aria-hidden="true"></div>Géologie</div>
   <div class="legende-item" role="listitem"><div class="legende-dot dot-histoire" aria-hidden="true"></div>Histoire</div>
   <div class="legende-item" role="listitem"><div class="legende-dot dot-securite" aria-hidden="true"></div>Sécurité</div>
-  <span class="carte-progress" id="progress-display" aria-label="Progression de la visite" aria-live="polite" style="margin-left:auto;">0 / 14</span>
+  <span class="carte-progress" id="progress-display" aria-live="polite" style="margin-left:auto;">0 / 14</span>
 </div>
 
-<main id="map" aria-label="Carte interactive des points d’intérêt"></main>
+<main id="map" aria-label="Carte interactive des points d'intérêt"></main>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="../js/progress.js"></script>

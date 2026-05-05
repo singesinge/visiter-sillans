@@ -10,30 +10,40 @@
 </head>
 <body>
 
-<nav class="top-nav" aria-label="Navigation principale">
-  <a href="../index.html" class="top-nav__brand" aria-label="Retour à l’accueil">
-    <img src="../img/logo.png" alt="" class="top-nav__logo" onerror="this.style.display='none'">
-    <span class="top-nav__name">Visiter <strong>Sillans</strong></span>
+<header class="app-header">
+  <a href="../index.html" class="app-header__logo" aria-label="Retour à l'accueil">
+    <img src="../img/logo-text.png" alt="Visiter Sillans"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
+    <span class="app-header__logo-fallback">Visiter <strong>Sillans</strong></span>
   </a>
-  <div class="top-nav__links" role="list">
-    <a href="carte.html" class="top-nav__item" role="listitem" aria-label="Carte">
-      <span class="top-nav__item-icon" aria-hidden="true">🗺️</span><span>Carte</span>
-    </a>
-    <a href="regles.html" class="top-nav__item" role="listitem" aria-label="Règles">
-      <span class="top-nav__item-icon" aria-hidden="true">📋</span><span>Règles</span>
-    </a>
-    <a href="qcm.html" class="top-nav__item active" role="listitem" aria-current="page" aria-label="Quiz">
-      <span class="top-nav__item-icon" aria-hidden="true">🎯</span><span>Quiz</span>
-    </a>
-    <a href="a-propos.html" class="top-nav__item" role="listitem" aria-label="À propos">
-      <span class="top-nav__item-icon" aria-hidden="true">ℹ️</span><span>À propos</span>
-    </a>
+  <button class="burger-btn" id="burger-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-drawer">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+<nav class="nav-drawer" id="nav-drawer" aria-label="Menu principal">
+  <div class="nav-drawer__header">
+    <div style="flex:1;display:flex;align-items:center;">
+      <img src="../img/logo-text.png" alt="Visiter Sillans" style="height:34px;"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <span class="nav-drawer__header-fallback">Visiter <strong>Sillans</strong></span>
+    </div>
+    <button class="nav-drawer__close" id="nav-close" aria-label="Fermer le menu">✕</button>
   </div>
+  <p class="nav-drawer__section">Navigation</p>
+  <ul class="nav-drawer__links">
+    <li><a href="carte.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">🗺️</span>Carte du parcours</a></li>
+    <li><a href="regles.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">📋</span>Règles de visite</a></li>
+    <li><a href="qcm.html" class="nav-drawer__item active" aria-current="page"><span class="nav-drawer__item-icon" aria-hidden="true">🎯</span>Quiz</a></li>
+    <li><a href="a-propos.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">ℹ️</span>À propos</a></li>
+  </ul>
+  <div class="nav-drawer__footer">ENS · Département du Var</div>
 </nav>
 
 <div class="qcm-sub-header">
   <span>Quiz naturaliste</span>
-  <span>Q. <span id="q-actuelle">1</span> / <span id="q-total">10</span></span>
+  <span>Q. <span id="q-actuelle">1</span> / <span id="q-total">10</span></span>
 </div>
 
 <main class="qcm-body animate-in" id="zone-quiz">
@@ -55,7 +65,7 @@
     🔄 Recommencer
   </button>
   <a href="../index.html" class="btn btn-ghost" style="margin:0 auto;">
-    ← Retour à l’accueil
+    ← Retour à l'accueil
   </a>
 </div>
 

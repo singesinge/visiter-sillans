@@ -6,53 +6,27 @@
   <meta name="theme-color" content="#13433F">
   <link rel="icon" type="image/png" href="/img/logo.png">
   <link rel="apple-touch-icon" href="/img/logo.png">
-  <meta name="description" content="Explorez l’ENS de Sillans-la-Cascade : cascade de 44 mètres, biodiversité protégée, histoire médiévale. 14 points d’intérêt, carte GPS et quiz — utilisable hors connexion.">
-  <meta name="keywords" content="Sillans-la-Cascade, cascade, ENS, Var, Département du Var, randonnée, nature, Provence, Bresque, espace naturel sensible">
-  <meta name="author" content="Département du Var — Service Espaces Naturels Sensibles">
-  <meta name="robots" content="index, follow">
+  <meta name="description" content="Explorez l'ENS de Sillans-la-Cascade : cascade de 44 mètres, biodiversité protégée, histoire médiévale. 14 points d'intérêt, carte GPS et quiz — utilisable hors connexion.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Visiter Sillans-la-Cascade — ENS du Var">
-  <meta property="og:description" content="Explorez la cascade de 44 mètres et les 14 points d’intérêt de l’ENS de Sillans-la-Cascade.">
+  <meta property="og:description" content="Explorez la cascade de 44 mètres et les 14 points d'intérêt de l'ENS de Sillans-la-Cascade.">
   <meta property="og:image" content="/img/poi/poi-05.jpg">
-  <meta property="og:image:alt" content="La cascade de Sillans-la-Cascade, 44 mètres, Var, Provence">
   <meta property="og:locale" content="fr_FR">
-  <meta property="og:site_name" content="Visiter Sillans-la-Cascade">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Visiter Sillans-la-Cascade — ENS du Var">
-  <meta name="twitter:description" content="Application de médiation culturelle pour l’ENS de Sillans-la-Cascade. 14 points d’intérêt, biodiversité, histoire, hors-ligne.">
-  <meta name="twitter:image" content="/img/poi/poi-05.jpg">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TouristAttraction",
-    "name": "ENS de Sillans-la-Cascade",
-    "description": "Espace Naturel Sensible de 369 hectares avec cascade de 44 mètres, géré par le Département du Var.",
-    "image": "/img/poi/poi-05.jpg",
-    "address": { "@type": "PostalAddress", "addressLocality": "Sillans-la-Cascade", "addressRegion": "Var", "addressCountry": "FR", "postalCode": "83690" },
-    "geo": { "@type": "GeoCoordinates", "latitude": 43.5669, "longitude": 6.1803 },
-    "managedBy": { "@type": "Organization", "name": "Département du Var", "url": "https://www.var.fr" },
-    "isAccessibleForFree": true,
-    "publicAccess": true
-  }
-  </script>
   <title>Visiter Sillans-la-Cascade — ENS du Var</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
     .skip-link { position: absolute; top: -100%; left: 1rem; background: var(--vert-profond); color: var(--blanc-casse); padding: 0.5rem 1rem; border-radius: 0 0 var(--radius-sm) var(--radius-sm); font-family: var(--font-titre); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; z-index: 9999; text-decoration: none; transition: top 0.2s; }
     .skip-link:focus { top: 0; }
     html, body { margin: 0; padding: 0; overflow-x: hidden; }
-    .hero { position: relative; width: 100%; height: 100svh; min-height: 500px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero { position: relative; width: 100%; height: calc(100svh - var(--header-height)); min-height: 460px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
     .hero__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
     .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(19,67,63,0.92) 0%, rgba(19,67,63,0.4) 45%, rgba(0,0,0,0.15) 100%); }
-    .hero__badge { position: absolute; top: 1.25rem; left: 1.25rem; z-index: 2; display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 0.35rem 0.85rem; font-family: var(--font-titre); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.9); }
-    .hero__badge-logo { height: 16px; width: auto; }
     .hero__content { position: relative; z-index: 2; padding: 0 1.5rem 2.5rem; color: var(--blanc-casse); }
     .hero__label { font-family: var(--font-titre); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--lime); margin-bottom: 0.5rem; }
     .hero__title { font-family: var(--font-titre); font-size: 3rem; font-weight: 700; text-transform: uppercase; line-height: 1; letter-spacing: 0.01em; margin-bottom: 0.75rem; }
     .hero__title span { color: var(--lime); display: block; }
     .hero__desc { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.55; max-width: 340px; margin-bottom: 1.75rem; }
     .hero__cta { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--lime); color: #2d4000; font-family: var(--font-titre); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.9rem 1.75rem; border-radius: var(--radius-sm); border: none; cursor: pointer; width: 100%; justify-content: center; transition: background 0.2s, transform 0.15s; }
-    .hero__cta:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
     .hero__cta:active { transform: scale(0.98); }
     .hero__cta:hover { background: #b8dc3a; }
     .hero__scroll { position: absolute; bottom: 5.5rem; right: 1.5rem; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; font-family: var(--font-titre); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
@@ -91,78 +65,127 @@
 
 <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
 
-<section class="hero" aria-label="Présentation du site de Sillans-la-Cascade">
-  <img class="hero__photo" src="img/poi/poi-05.jpg" alt="La cascade de Sillans-la-Cascade : chute de 44 mètres dans un bassin turquoise, Var, Provence" onerror="this.style.display='none'">
-  <div class="hero__badge" aria-hidden="true">
-    <img src="img/logo.png" alt="" class="hero__badge-logo" onerror="this.style.display='none'">
-    🌿 ENS · Département du Var
+<header class="app-header">
+  <a href="/index.html" class="app-header__logo" aria-label="Accueil — Visiter Sillans">
+    <img src="img/logo-text.png" alt="Visiter Sillans"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
+    <span class="app-header__logo-fallback">Visiter <strong>Sillans</strong></span>
+  </a>
+  <button class="burger-btn" id="burger-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-drawer">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+<nav class="nav-drawer" id="nav-drawer" aria-label="Menu principal">
+  <div class="nav-drawer__header">
+    <div style="flex:1;display:flex;align-items:center;">
+      <img src="img/logo-text.png" alt="Visiter Sillans" style="height:34px;"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <span class="nav-drawer__header-fallback">Visiter <strong>Sillans</strong></span>
+    </div>
+    <button class="nav-drawer__close" id="nav-close" aria-label="Fermer le menu">✕</button>
   </div>
+  <p class="nav-drawer__section">Navigation</p>
+  <ul class="nav-drawer__links">
+    <li><a href="html/carte.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">🗺️</span>Carte du parcours</a></li>
+    <li><a href="html/regles.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">📋</span>Règles de visite</a></li>
+    <li><a href="html/qcm.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">🎯</span>Quiz</a></li>
+    <li><a href="html/a-propos.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">ℹ️</span>À propos</a></li>
+  </ul>
+  <div class="nav-drawer__footer">ENS · Département du Var</div>
+</nav>
+
+<section class="hero" aria-label="Présentation du site de Sillans-la-Cascade">
+  <img class="hero__photo" src="img/poi/poi-05.jpg" alt="La cascade de Sillans-la-Cascade, 44 mètres, Var" onerror="this.style.display='none'">
   <div class="hero__scroll" aria-hidden="true"><div class="hero__scroll-line"></div><span>Découvrir</span></div>
   <div class="hero__content">
-    <p class="hero__label">Espace Naturel Sensible</p>
+    <p class="hero__label">Espace Naturel Sensible · Var</p>
     <h1 class="hero__title">Visiter<span>Sillans</span></h1>
-    <p class="hero__desc">Une cascade de 44 mètres, une rivière d’exception, un village médiéval perché dans le Var. Explorez le site avant de commencer votre visite.</p>
-    <button class="hero__cta" onclick="lancerVisite()" aria-label="Commencer la visite guidée de l’ENS">Commencer la visite →</button>
+    <p class="hero__desc">Une cascade de 44 mètres, une rivière d'exception, un village médiéval perché dans le Haut-Var.</p>
+    <button class="hero__cta" onclick="lancerVisite()" aria-label="Commencer la visite guidée">Commencer la visite →</button>
   </div>
 </section>
 
 <main id="contenu-principal">
 
-  <section class="s-stats" aria-label="Chiffres clés du site">
-    <div class="stat"><span class="stat__num">44 m</span><span class="stat__label">Hauteur de la cascade</span></div>
-    <div class="stat" style="border-left:1px solid rgba(255,255,255,0.12);border-right:1px solid rgba(255,255,255,0.12);"><span class="stat__num">369 ha</span><span class="stat__label">Surface de l’ENS</span></div>
-    <div class="stat"><span class="stat__num">96 k</span><span class="stat__label">Visiteurs par été</span></div>
+  <section class="s-stats" aria-label="Chiffres clés">
+    <div class="stat"><span class="stat__num">44 m</span><span class="stat__label">Hauteur de la cascade</span></div>
+    <div class="stat" style="border-left:1px solid rgba(255,255,255,0.12);border-right:1px solid rgba(255,255,255,0.12);"><span class="stat__num">369 ha</span><span class="stat__label">Surface de l'ENS</span></div>
+    <div class="stat"><span class="stat__num">96 k</span><span class="stat__label">Visiteurs par été</span></div>
   </section>
 
-  <section class="s-intro" aria-label="Présentation du site naturel">
+  <section class="s-intro">
     <span class="s-intro__tag">Le site</span>
     <h2 class="s-intro__title">Un sanctuaire naturel et historique</h2>
-    <p class="s-intro__text">Nichée dans un vallon du Haut-Var, la cascade de Sillans-la-Cascade est l’une des plus hautes cascades permanentes de Provence. La Bresque dévale 44 mètres dans un bassin aux reflets turquoise, coloré par les particules calcaires en suspension — les eaux de la rivière reçoivent également celles de la source du Château de Bresc et de la vallée de l’Ourc.</p>
-    <p class="s-intro__text">Classé Espace Naturel Sensible par le Département du Var, ce site de 369 hectares abrite une biodiversité remarquable — chauves-souris protégées, écrevisse à pattes blanches, fougères hygrophiles — et des vestiges historiques témoignant de siècles d’occupation humaine.</p>
+    <p class="s-intro__text">Nichée dans un vallon du Haut-Var, la cascade de Sillans-la-Cascade est l'une des plus hautes cascades permanentes de Provence. La Bresque dévale 44 mètres dans un bassin aux reflets turquoise, coloré par les particules calcaires en suspension.</p>
+    <p class="s-intro__text">Classé Espace Naturel Sensible par le Département du Var, ce site de 369 hectares abrite une biodiversité remarquable et des vestiges historiques témoignant de siècles d'occupation humaine.</p>
   </section>
 
   <section class="s-gallery" aria-label="Photos du site">
-    <div class="gallery-grid" role="list">
-      <div class="gallery-grid__item gallery-grid__item--wide" role="listitem"><img src="img/poi/poi-09.jpg" alt="La Bresque, rivière qui alimente la cascade" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
-      <div class="gallery-grid__item" role="listitem"><img src="img/poi/poi-02.jpg" alt="Le bastidon et l’oliveraie" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
-      <div class="gallery-grid__item" role="listitem"><img src="img/poi/poi-11.jpg" alt="Le lavoir communal de Sillans" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
+    <div class="gallery-grid">
+      <div class="gallery-grid__item gallery-grid__item--wide"><img src="img/poi/poi-09.jpg" alt="La Bresque" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
+      <div class="gallery-grid__item"><img src="img/poi/poi-02.jpg" alt="Oliveraie" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
+      <div class="gallery-grid__item"><img src="img/poi/poi-11.jpg" alt="Lavoir communal" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
     </div>
   </section>
 
-  <section class="s-content" aria-label="Géologie du site">
+  <section class="s-content" aria-label="Géologie">
     <span class="s-content__tag s-content__tag--geo">Géologie</span>
-    <h2 class="s-content__title">La tufière : une formation rare</h2>
-    <p class="s-content__text">La cascade crée une <strong>tufière</strong>, formation géologique d’exception où le calcaire dissous dans la Bresque se dépose progressivement sur les mousses et la végétation, les pétrifiant littéralement au fil des décennies. Ces dépôts de travertin, aux teintes crèmes et rosées, forment les falaises caractéristiques qui encadrent le bassin.</p>
-    <p class="s-content__text">Le contraste entre le rose du travertin et les reflets émeraude de l’eau est à l’origine de la réputation du site bien au-delà du Var. Ce paysage minuto-végétal unique se forme sur des échelles de temps géologiques.</p>
+    <h2 class="s-content__title">La tufière : une formation rare</h2>
+    <p class="s-content__text">La cascade crée une <strong>tufière</strong>, formation géologique d'exception où le calcaire dissous dans la Bresque se dépose sur les mousses, les pétrifiant au fil des décennies. Ces dépôts de travertin, aux teintes crèmes et rosées, forment les falaises caractéristiques qui encadrent le bassin.</p>
+    <p class="s-content__text">Le contraste entre le rose du travertin et les reflets émeraude de l'eau est à l'origine de la réputation du site bien au-delà du Var.</p>
     <div class="s-content__fact">
       <span class="s-content__fact-icon" aria-hidden="true">⚠️</span>
-      <p class="s-content__fact-text"><strong>Extrême fragilité</strong> — les concrétions calcaires mettent des décennies à se former. Tout piétinement ou contact avec l’eau les détruit irrémédiablement. C’est la raison première de l’interdiction de baignade.</p>
+      <p class="s-content__fact-text"><strong>Extrême fragilité</strong> — les concrétions calcaires mettent des décennies à se former. Tout piétinement les détruit irrémédiablement. C'est la raison première de l'interdiction de baignade.</p>
     </div>
   </section>
 
-  <section class="s-content s-content--alt" aria-label="Histoire de Sillans-la-Cascade">
+  <section class="s-content s-content--alt" aria-label="Histoire">
     <span class="s-content__tag s-content__tag--histoire">Histoire</span>
-    <h2 class="s-content__title">Mille ans d’histoire médiévale</h2>
-    <p class="s-content__text">Sillans est mentionné dès le <strong>XI<sup>e</sup> siècle</strong>, lorsque l’abbaye de Saint-Victor de Marseille en devient propriétaire. Ses remparts et les ruines de son château témoignent encore de cette longue histoire — le fief passant successivement des Baux aux Pontevès, des Blacas aux Albert-Châteauneuf, de 1099 à 1781.</p>
-    <p class="s-content__text">Les maisons du village, construites en pierre de tuf locale, bordent des rues pavées qui mènent à l’église Notre-Dame et aux vestiges du château perché sur son promontoire dominant la vallée de la Bresque. Ce n’est qu’en <strong>1929</strong> que « la Cascade » est officiellement ajoutée au nom de la commune.</p>
+    <h2 class="s-content__title">Mille ans d'histoire médiévale</h2>
+    <p class="s-content__text">Sillans est mentionné dès le <strong>XI<sup>e</sup> siècle</strong>, lorsque l'abbaye de Saint-Victor de Marseille en devient propriétaire. Ses remparts et les ruines de son château témoignent encore de cette longue histoire — le fief passant successivement des Baux aux Pontevès, des Blacas aux Albert-Châteauneuf.</p>
+    <p class="s-content__text">Les maisons du village, construites en pierre de tuf locale, bordent des rues pavées qui mènent à l'église Notre-Dame. Ce n'est qu'en <strong>1929</strong> que « la Cascade » est officiellement ajoutée au nom de la commune.</p>
     <div class="s-content__fact">
       <span class="s-content__fact-icon" aria-hidden="true">🏰</span>
-      <p class="s-content__fact-text"><strong>Architecture</strong> — le village conserve ses remparts du XI<sup>e</sup> siècle, un lavoir communal et des éléments industriels du début du XX<sup>e</sup> siècle : l’usine hydroélectrique qui exploita la force de la Bresque.</p>
+      <p class="s-content__fact-text"><strong>Patrimoine</strong> — remparts du XI<sup>e</sup> siècle, lavoir communal et usine hydroélectrique du début du XX<sup>e</sup> siècle qui exploita la force de la Bresque.</p>
     </div>
   </section>
 
-  <section class="s-content" aria-label="La rivière Bresque">
+  <section class="s-content" aria-label="La Bresque">
     <span class="s-content__tag s-content__tag--bresque">La Bresque</span>
     <h2 class="s-content__title">Une rivière permanente, une exception</h2>
-    <p class="s-content__text">Dans un contexte méditerranéen où l’assèchement estival des cours d’eau est la norme, la Bresque coule de façon <strong>permanente</strong> toute l’année. Alimentée par plusieurs sources, elle offre un habitat stable à des espèces exigeantes sur la qualité de l’eau.</p>
-    <p class="s-content__text">L’<strong>écrevisse à pattes blanches</strong>, espèce protégée particulièrement sensible à la pollution, est présente dans la Bresque — véritable indicateur biologique de la santé de la rivière et de l’ensemble du système aquatique.</p>
+    <p class="s-content__text">Dans un contexte méditerranéen où l'assèchement estival est la norme, la Bresque coule de façon <strong>permanente</strong> toute l'année. Elle offre un habitat stable à des espèces exigeantes sur la qualité de l'eau.</p>
     <div class="s-content__fact">
       <span class="s-content__fact-icon" aria-hidden="true">🚫</span>
-      <p class="s-content__fact-text"><strong>Baignade strictement interdite</strong> — les courants sont traîtres et les falaises de travertin instables. L’interdiction est absolue, y compris les pieds dans l’eau au bord du bassin.</p>
+      <p class="s-content__fact-text"><strong>Baignade strictement interdite</strong> — les courants sont traîtres et les falaises de travertin instables. L'interdiction est absolue, y compris les pieds dans l'eau.</p>
     </div>
   </section>
 
-  <section class="s-avant" aria-label="Informations avant la visite">
+  <section class="s-content s-content--alt" aria-label="Faune et biodiversité">
+    <span class="s-content__tag s-content__tag--faune">Biodiversité</span>
+    <h2 class="s-content__title">Une faune d'exception</h2>
+    <p class="s-content__text">L'humidité permanente de la gorge crée un micro-climat unique. Les falaises de travertin abritent plusieurs espèces de <strong>chauves-souris protégées</strong> (Murin de Capaccini, Grand Murin) qui chassent au-dessus du bassin à la tombée de la nuit. Les fougères hygrophiles, dont la capillaire de Montpellier, tapissent les rochers humides.</p>
+    <p class="s-content__text">En observant attentivement la rivière, on peut apercevoir le <strong>cincle plongeur</strong> — seul passereau capable de marcher sous l'eau — et le vol coloré du <strong>martin-pêcheur d'Europe</strong>.</p>
+    <div class="s-content__fact">
+      <span class="s-content__fact-icon" aria-hidden="true">🦀</span>
+      <p class="s-content__fact-text"><strong>Indicateur biologique</strong> — la présence de l'écrevisse à pattes blanches dans la Bresque témoigne de la qualité exceptionnelle de l'eau. Cette espèce protégée disparaît dès que la pollution ou la température dépasse un seuil critique.</p>
+    </div>
+  </section>
+
+  <section class="s-acces" aria-label="Accès et saisons">
+    <h2 class="s-acces__title">Accès & saisons</h2>
+    <div class="s-acces__grid">
+      <div class="s-acces__item"><span class="s-acces__icon">🅿️</span><span>Parking gratuit à l'entrée du village (D22)</span></div>
+      <div class="s-acces__item"><span class="s-acces__icon">🌸</span><span>Printemps & automne — débit optimal, moins de monde</span></div>
+      <div class="s-acces__item"><span class="s-acces__icon">👟</span><span>Chaussures fermées, eau recommandée</span></div>
+      <div class="s-acces__item"><span class="s-acces__icon">⏱</span><span>15 min à pied du village, 1h30 de circuit</span></div>
+      <div class="s-acces__item"><span class="s-acces__icon">🐕</span><span>Chiens acceptés en laisse</span></div>
+      <div class="s-acces__item"><span class="s-acces__icon">📶</span><span>Peu de réseau dans la gorge — app offline</span></div>
+    </div>
+  </section>
+
+  <section class="s-avant" aria-label="Avant la visite">
     <p class="s-avant__title">Avant de partir</p>
     <a href="html/regles.html" class="avant-link">
       <span class="avant-link__icon" aria-hidden="true">📋</span>
@@ -176,27 +199,27 @@
     </a>
   </section>
 
-  <section class="s-circuit" aria-label="Description du parcours et démarrage">
+  <section class="s-circuit">
     <span class="circuit-tag">Le parcours</span>
-    <h2 class="circuit-title">14 points d’intérêt à découvrir</h2>
-    <div class="themes-list" aria-label="Thèmes abordés">
+    <h2 class="circuit-title">14 points d'intérêt à découvrir</h2>
+    <div class="themes-list">
       <span class="badge-theme badge-biodiversite">🌿 Biodiversité</span>
       <span class="badge-theme badge-geologie">🪨 Géologie</span>
       <span class="badge-theme badge-histoire">🏛 Histoire</span>
       <span class="badge-theme badge-securite">🛡 Sécurité</span>
     </div>
-    <ul class="circuit-info" aria-label="Informations pratiques">
-      <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true">📍</span><span>Circuit de 2 km aller-retour depuis le village</span></li>
-      <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true">⏱</span><span>1h à 1h30 selon le rythme</span></li>
-      <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true">📶</span><span>Application utilisable hors connexion sur le site</span></li>
-      <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true">🎯</span><span>Quiz de 10 questions en fin de parcours</span></li>
+    <ul class="circuit-info">
+      <li class="circuit-info__item"><span class="circuit-info__icon">📍</span><span>Circuit de 2 km aller-retour depuis le village</span></li>
+      <li class="circuit-info__item"><span class="circuit-info__icon">⏱</span><span>1h à 1h30 selon le rythme</span></li>
+      <li class="circuit-info__item"><span class="circuit-info__icon">📶</span><span>Application utilisable hors connexion sur le site</span></li>
+      <li class="circuit-info__item"><span class="circuit-info__icon">🎯</span><span>Quiz de 10 questions en fin de parcours</span></li>
     </ul>
-    <button class="hero__cta" onclick="lancerVisite()" aria-label="Accéder à la carte du parcours">Commencer la visite →</button>
+    <button class="hero__cta" onclick="lancerVisite()">Commencer la visite →</button>
   </section>
 
 </main>
 
-<div class="loading-overlay" id="loading-overlay" role="status" aria-live="polite" aria-label="Chargement du contenu hors-ligne">
+<div class="loading-overlay" id="loading-overlay" role="status" aria-live="polite">
   <div class="loading-logo">
     <img src="img/logo.png" alt="" class="loading-logo__img" onerror="this.style.display='none'">
     <div class="app-logo" aria-hidden="true">Visiter <span>Sillans</span></div>
@@ -226,7 +249,7 @@ function lancerVisite() {
     setProgress(100, '✓ Contenu disponible hors-ligne');
     setTimeout(() => { window.location.href = 'html/carte.html'; }, 700);
   }
-  if (!('serviceWorker' in navigator)) { label.textContent = 'Chargement…'; setTimeout(goToApp, 800); return; }
+  if (!('serviceWorker' in navigator)) { setTimeout(goToApp, 800); return; }
   navigator.serviceWorker.register('/sw.js')
     .then(registration => {
       const sw = registration.installing || registration.waiting;
@@ -236,9 +259,9 @@ function lancerVisite() {
       const tick = setInterval(() => {
         if (pct < 88) {
           pct += (88 - pct) * 0.08;
-          if (pct > 30 && pct < 45) setProgress(pct, 'Pages et carte…');
-          else if (pct > 45 && pct < 65) setProgress(pct, 'Photos des points d\'intérêt…');
-          else if (pct > 65 && pct < 80) setProgress(pct, 'Quiz et contenus…');
+          if (pct < 45) setProgress(pct, 'Pages et carte…');
+          else if (pct < 65) setProgress(pct, 'Photos des points d\'intérêt…');
+          else if (pct < 80) setProgress(pct, 'Quiz et contenus…');
           else setProgress(pct, 'Finalisation…');
         }
       }, 300);
@@ -247,7 +270,7 @@ function lancerVisite() {
       });
       setTimeout(() => { clearInterval(tick); goToApp(); }, 20000);
     })
-    .catch(() => { label.textContent = 'Mode connecté'; setTimeout(goToApp, 600); });
+    .catch(() => { setTimeout(goToApp, 600); });
 }
 </script>
 </body>

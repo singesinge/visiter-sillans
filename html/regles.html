@@ -4,42 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#13433F">
-  <meta name="description" content="5 règles à respecter sur l’ENS de Sillans-la-Cascade pour préserver le site.">
+  <meta name="description" content="5 règles à respecter sur l'ENS de Sillans-la-Cascade pour préserver le site.">
   <link rel="icon" type="image/png" href="/img/logo.png">
   <title>Règles — Visiter Sillans</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-<nav class="top-nav" aria-label="Navigation principale">
-  <a href="../index.html" class="top-nav__brand" aria-label="Retour à l’accueil">
-    <img src="../img/logo.png" alt="" class="top-nav__logo" onerror="this.style.display='none'">
-    <span class="top-nav__name">Visiter <strong>Sillans</strong></span>
+<header class="app-header">
+  <a href="../index.html" class="app-header__logo" aria-label="Retour à l'accueil">
+    <img src="../img/logo-text.png" alt="Visiter Sillans"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
+    <span class="app-header__logo-fallback">Visiter <strong>Sillans</strong></span>
   </a>
-  <div class="top-nav__links" role="list">
-    <a href="carte.html" class="top-nav__item" role="listitem" aria-label="Carte">
-      <span class="top-nav__item-icon" aria-hidden="true">🗺️</span><span>Carte</span>
-    </a>
-    <a href="regles.html" class="top-nav__item active" role="listitem" aria-current="page" aria-label="Règles">
-      <span class="top-nav__item-icon" aria-hidden="true">📋</span><span>Règles</span>
-    </a>
-    <a href="qcm.html" class="top-nav__item" role="listitem" aria-label="Quiz">
-      <span class="top-nav__item-icon" aria-hidden="true">🎯</span><span>Quiz</span>
-    </a>
-    <a href="a-propos.html" class="top-nav__item" role="listitem" aria-label="À propos">
-      <span class="top-nav__item-icon" aria-hidden="true">ℹ️</span><span>À propos</span>
-    </a>
+  <button class="burger-btn" id="burger-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-drawer">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+<nav class="nav-drawer" id="nav-drawer" aria-label="Menu principal">
+  <div class="nav-drawer__header">
+    <div style="flex:1;display:flex;align-items:center;">
+      <img src="../img/logo-text.png" alt="Visiter Sillans" style="height:34px;"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <span class="nav-drawer__header-fallback">Visiter <strong>Sillans</strong></span>
+    </div>
+    <button class="nav-drawer__close" id="nav-close" aria-label="Fermer le menu">✕</button>
   </div>
+  <p class="nav-drawer__section">Navigation</p>
+  <ul class="nav-drawer__links">
+    <li><a href="carte.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">🗺️</span>Carte du parcours</a></li>
+    <li><a href="regles.html" class="nav-drawer__item active" aria-current="page"><span class="nav-drawer__item-icon" aria-hidden="true">📋</span>Règles de visite</a></li>
+    <li><a href="qcm.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">🎯</span>Quiz</a></li>
+    <li><a href="a-propos.html" class="nav-drawer__item"><span class="nav-drawer__item-icon" aria-hidden="true">ℹ️</span>À propos</a></li>
+  </ul>
+  <div class="nav-drawer__footer">ENS · Département du Var</div>
 </nav>
 
-<div class="page-eyebrow">Avant la visite — 5 règles d’or</div>
+<div class="page-eyebrow">Avant la visite — 5 règles d'or</div>
 
 <main class="regles-body animate-in">
 
   <div class="regle-card">
     <div class="regle-icon">💟</div>
     <div class="regle-titre">Bonne préparation</div>
-    <p class="regle-desc">Portez des chaussures fermées adaptées aux terrains rocailleux. Emportez de l’eau en quantité suffisante, surtout en été. Le dénivelé peut être surprenant.</p>
+    <p class="regle-desc">Portez des chaussures fermées adaptées aux terrains rocailleux. Emportez de l'eau en quantité suffisante, surtout en été. Le dénivelé peut être surprenant.</p>
   </div>
 
   <div class="regle-card danger">
@@ -57,7 +67,7 @@
   <div class="regle-card">
     <div class="regle-icon">🔇</div>
     <div class="regle-titre">Silence et discrétion</div>
-    <p class="regle-desc">Parlez doucement. La faune — oiseaux, chauves-souris, libellules — est facilement perturbée. Plus vous serez discrets, plus vous aurez de chances d’observer des animaux.</p>
+    <p class="regle-desc">Parlez doucement. La faune — oiseaux, chauves-souris, libellules — est facilement perturbée. Plus vous serez discrets, plus vous aurez de chances d'observer des animaux.</p>
   </div>
 
   <div class="regle-card">
