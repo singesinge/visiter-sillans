@@ -65,14 +65,15 @@ function afficherPOI(poi) {
        </div>`
     : '';
 
-  // Navigation prev/next — ordre est un entier, pas de risque XSS
+  // Navigation prev/next
   const navPrev = poi.ordre > 1
     ? `<button class="btn btn-ghost" onclick="naviguerPOI(-1)">← POI ${poi.ordre - 1}</button>`
     : `<button class="btn btn-ghost" disabled style="opacity:0.3;">← Début</button>`;
 
+  // Sur le dernier POI, le bouton "suivant" redirige vers le QCM
   const navNext = poi.ordre < 14
     ? `<button class="btn btn-secondary" onclick="naviguerPOI(1)">POI ${poi.ordre + 1} →</button>`
-    : `<button class="btn btn-secondary" disabled style="opacity:0.3;">Fin →</button>`;
+    : `<a href="qcm.html" class="btn btn-secondary">🎯 Passer le QCM →</a>`;
 
   // Contenu principal — toutes les chaînes texte sont échappées
   document.getElementById('poi-content').innerHTML = `
