@@ -20,6 +20,7 @@ const PRECACHE_ASSETS = [
   '/js/carte.js',
   '/js/poi.js',
   '/js/qcm.js',
+  '/js/proximity.js',
   '/data/poi.json',
   /* Photos terrain — 14 POIs */
   '/img/poi/poi-01.jpg',
