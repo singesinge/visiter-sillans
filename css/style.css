@@ -4,10 +4,8 @@
    Typo: Barlow Condensed (titres) / Helvetica (corps)
    ============================================ */
 
-/* --- Import Google Fonts --- */
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&display=swap');
 
-/* --- Variables CSS --- */
 :root {
   --vert-profond: #13433F;
   --turquoise: #2CA6A4;
@@ -17,18 +15,12 @@
   --noir: #1A1A1A;
   --gris: #6B7280;
   --gris-clair: #E5E7EB;
-
-  /* Thèmes */
   --theme-biodiversite: #A6CE39;
   --theme-geologie: #DCC9B1;
   --theme-histoire: #2CA6A4;
   --theme-securite: #13433F;
-
-  /* Typo */
   --font-titre: 'Barlow Condensed', Arial Narrow, sans-serif;
   --font-corps: Helvetica, Arial, sans-serif;
-
-  /* Layout */
   --nav-height: 64px;
   --header-height: 56px;
   --radius: 12px;
@@ -37,7 +29,6 @@
   --shadow-lg: 0 8px 32px rgba(0,0,0,0.18);
 }
 
-/* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 body {
@@ -51,7 +42,6 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-/* --- Typographie --- */
 h1, h2, h3, h4 {
   font-family: var(--font-titre);
   line-height: 1.15;
@@ -65,7 +55,6 @@ h3 { font-size: 1.4rem; }
 h4 { font-size: 1.1rem; }
 p { font-size: 0.95rem; line-height: 1.6; }
 
-/* --- Boutons --- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -88,7 +77,6 @@ p { font-size: 0.95rem; line-height: 1.6; }
 .btn-ghost:hover { background: var(--vert-profond); color: var(--blanc-casse); }
 .btn-full { width: 100%; justify-content: center; }
 
-/* --- Badges thèmes --- */
 .badge-theme {
   display: inline-flex;
   align-items: center;
@@ -106,14 +94,92 @@ p { font-size: 0.95rem; line-height: 1.6; }
 .badge-histoire { background: var(--turquoise); color: white; }
 .badge-securite { background: var(--vert-profond); color: var(--blanc-casse); }
 
-/* --- Marqueurs Leaflet --- */
 .marker-user {
-  width: 18px;
-  height: 18px;
+  width: 18px; height: 18px;
   background: #3B82F6;
   border-radius: 50%;
   border: 3px solid white;
   box-shadow: 0 0 0 4px rgba(59,130,246,0.3);
+}
+
+/* --- Navigation haute --- */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 400;
+  background: var(--vert-profond);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.875rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+.top-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--blanc-casse);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.top-nav__logo { height: 28px; width: auto; flex-shrink: 0; }
+.top-nav__name {
+  font-family: var(--font-titre);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--blanc-casse);
+  white-space: nowrap;
+}
+.top-nav__name strong { color: var(--lime); }
+.top-nav__links { display: flex; align-items: center; flex-shrink: 0; }
+.top-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.35rem 0.5rem;
+  color: rgba(255,255,255,0.65);
+  font-family: var(--font-titre);
+  font-size: 0.58rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s, background 0.2s;
+  text-decoration: none;
+  line-height: 1;
+}
+.top-nav__item-icon { font-size: 1.1rem; display: block; margin-bottom: 0.15rem; }
+.top-nav__item:hover { color: var(--blanc-casse); background: rgba(255,255,255,0.1); }
+.top-nav__item.active { color: var(--lime); }
+
+/* --- Eyebrow / sous-nav --- */
+.page-eyebrow {
+  padding: 0.45rem 1rem;
+  background: rgba(19,67,63,0.06);
+  border-bottom: 1px solid var(--gris-clair);
+  font-family: var(--font-titre);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gris);
+}
+.qcm-sub-header {
+  padding: 0.45rem 1rem;
+  background: rgba(19,67,63,0.06);
+  border-bottom: 1px solid var(--gris-clair);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-titre);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gris);
 }
 
 /* --- Page POI détail --- */
@@ -136,7 +202,7 @@ p { font-size: 0.95rem; line-height: 1.6; }
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0; color: white; font-size: 1.2rem;
 }
-.poi-body { padding: 1.25rem; padding-bottom: calc(var(--nav-height) + 1.5rem); }
+.poi-body { padding: 1.25rem; padding-bottom: 2rem; }
 .poi-numero { font-family: var(--font-titre); font-size: 0.75rem; font-weight: 700; color: var(--gris); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
 .poi-titre { font-family: var(--font-titre); font-size: 1.8rem; font-weight: 700; text-transform: uppercase; color: var(--vert-profond); margin-bottom: 0.5rem; }
 .poi-lieu { font-size: 0.875rem; color: var(--gris); margin-bottom: 1rem; }
@@ -155,7 +221,6 @@ p { font-size: 0.95rem; line-height: 1.6; }
 }
 .visite-btn.deja-visite { background: var(--gris-clair); color: var(--gris); cursor: default; }
 
-/* --- Bloc geste éco (conseil) --- */
 .poi-conseil {
   margin-top: 1.25rem;
   background: rgba(19, 67, 63, 0.06);
@@ -173,28 +238,17 @@ p { font-size: 0.95rem; line-height: 1.6; }
   color: var(--vert-profond);
   margin-bottom: 0.35rem;
 }
-.poi-conseil p {
-  font-size: 0.9rem;
-  color: var(--noir);
-  line-height: 1.55;
-}
+.poi-conseil p { font-size: 0.9rem; color: var(--noir); line-height: 1.55; }
 
-/* --- Photo terrain POI --- */
 .poi-photo-wrap {
   margin: -1.25rem -1.25rem 1.25rem -1.25rem;
   overflow: hidden;
   max-height: 220px;
 }
-.poi-photo {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-}
+.poi-photo { width: 100%; height: 220px; object-fit: cover; display: block; }
 
 /* --- QCM --- */
-.qcm-header { background: var(--vert-profond); color: var(--blanc-casse); padding: 1rem; min-height: var(--header-height); display: flex; align-items: center; gap: 0.75rem; position: sticky; top: 0; z-index: 100; }
-.qcm-body { padding: 1.25rem; padding-bottom: calc(var(--nav-height) + 1.5rem); }
+.qcm-body { padding: 1.25rem; padding-bottom: 2rem; }
 .qcm-dots { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
 .qcm-dot { width: 24px; height: 6px; border-radius: 3px; background: var(--gris-clair); transition: background 0.3s; }
 .qcm-dot.active { background: var(--turquoise); }
@@ -217,15 +271,14 @@ p { font-size: 0.95rem; line-height: 1.6; }
 .btn-suivant { display: none; margin-top: 0.75rem; }
 .btn-suivant.visible { display: flex; }
 
-/* --- Score --- */
-.score-screen { display: none; text-align: center; padding: 2rem 1.25rem; }
+.score-screen { display: none; text-align: center; padding: 2rem 1.25rem 3rem; }
 .score-screen.visible { display: block; }
 .score-nombre { font-family: var(--font-titre); font-size: 4rem; font-weight: 700; color: var(--vert-profond); line-height: 1; }
 .score-niveau { font-family: var(--font-titre); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; color: var(--turquoise); margin: 0.5rem 0 1rem; }
 .score-desc { color: var(--gris); font-size: 0.95rem; margin-bottom: 1.5rem; }
 .score-mascotte { font-size: 4rem; margin: 1rem 0; }
 
-/* --- Navigation bas --- */
+/* --- Navigation bas (conservée pour compatibilité) --- */
 .bottom-nav {
   position: fixed; bottom: 0; left: 0; right: 0;
   height: var(--nav-height); background: white;
@@ -244,16 +297,18 @@ p { font-size: 0.95rem; line-height: 1.6; }
 .nav-item.active { color: var(--vert-profond); }
 .nav-item.active .nav-icon { transform: scale(1.15); }
 
-/* --- Splash/onboarding --- */
+/* --- Splash / chargement --- */
 .progress-bar-outer { width: 100%; max-width: 280px; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px; overflow: hidden; margin-bottom: 0.75rem; }
 .progress-bar-inner { height: 100%; background: var(--lime); border-radius: 3px; width: 0%; transition: width 0.3s ease; }
+.loading-logo { display: flex; flex-direction: column; align-items: center; margin-bottom: 0.5rem; }
+.loading-logo__img { height: 72px; width: auto; margin-bottom: 0.5rem; }
 
 /* --- Carte --- */
 .carte-header { background: var(--vert-profond); color: var(--blanc-casse); padding: 0.875rem 1rem; display: flex; align-items: center; justify-content: space-between; min-height: var(--header-height); position: sticky; top: 0; z-index: 400; }
 .carte-title { font-family: var(--font-titre); font-size: 1.3rem; font-weight: 700; text-transform: uppercase; }
 .carte-progress { background: rgba(255,255,255,0.15); padding: 0.25rem 0.6rem; border-radius: 999px; font-family: var(--font-titre); font-size: 0.85rem; font-weight: 700; }
-#map { height: calc(100vh - var(--header-height) - var(--nav-height) - 36px); z-index: 1; }
-.legende { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.5rem 1rem; background: white; border-bottom: 1px solid var(--gris-clair); scrollbar-width: none; }
+#map { height: calc(100vh - var(--header-height) - 36px); z-index: 1; }
+.legende { display: flex; gap: 0.5rem; overflow-x: auto; padding: 0.5rem 1rem; background: white; border-bottom: 1px solid var(--gris-clair); scrollbar-width: none; align-items: center; }
 .legende::-webkit-scrollbar { display: none; }
 .legende-item { display: flex; align-items: center; gap: 0.35rem; flex-shrink: 0; font-family: var(--font-titre); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--gris); }
 .legende-dot { width: 10px; height: 10px; border-radius: 50%; }
@@ -263,8 +318,7 @@ p { font-size: 0.95rem; line-height: 1.6; }
 .dot-securite { background: var(--vert-profond); }
 
 /* --- Règles --- */
-.regles-header { background: var(--vert-profond); color: var(--blanc-casse); padding: 1rem; min-height: var(--header-height); display: flex; align-items: center; }
-.regles-body { padding: 1.25rem; padding-bottom: calc(var(--nav-height) + 1.5rem); }
+.regles-body { padding: 1.25rem; padding-bottom: 2rem; }
 .regle-card { background: white; border-radius: var(--radius); padding: 1.25rem; margin-bottom: 0.875rem; box-shadow: var(--shadow); border-left: 5px solid var(--lime); }
 .regle-card.danger { border-left-color: var(--turquoise); }
 .regle-icon { font-size: 2rem; margin-bottom: 0.5rem; }
@@ -272,13 +326,101 @@ p { font-size: 0.95rem; line-height: 1.6; }
 .regle-desc { font-size: 0.9rem; color: var(--gris); line-height: 1.5; }
 
 /* --- À propos --- */
-.apropos-header { background: var(--vert-profond); color: var(--blanc-casse); padding: 1rem; min-height: var(--header-height); display: flex; align-items: center; }
-.apropos-body { padding: 1.25rem; padding-bottom: calc(var(--nav-height) + 1.5rem); }
+.apropos-body { padding: 0; }
+.apropos-content { padding: 1.25rem; padding-bottom: 2rem; }
 .apropos-section { background: white; border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1rem; box-shadow: var(--shadow); }
 .apropos-label { font-family: var(--font-titre); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gris); margin-bottom: 0.25rem; }
 .team-list { list-style: none; margin-top: 0.5rem; }
 .team-list li { padding: 0.4rem 0; border-bottom: 1px solid var(--gris-clair); font-size: 0.9rem; }
 .team-list li:last-child { border-bottom: none; }
+
+/* --- Sections landing enrichies --- */
+.s-content {
+  padding: 2rem 1.5rem;
+  background: var(--blanc-casse);
+  border-top: 1px solid var(--gris-clair);
+}
+.s-content--alt { background: white; }
+.s-content__tag {
+  display: inline-block;
+  font-family: var(--font-titre);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-bottom: 0.15rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid currentColor;
+}
+.s-content__tag--geo { color: #b5a188; }
+.s-content__tag--histoire { color: var(--turquoise); }
+.s-content__tag--bresque { color: var(--lime); }
+.s-content__title {
+  font-family: var(--font-titre);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--vert-profond);
+  line-height: 1.1;
+  margin-bottom: 0.875rem;
+}
+.s-content__text {
+  font-size: 0.92rem;
+  color: var(--gris);
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+}
+.s-content__fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: rgba(19,67,63,0.06);
+  border-radius: var(--radius-sm);
+  margin-top: 0.5rem;
+}
+.s-content__fact-icon { font-size: 1.4rem; flex-shrink: 0; }
+.s-content__fact-text { font-size: 0.88rem; color: var(--noir); line-height: 1.5; }
+.s-content__fact-text strong { color: var(--vert-profond); }
+
+.s-avant {
+  padding: 1.75rem 1.5rem;
+  background: var(--blanc-casse);
+  border-top: 1px solid var(--gris-clair);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.s-avant__title {
+  font-family: var(--font-titre);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gris);
+  margin-bottom: 0.25rem;
+}
+.avant-link {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.875rem 1rem;
+  background: white;
+  border: 1px solid var(--gris-clair);
+  border-radius: var(--radius);
+  font-family: var(--font-titre);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--vert-profond);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+  box-shadow: var(--shadow);
+}
+.avant-link:hover { border-color: var(--vert-profond); background: rgba(19,67,63,0.04); }
+.avant-link__icon { font-size: 1.3rem; flex-shrink: 0; }
+.avant-link__arrow { margin-left: auto; color: var(--gris); }
 
 /* --- Animations --- */
 @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -286,6 +428,5 @@ p { font-size: 0.95rem; line-height: 1.6; }
 .animate-in { animation: fadeSlideUp 0.4s ease both; }
 .animate-pulse { animation: pulse 2s ease-in-out infinite; }
 
-/* --- Utilitaires --- */
 .hidden { display: none !important; }
 .text-center { text-align: center; }
