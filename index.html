@@ -4,29 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#13433F">
-
-  <!-- SEO — indexation -->
-  <meta name="description" content="Explorez l'ENS de Sillans-la-Cascade : cascade de 44 mètres, biodiversité protégée, histoire médiévale. 14 points d'intérêt, carte GPS et quiz — utilisable hors connexion.">
-  <meta name="keywords" content="Sillans-la-Cascade, cascade, ENS, Var, Département du Var, randonnée, nature, Provence, Bresque, espace naturel sensible, médiation culturelle">
+  <link rel="icon" type="image/png" href="/img/logo.png">
+  <link rel="apple-touch-icon" href="/img/logo.png">
+  <meta name="description" content="Explorez l’ENS de Sillans-la-Cascade : cascade de 44 mètres, biodiversité protégée, histoire médiévale. 14 points d’intérêt, carte GPS et quiz — utilisable hors connexion.">
+  <meta name="keywords" content="Sillans-la-Cascade, cascade, ENS, Var, Département du Var, randonnée, nature, Provence, Bresque, espace naturel sensible">
   <meta name="author" content="Département du Var — Service Espaces Naturels Sensibles">
   <meta name="robots" content="index, follow">
-
-  <!-- Open Graph — partage réseaux sociaux -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Visiter Sillans-la-Cascade — ENS du Var">
-  <meta property="og:description" content="Explorez la cascade de 44 mètres et les 14 points d'intérêt de l'ENS de Sillans-la-Cascade. Application de médiation culturelle du Département du Var.">
+  <meta property="og:description" content="Explorez la cascade de 44 mètres et les 14 points d’intérêt de l’ENS de Sillans-la-Cascade.">
   <meta property="og:image" content="/img/poi/poi-05.jpg">
-  <meta property="og:image:alt" content="La cascade de Sillans-la-Cascade, 44 mètres, Var, Provence">
+  <meta property="og:image:alt" content="La cascade de Sillans-la-Cascade, 44 mètres, Var, Provence">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Visiter Sillans-la-Cascade">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Visiter Sillans-la-Cascade — ENS du Var">
-  <meta name="twitter:description" content="Application de médiation culturelle pour l'ENS de Sillans-la-Cascade. 14 points d'intérêt, biodiversité, histoire, hors-ligne.">
+  <meta name="twitter:description" content="Application de médiation culturelle pour l’ENS de Sillans-la-Cascade. 14 points d’intérêt, biodiversité, histoire, hors-ligne.">
   <meta name="twitter:image" content="/img/poi/poi-05.jpg">
-
-  <!-- Données structurées — attraction touristique -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,296 +28,59 @@
     "name": "ENS de Sillans-la-Cascade",
     "description": "Espace Naturel Sensible de 369 hectares avec cascade de 44 mètres, géré par le Département du Var.",
     "image": "/img/poi/poi-05.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Sillans-la-Cascade",
-      "addressRegion": "Var",
-      "addressCountry": "FR",
-      "postalCode": "83690"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 43.5669,
-      "longitude": 6.1803
-    },
-    "managedBy": {
-      "@type": "Organization",
-      "name": "Département du Var",
-      "url": "https://www.var.fr"
-    },
+    "address": { "@type": "PostalAddress", "addressLocality": "Sillans-la-Cascade", "addressRegion": "Var", "addressCountry": "FR", "postalCode": "83690" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 43.5669, "longitude": 6.1803 },
+    "managedBy": { "@type": "Organization", "name": "Département du Var", "url": "https://www.var.fr" },
     "isAccessibleForFree": true,
     "publicAccess": true
   }
   </script>
-
   <title>Visiter Sillans-la-Cascade — ENS du Var</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-
-    /* Lien d'évitement — accessibilité clavier */
-    .skip-link {
-      position: absolute;
-      top: -100%;
-      left: 1rem;
-      background: var(--vert-profond);
-      color: var(--blanc-casse);
-      padding: 0.5rem 1rem;
-      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-      font-family: var(--font-titre);
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      z-index: 9999;
-      text-decoration: none;
-      transition: top 0.2s;
-    }
+    .skip-link { position: absolute; top: -100%; left: 1rem; background: var(--vert-profond); color: var(--blanc-casse); padding: 0.5rem 1rem; border-radius: 0 0 var(--radius-sm) var(--radius-sm); font-family: var(--font-titre); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; z-index: 9999; text-decoration: none; transition: top 0.2s; }
     .skip-link:focus { top: 0; }
-
     html, body { margin: 0; padding: 0; overflow-x: hidden; }
-
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 100svh;
-      min-height: 500px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-    .hero__photo {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(19, 67, 63, 0.92) 0%,
-        rgba(19, 67, 63, 0.4) 45%,
-        rgba(0,0,0,0.15) 100%
-      );
-    }
-    .hero__badge {
-      position: absolute;
-      top: 1.25rem;
-      left: 1.25rem;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 999px;
-      padding: 0.35rem 0.85rem;
-      font-family: var(--font-titre);
-      font-size: 0.72rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.9);
-    }
-    .hero__content {
-      position: relative;
-      z-index: 2;
-      padding: 0 1.5rem 2.5rem;
-      color: var(--blanc-casse);
-    }
-    .hero__label {
-      font-family: var(--font-titre);
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--lime);
-      margin-bottom: 0.5rem;
-    }
-    .hero__title {
-      font-family: var(--font-titre);
-      font-size: 3rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      line-height: 1;
-      letter-spacing: 0.01em;
-      margin-bottom: 0.75rem;
-    }
+    .hero { position: relative; width: 100%; height: 100svh; min-height: 500px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(19,67,63,0.92) 0%, rgba(19,67,63,0.4) 45%, rgba(0,0,0,0.15) 100%); }
+    .hero__badge { position: absolute; top: 1.25rem; left: 1.25rem; z-index: 2; display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 0.35rem 0.85rem; font-family: var(--font-titre); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.9); }
+    .hero__badge-logo { height: 16px; width: auto; }
+    .hero__content { position: relative; z-index: 2; padding: 0 1.5rem 2.5rem; color: var(--blanc-casse); }
+    .hero__label { font-family: var(--font-titre); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--lime); margin-bottom: 0.5rem; }
+    .hero__title { font-family: var(--font-titre); font-size: 3rem; font-weight: 700; text-transform: uppercase; line-height: 1; letter-spacing: 0.01em; margin-bottom: 0.75rem; }
     .hero__title span { color: var(--lime); display: block; }
-    .hero__desc {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.55;
-      max-width: 340px;
-      margin-bottom: 1.75rem;
-    }
-    .hero__cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--lime);
-      color: #2d4000;
-      font-family: var(--font-titre);
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.9rem 1.75rem;
-      border-radius: var(--radius-sm);
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      justify-content: center;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .hero__cta:focus-visible {
-      outline: 3px solid var(--lime);
-      outline-offset: 3px;
-    }
+    .hero__desc { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.55; max-width: 340px; margin-bottom: 1.75rem; }
+    .hero__cta { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--lime); color: #2d4000; font-family: var(--font-titre); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.9rem 1.75rem; border-radius: var(--radius-sm); border: none; cursor: pointer; width: 100%; justify-content: center; transition: background 0.2s, transform 0.15s; }
+    .hero__cta:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
     .hero__cta:active { transform: scale(0.98); }
     .hero__cta:hover { background: #b8dc3a; }
-    .hero__scroll {
-      position: absolute;
-      bottom: 5.5rem;
-      right: 1.5rem;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.3rem;
-      font-family: var(--font-titre);
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.5);
-    }
-    .hero__scroll-line {
-      width: 1px;
-      height: 32px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.5; transform: scaleY(1); }
-      50%       { opacity: 1;   transform: scaleY(1.15); }
-    }
-    .s-stats {
-      background: var(--vert-profond);
-      color: var(--blanc-casse);
-      padding: 2rem 1.5rem;
-      display: flex;
-      justify-content: space-around;
-      gap: 0.5rem;
-    }
+    .hero__scroll { position: absolute; bottom: 5.5rem; right: 1.5rem; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; font-family: var(--font-titre); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
+    .hero__scroll-line { width: 1px; height: 32px; background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+    @keyframes scrollPulse { 0%,100%{opacity:.5;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.15)} }
+    .s-stats { background: var(--vert-profond); color: var(--blanc-casse); padding: 2rem 1.5rem; display: flex; justify-content: space-around; gap: 0.5rem; }
     .stat { text-align: center; flex: 1; }
-    .stat__num {
-      font-family: var(--font-titre);
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--lime);
-      line-height: 1;
-      display: block;
-    }
-    .stat__label {
-      font-family: var(--font-titre);
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.6);
-      display: block;
-      margin-top: 0.3rem;
-      line-height: 1.3;
-    }
+    .stat__num { font-family: var(--font-titre); font-size: 2.2rem; font-weight: 700; color: var(--lime); line-height: 1; display: block; }
+    .stat__label { font-family: var(--font-titre); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.6); display: block; margin-top: 0.3rem; line-height: 1.3; }
     .s-intro { background: var(--blanc-casse); padding: 2rem 1.5rem; }
-    .s-intro__tag {
-      display: inline-block;
-      font-family: var(--font-titre);
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--turquoise);
-      border-bottom: 2px solid var(--turquoise);
-      padding-bottom: 0.15rem;
-      margin-bottom: 0.75rem;
-    }
-    .s-intro__title {
-      font-family: var(--font-titre);
-      font-size: 1.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--vert-profond);
-      line-height: 1.1;
-      margin-bottom: 0.875rem;
-    }
-    .s-intro__text {
-      font-size: 0.92rem;
-      color: var(--gris);
-      line-height: 1.65;
-      margin-bottom: 0.875rem;
-    }
+    .s-intro__tag { display: inline-block; font-family: var(--font-titre); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--turquoise); border-bottom: 2px solid var(--turquoise); padding-bottom: 0.15rem; margin-bottom: 0.75rem; }
+    .s-intro__title { font-family: var(--font-titre); font-size: 1.7rem; font-weight: 700; text-transform: uppercase; color: var(--vert-profond); line-height: 1.1; margin-bottom: 0.875rem; }
+    .s-intro__text { font-size: 0.92rem; color: var(--gris); line-height: 1.65; margin-bottom: 0.875rem; }
     .s-gallery { padding: 0 1.5rem 2rem; background: var(--blanc-casse); }
     .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-    .gallery-grid__item {
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      aspect-ratio: 3/4;
-      background: var(--gris-clair);
-    }
-    .gallery-grid__item--wide { grid-column: 1 / -1; aspect-ratio: 16/9; }
+    .gallery-grid__item { border-radius: var(--radius-sm); overflow: hidden; aspect-ratio: 3/4; background: var(--gris-clair); }
+    .gallery-grid__item--wide { grid-column: 1/-1; aspect-ratio: 16/9; }
     .gallery-grid__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .s-circuit { background: var(--vert-profond); padding: 2rem 1.5rem 3rem; }
-    .circuit-tag {
-      display: inline-block;
-      font-family: var(--font-titre);
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--lime);
-      border-bottom: 2px solid var(--lime);
-      padding-bottom: 0.15rem;
-      margin-bottom: 0.75rem;
-    }
-    .circuit-title {
-      font-family: var(--font-titre);
-      font-size: 1.5rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--blanc-casse);
-      margin-bottom: 1rem;
-    }
+    .circuit-tag { display: inline-block; font-family: var(--font-titre); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--lime); border-bottom: 2px solid var(--lime); padding-bottom: 0.15rem; margin-bottom: 0.75rem; }
+    .circuit-title { font-family: var(--font-titre); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; color: var(--blanc-casse); margin-bottom: 1rem; }
     .themes-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
     .circuit-info { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
     .circuit-info__item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.88rem; color: rgba(255,255,255,0.7); }
     .circuit-info__icon { font-size: 1.1rem; width: 24px; text-align: center; flex-shrink: 0; }
-    .loading-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--vert-profond);
-      z-index: 1000;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      text-align: center;
-      color: var(--blanc-casse);
-    }
+    .loading-overlay { display: none; position: fixed; inset: 0; background: var(--vert-profond); z-index: 1000; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; color: var(--blanc-casse); }
     .loading-overlay.visible { display: flex; }
-    .loading-overlay .app-logo {
-      font-family: var(--font-titre);
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--blanc-casse);
-      margin-bottom: 0.25rem;
-    }
+    .loading-overlay .app-logo { font-family: var(--font-titre); font-size: 2.5rem; font-weight: 700; text-transform: uppercase; color: var(--blanc-casse); margin-bottom: 0.25rem; }
     .loading-overlay .app-logo span { color: var(--lime); }
     .loading-overlay p { opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem; }
     .loading-overlay .progress-bar-outer { width: 100%; max-width: 280px; }
@@ -332,91 +89,96 @@
 </head>
 <body>
 
-<!-- Lien d'évitement — navigation clavier -->
 <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
 
-<!-- HERO -->
 <section class="hero" aria-label="Présentation du site de Sillans-la-Cascade">
-  <img
-    class="hero__photo"
-    src="img/poi/poi-05.jpg"
-    alt="La cascade de Sillans-la-Cascade : chute de 44 mètres dans un bassin turquoise, Var, Provence"
-    onerror="this.style.display='none'"
-  >
-  <div class="hero__badge" aria-hidden="true">🌿 ENS · Département du Var</div>
-  <div class="hero__scroll" aria-hidden="true">
-    <div class="hero__scroll-line"></div>
-    <span>Découvrir</span>
+  <img class="hero__photo" src="img/poi/poi-05.jpg" alt="La cascade de Sillans-la-Cascade : chute de 44 mètres dans un bassin turquoise, Var, Provence" onerror="this.style.display='none'">
+  <div class="hero__badge" aria-hidden="true">
+    <img src="img/logo.png" alt="" class="hero__badge-logo" onerror="this.style.display='none'">
+    🌿 ENS · Département du Var
   </div>
+  <div class="hero__scroll" aria-hidden="true"><div class="hero__scroll-line"></div><span>Découvrir</span></div>
   <div class="hero__content">
     <p class="hero__label">Espace Naturel Sensible</p>
     <h1 class="hero__title">Visiter<span>Sillans</span></h1>
-    <p class="hero__desc">
-      Une cascade de 44 mètres, une rivière d'exception,
-      un village médiéval perché dans le Var.
-      Explorez le site avant de commencer votre visite.
-    </p>
-    <button class="hero__cta" onclick="lancerVisite()" aria-label="Commencer la visite guidée de l'ENS">
-      Commencer la visite →
-    </button>
+    <p class="hero__desc">Une cascade de 44 mètres, une rivière d’exception, un village médiéval perché dans le Var. Explorez le site avant de commencer votre visite.</p>
+    <button class="hero__cta" onclick="lancerVisite()" aria-label="Commencer la visite guidée de l’ENS">Commencer la visite →</button>
   </div>
 </section>
 
 <main id="contenu-principal">
 
-  <!-- CHIFFRES CLÉS -->
   <section class="s-stats" aria-label="Chiffres clés du site">
-    <div class="stat">
-      <span class="stat__num">44 m</span>
-      <span class="stat__label">Hauteur de la cascade</span>
-    </div>
-    <div class="stat" style="border-left:1px solid rgba(255,255,255,0.12); border-right:1px solid rgba(255,255,255,0.12);">
-      <span class="stat__num">369 ha</span>
-      <span class="stat__label">Surface de l'ENS</span>
-    </div>
-    <div class="stat">
-      <span class="stat__num">96 k</span>
-      <span class="stat__label">Visiteurs par été</span>
-    </div>
+    <div class="stat"><span class="stat__num">44 m</span><span class="stat__label">Hauteur de la cascade</span></div>
+    <div class="stat" style="border-left:1px solid rgba(255,255,255,0.12);border-right:1px solid rgba(255,255,255,0.12);"><span class="stat__num">369 ha</span><span class="stat__label">Surface de l’ENS</span></div>
+    <div class="stat"><span class="stat__num">96 k</span><span class="stat__label">Visiteurs par été</span></div>
   </section>
 
-  <!-- PRÉSENTATION -->
   <section class="s-intro" aria-label="Présentation du site naturel">
     <span class="s-intro__tag">Le site</span>
     <h2 class="s-intro__title">Un sanctuaire naturel et historique</h2>
-    <p class="s-intro__text">
-      Nichée dans un vallon du Haut-Var, la cascade de Sillans-la-Cascade est
-      l'une des plus hautes cascades permanentes de Provence. La Bresque dévale
-      44 mètres dans un bassin aux reflets turquoise, coloré par les particules
-      calcaires en suspension.
-    </p>
-    <p class="s-intro__text">
-      Classé Espace Naturel Sensible par le Département du Var, ce site de
-      369 hectares abrite une biodiversité remarquable — chauves-souris protégées,
-      écrevisse à pattes blanches, fougères hygrophiles — et des vestiges
-      historiques qui témoignent de siècles d'occupation humaine.
-    </p>
+    <p class="s-intro__text">Nichée dans un vallon du Haut-Var, la cascade de Sillans-la-Cascade est l’une des plus hautes cascades permanentes de Provence. La Bresque dévale 44 mètres dans un bassin aux reflets turquoise, coloré par les particules calcaires en suspension — les eaux de la rivière reçoivent également celles de la source du Château de Bresc et de la vallée de l’Ourc.</p>
+    <p class="s-intro__text">Classé Espace Naturel Sensible par le Département du Var, ce site de 369 hectares abrite une biodiversité remarquable — chauves-souris protégées, écrevisse à pattes blanches, fougères hygrophiles — et des vestiges historiques témoignant de siècles d’occupation humaine.</p>
   </section>
 
-  <!-- GALERIE -->
   <section class="s-gallery" aria-label="Photos du site">
     <div class="gallery-grid" role="list">
-      <div class="gallery-grid__item gallery-grid__item--wide" role="listitem">
-        <img src="img/poi/poi-09.jpg" alt="La Bresque, rivière qui alimente la cascade" onerror="this.parentElement.style.background='var(--gris-clair)'">
-      </div>
-      <div class="gallery-grid__item" role="listitem">
-        <img src="img/poi/poi-02.jpg" alt="Le bastidon et l'oliveraie" onerror="this.parentElement.style.background='var(--gris-clair)'">
-      </div>
-      <div class="gallery-grid__item" role="listitem">
-        <img src="img/poi/poi-11.jpg" alt="Le lavoir communal de Sillans" onerror="this.parentElement.style.background='var(--gris-clair)'">
-      </div>
+      <div class="gallery-grid__item gallery-grid__item--wide" role="listitem"><img src="img/poi/poi-09.jpg" alt="La Bresque, rivière qui alimente la cascade" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
+      <div class="gallery-grid__item" role="listitem"><img src="img/poi/poi-02.jpg" alt="Le bastidon et l’oliveraie" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
+      <div class="gallery-grid__item" role="listitem"><img src="img/poi/poi-11.jpg" alt="Le lavoir communal de Sillans" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
     </div>
   </section>
 
-  <!-- CIRCUIT + CTA FINAL -->
+  <section class="s-content" aria-label="Géologie du site">
+    <span class="s-content__tag s-content__tag--geo">Géologie</span>
+    <h2 class="s-content__title">La tufière : une formation rare</h2>
+    <p class="s-content__text">La cascade crée une <strong>tufière</strong>, formation géologique d’exception où le calcaire dissous dans la Bresque se dépose progressivement sur les mousses et la végétation, les pétrifiant littéralement au fil des décennies. Ces dépôts de travertin, aux teintes crèmes et rosées, forment les falaises caractéristiques qui encadrent le bassin.</p>
+    <p class="s-content__text">Le contraste entre le rose du travertin et les reflets émeraude de l’eau est à l’origine de la réputation du site bien au-delà du Var. Ce paysage minuto-végétal unique se forme sur des échelles de temps géologiques.</p>
+    <div class="s-content__fact">
+      <span class="s-content__fact-icon" aria-hidden="true">⚠️</span>
+      <p class="s-content__fact-text"><strong>Extrême fragilité</strong> — les concrétions calcaires mettent des décennies à se former. Tout piétinement ou contact avec l’eau les détruit irrémédiablement. C’est la raison première de l’interdiction de baignade.</p>
+    </div>
+  </section>
+
+  <section class="s-content s-content--alt" aria-label="Histoire de Sillans-la-Cascade">
+    <span class="s-content__tag s-content__tag--histoire">Histoire</span>
+    <h2 class="s-content__title">Mille ans d’histoire médiévale</h2>
+    <p class="s-content__text">Sillans est mentionné dès le <strong>XI<sup>e</sup> siècle</strong>, lorsque l’abbaye de Saint-Victor de Marseille en devient propriétaire. Ses remparts et les ruines de son château témoignent encore de cette longue histoire — le fief passant successivement des Baux aux Pontevès, des Blacas aux Albert-Châteauneuf, de 1099 à 1781.</p>
+    <p class="s-content__text">Les maisons du village, construites en pierre de tuf locale, bordent des rues pavées qui mènent à l’église Notre-Dame et aux vestiges du château perché sur son promontoire dominant la vallée de la Bresque. Ce n’est qu’en <strong>1929</strong> que « la Cascade » est officiellement ajoutée au nom de la commune.</p>
+    <div class="s-content__fact">
+      <span class="s-content__fact-icon" aria-hidden="true">🏰</span>
+      <p class="s-content__fact-text"><strong>Architecture</strong> — le village conserve ses remparts du XI<sup>e</sup> siècle, un lavoir communal et des éléments industriels du début du XX<sup>e</sup> siècle : l’usine hydroélectrique qui exploita la force de la Bresque.</p>
+    </div>
+  </section>
+
+  <section class="s-content" aria-label="La rivière Bresque">
+    <span class="s-content__tag s-content__tag--bresque">La Bresque</span>
+    <h2 class="s-content__title">Une rivière permanente, une exception</h2>
+    <p class="s-content__text">Dans un contexte méditerranéen où l’assèchement estival des cours d’eau est la norme, la Bresque coule de façon <strong>permanente</strong> toute l’année. Alimentée par plusieurs sources, elle offre un habitat stable à des espèces exigeantes sur la qualité de l’eau.</p>
+    <p class="s-content__text">L’<strong>écrevisse à pattes blanches</strong>, espèce protégée particulièrement sensible à la pollution, est présente dans la Bresque — véritable indicateur biologique de la santé de la rivière et de l’ensemble du système aquatique.</p>
+    <div class="s-content__fact">
+      <span class="s-content__fact-icon" aria-hidden="true">🚫</span>
+      <p class="s-content__fact-text"><strong>Baignade strictement interdite</strong> — les courants sont traîtres et les falaises de travertin instables. L’interdiction est absolue, y compris les pieds dans l’eau au bord du bassin.</p>
+    </div>
+  </section>
+
+  <section class="s-avant" aria-label="Informations avant la visite">
+    <p class="s-avant__title">Avant de partir</p>
+    <a href="html/regles.html" class="avant-link">
+      <span class="avant-link__icon" aria-hidden="true">📋</span>
+      <span>5 règles à connaître sur le site</span>
+      <span class="avant-link__arrow" aria-hidden="true">→</span>
+    </a>
+    <a href="html/a-propos.html" class="avant-link">
+      <span class="avant-link__icon" aria-hidden="true">ℹ️</span>
+      <span>À propos — ENS et Département du Var</span>
+      <span class="avant-link__arrow" aria-hidden="true">→</span>
+    </a>
+  </section>
+
   <section class="s-circuit" aria-label="Description du parcours et démarrage">
     <span class="circuit-tag">Le parcours</span>
-    <h2 class="circuit-title">14 points d'intérêt à découvrir</h2>
+    <h2 class="circuit-title">14 points d’intérêt à découvrir</h2>
     <div class="themes-list" aria-label="Thèmes abordés">
       <span class="badge-theme badge-biodiversite">🌿 Biodiversité</span>
       <span class="badge-theme badge-geologie">🪨 Géologie</span>
@@ -424,33 +186,21 @@
       <span class="badge-theme badge-securite">🛡 Sécurité</span>
     </div>
     <ul class="circuit-info" aria-label="Informations pratiques">
-      <li class="circuit-info__item">
-        <span class="circuit-info__icon" aria-hidden="true">📍</span>
-        <span>Circuit de 2 km aller-retour depuis le village</span>
-      </li>
-      <li class="circuit-info__item">
-        <span class="circuit-info__icon" aria-hidden="true">⏱</span>
-        <span>1h à 1h30 selon le rythme</span>
-      </li>
-      <li class="circuit-info__item">
-        <span class="circuit-info__icon" aria-hidden="true">📶</span>
-        <span>Application utilisable hors connexion sur le site</span>
-      </li>
-      <li class="circuit-info__item">
-        <span class="circuit-info__icon" aria-hidden="true">🎯</span>
-        <span>Quiz de 10 questions en fin de parcours</span>
-      </li>
+      <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true">📍</span><span>Circuit de 2 km aller-retour depuis le village</span></li>
+      <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true">⏱</span><span>1h à 1h30 selon le rythme</span></li>
+      <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true">📶</span><span>Application utilisable hors connexion sur le site</span></li>
+      <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true">🎯</span><span>Quiz de 10 questions en fin de parcours</span></li>
     </ul>
-    <button class="hero__cta" onclick="lancerVisite()" aria-label="Accéder à la carte du parcours">
-      Commencer la visite →
-    </button>
+    <button class="hero__cta" onclick="lancerVisite()" aria-label="Accéder à la carte du parcours">Commencer la visite →</button>
   </section>
 
 </main>
 
-<!-- OVERLAY CHARGEMENT -->
 <div class="loading-overlay" id="loading-overlay" role="status" aria-live="polite" aria-label="Chargement du contenu hors-ligne">
-  <div class="app-logo" aria-hidden="true">Visiter <span>Sillans</span></div>
+  <div class="loading-logo">
+    <img src="img/logo.png" alt="" class="loading-logo__img" onerror="this.style.display='none'">
+    <div class="app-logo" aria-hidden="true">Visiter <span>Sillans</span></div>
+  </div>
   <p>Préparation du contenu hors-ligne…</p>
   <div class="progress-bar-outer" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="dl-progressbar">
     <div class="progress-bar-inner" id="dl-progress" style="transition: width 0.4s ease;"></div>
@@ -461,69 +211,44 @@
 <script src="js/app.js"></script>
 <script>
 function lancerVisite() {
-  const overlay   = document.getElementById('loading-overlay');
-  const bar       = document.getElementById('dl-progress');
+  const overlay = document.getElementById('loading-overlay');
+  const bar = document.getElementById('dl-progress');
   const progressbar = document.getElementById('dl-progressbar');
-  const label     = document.getElementById('dl-label');
-
+  const label = document.getElementById('dl-label');
   overlay.classList.add('visible');
   bar.style.width = '5%';
-
   function setProgress(pct, txt) {
     bar.style.width = pct + '%';
     progressbar.setAttribute('aria-valuenow', Math.round(pct));
     if (txt) label.textContent = txt;
   }
-
   function goToApp() {
     setProgress(100, '✓ Contenu disponible hors-ligne');
     setTimeout(() => { window.location.href = 'html/carte.html'; }, 700);
   }
-
-  if (!('serviceWorker' in navigator)) {
-    label.textContent = 'Chargement…';
-    setTimeout(goToApp, 800);
-    return;
-  }
-
+  if (!('serviceWorker' in navigator)) { label.textContent = 'Chargement…'; setTimeout(goToApp, 800); return; }
   navigator.serviceWorker.register('/sw.js')
     .then(registration => {
       const sw = registration.installing || registration.waiting;
-
-      if (!sw) {
-        label.textContent = 'Contenu en cache ✓';
-        goToApp();
-        return;
-      }
-
+      if (!sw) { label.textContent = 'Contenu en cache ✓'; goToApp(); return; }
       setProgress(15, 'Téléchargement des données…');
       let pct = 15;
-
       const tick = setInterval(() => {
         if (pct < 88) {
           pct += (88 - pct) * 0.08;
-          if (pct > 30 && pct < 45)      setProgress(pct, 'Pages et carte…');
+          if (pct > 30 && pct < 45) setProgress(pct, 'Pages et carte…');
           else if (pct > 45 && pct < 65) setProgress(pct, 'Photos des points d\'intérêt…');
           else if (pct > 65 && pct < 80) setProgress(pct, 'Quiz et contenus…');
-          else                            setProgress(pct, 'Finalisation…');
+          else setProgress(pct, 'Finalisation…');
         }
       }, 300);
-
       sw.addEventListener('statechange', e => {
-        if (e.target.state === 'activated' || e.target.state === 'installed') {
-          clearInterval(tick);
-          goToApp();
-        }
+        if (e.target.state === 'activated' || e.target.state === 'installed') { clearInterval(tick); goToApp(); }
       });
-
       setTimeout(() => { clearInterval(tick); goToApp(); }, 20000);
     })
-    .catch(() => {
-      label.textContent = 'Mode connecté';
-      setTimeout(goToApp, 600);
-    });
+    .catch(() => { label.textContent = 'Mode connecté'; setTimeout(goToApp, 600); });
 }
 </script>
-
 </body>
 </html>
