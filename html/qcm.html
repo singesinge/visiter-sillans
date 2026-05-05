@@ -4,21 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#13433F">
+  <link rel="icon" type="image/png" href="/img/logo.png">
   <title>Quiz — Visiter Sillans</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-<header class="qcm-header">
-  <div>
-    <div style="font-size:0.75rem;opacity:0.7;font-family:var(--font-titre);text-transform:uppercase;letter-spacing:0.08em;">Quiz naturaliste</div>
-    <div style="font-family:var(--font-titre);font-size:1.1rem;font-weight:700;text-transform:uppercase;">
-      Question <span id="q-actuelle">1</span> / <span id="q-total">10</span>
-    </div>
+<nav class="top-nav" aria-label="Navigation principale">
+  <a href="../index.html" class="top-nav__brand" aria-label="Retour à l’accueil">
+    <img src="../img/logo.png" alt="" class="top-nav__logo" onerror="this.style.display='none'">
+    <span class="top-nav__name">Visiter <strong>Sillans</strong></span>
+  </a>
+  <div class="top-nav__links" role="list">
+    <a href="carte.html" class="top-nav__item" role="listitem" aria-label="Carte">
+      <span class="top-nav__item-icon" aria-hidden="true">🗺️</span><span>Carte</span>
+    </a>
+    <a href="regles.html" class="top-nav__item" role="listitem" aria-label="Règles">
+      <span class="top-nav__item-icon" aria-hidden="true">📋</span><span>Règles</span>
+    </a>
+    <a href="qcm.html" class="top-nav__item active" role="listitem" aria-current="page" aria-label="Quiz">
+      <span class="top-nav__item-icon" aria-hidden="true">🎯</span><span>Quiz</span>
+    </a>
+    <a href="a-propos.html" class="top-nav__item" role="listitem" aria-label="À propos">
+      <span class="top-nav__item-icon" aria-hidden="true">ℹ️</span><span>À propos</span>
+    </a>
   </div>
-</header>
+</nav>
 
-<!-- Zone quiz -->
+<div class="qcm-sub-header">
+  <span>Quiz naturaliste</span>
+  <span>Q. <span id="q-actuelle">1</span> / <span id="q-total">10</span></span>
+</div>
+
 <main class="qcm-body animate-in" id="zone-quiz">
   <div class="qcm-dots" id="dots-container"></div>
   <p class="qcm-question" id="question-texte">Chargement...</p>
@@ -29,7 +46,6 @@
   </button>
 </main>
 
-<!-- Écran résultat -->
 <div class="score-screen" id="score-screen">
   <div class="score-mascotte">🦇</div>
   <div class="score-nombre" id="score-nombre">0/10</div>
@@ -39,28 +55,9 @@
     🔄 Recommencer
   </button>
   <a href="../index.html" class="btn btn-ghost" style="margin:0 auto;">
-    ← Retour à l'accueil
+    ← Retour à l’accueil
   </a>
 </div>
-
-<nav class="bottom-nav">
-  <a href="carte.html" class="nav-item">
-    <span class="nav-icon">🗺️</span>
-    <span>Carte</span>
-  </a>
-  <a href="regles.html" class="nav-item">
-    <span class="nav-icon">📋</span>
-    <span>Règles</span>
-  </a>
-  <a href="qcm.html" class="nav-item active">
-    <span class="nav-icon">🎯</span>
-    <span>Quiz</span>
-  </a>
-  <a href="a-propos.html" class="nav-item">
-    <span class="nav-icon">ℹ️</span>
-    <span>À propos</span>
-  </a>
-</nav>
 
 <script src="../js/progress.js"></script>
 <script src="../js/app.js"></script>

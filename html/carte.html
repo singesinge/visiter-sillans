@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#13433F">
-  <meta name="description" content="Carte interactive des 14 points d'intérêt de l'ENS de Sillans-la-Cascade.">
+  <meta name="description" content="Carte interactive des 14 points d’intérêt de l’ENS de Sillans-la-Cascade.">
+  <link rel="icon" type="image/png" href="/img/logo.png">
   <title>Carte — Visiter Sillans-la-Cascade</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="../css/style.css">
@@ -12,90 +13,45 @@
     html, body { height: 100%; margin: 0; padding: 0; }
     body { display: flex; flex-direction: column; }
     #map { flex: 1; min-height: 0; }
-    .leaflet-popup-content-wrapper {
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.18);
-    }
+    .leaflet-popup-content-wrapper { border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.18); }
     .popup-content { padding: 0.25rem; min-width: 160px; }
-    .popup-num {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #6B7280;
-      margin-bottom: 0.1rem;
-    }
-    .popup-titre {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #13433F;
-      margin-bottom: 0.5rem;
-    }
-    .popup-btn {
-      display: block;
-      background: #13433F;
-      color: #F7F6F2;
-      text-align: center;
-      border-radius: 6px;
-      padding: 0.4rem 0.75rem;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-    }
+    .popup-num { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6B7280; margin-bottom: 0.1rem; }
+    .popup-titre { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; color: #13433F; margin-bottom: 0.5rem; }
+    .popup-btn { display: block; background: #13433F; color: #F7F6F2; text-align: center; border-radius: 6px; padding: 0.4rem 0.75rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; }
   </style>
 </head>
 <body>
 
-<header class="carte-header" role="banner">
-  <span class="carte-title">Carte du parcours</span>
-  <span class="carte-progress" id="progress-display" aria-label="Progression de la visite" aria-live="polite">0 / 14</span>
-</header>
+<nav class="top-nav" aria-label="Navigation principale">
+  <a href="../index.html" class="top-nav__brand" aria-label="Retour à l’accueil">
+    <img src="../img/logo.png" alt="" class="top-nav__logo" onerror="this.style.display='none'">
+    <span class="top-nav__name">Visiter <strong>Sillans</strong></span>
+  </a>
+  <div class="top-nav__links" role="list">
+    <a href="carte.html" class="top-nav__item active" role="listitem" aria-current="page" aria-label="Carte">
+      <span class="top-nav__item-icon" aria-hidden="true">🗺️</span><span>Carte</span>
+    </a>
+    <a href="regles.html" class="top-nav__item" role="listitem" aria-label="Règles">
+      <span class="top-nav__item-icon" aria-hidden="true">📋</span><span>Règles</span>
+    </a>
+    <a href="qcm.html" class="top-nav__item" role="listitem" aria-label="Quiz">
+      <span class="top-nav__item-icon" aria-hidden="true">🎯</span><span>Quiz</span>
+    </a>
+    <a href="a-propos.html" class="top-nav__item" role="listitem" aria-label="À propos">
+      <span class="top-nav__item-icon" aria-hidden="true">ℹ️</span><span>À propos</span>
+    </a>
+  </div>
+</nav>
 
 <div class="legende" role="list" aria-label="Légende des thèmes">
-  <div class="legende-item" role="listitem">
-    <div class="legende-dot dot-biodiversite" aria-hidden="true"></div>
-    Biodiversité
-  </div>
-  <div class="legende-item" role="listitem">
-    <div class="legende-dot dot-geologie" aria-hidden="true"></div>
-    Géologie
-  </div>
-  <div class="legende-item" role="listitem">
-    <div class="legende-dot dot-histoire" aria-hidden="true"></div>
-    Histoire
-  </div>
-  <div class="legende-item" role="listitem">
-    <div class="legende-dot dot-securite" aria-hidden="true"></div>
-    Sécurité
-  </div>
+  <div class="legende-item" role="listitem"><div class="legende-dot dot-biodiversite" aria-hidden="true"></div>Biodiversité</div>
+  <div class="legende-item" role="listitem"><div class="legende-dot dot-geologie" aria-hidden="true"></div>Géologie</div>
+  <div class="legende-item" role="listitem"><div class="legende-dot dot-histoire" aria-hidden="true"></div>Histoire</div>
+  <div class="legende-item" role="listitem"><div class="legende-dot dot-securite" aria-hidden="true"></div>Sécurité</div>
+  <span class="carte-progress" id="progress-display" aria-label="Progression de la visite" aria-live="polite" style="margin-left:auto;">0 / 14</span>
 </div>
 
-<main id="map" aria-label="Carte interactive des points d'intérêt"></main>
-
-<nav class="bottom-nav" aria-label="Navigation principale">
-  <a href="carte.html" class="nav-item active" aria-current="page" aria-label="Carte du parcours">
-    <span class="nav-icon" aria-hidden="true">🗺️</span>
-    <span>Carte</span>
-  </a>
-  <a href="regles.html" class="nav-item" aria-label="Règles du site">
-    <span class="nav-icon" aria-hidden="true">📋</span>
-    <span>Règles</span>
-  </a>
-  <a href="qcm.html" class="nav-item" aria-label="Quiz de connaissances">
-    <span class="nav-icon" aria-hidden="true">🎯</span>
-    <span>Quiz</span>
-  </a>
-  <a href="a-propos.html" class="nav-item" aria-label="À propos et informations">
-    <span class="nav-icon" aria-hidden="true">ℹ️</span>
-    <span>À propos</span>
-  </a>
-</nav>
+<main id="map" aria-label="Carte interactive des points d’intérêt"></main>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="../js/progress.js"></script>

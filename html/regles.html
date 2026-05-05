@@ -4,24 +4,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#13433F">
+  <meta name="description" content="5 règles à respecter sur l’ENS de Sillans-la-Cascade pour préserver le site.">
+  <link rel="icon" type="image/png" href="/img/logo.png">
   <title>Règles — Visiter Sillans</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-<header class="regles-header">
-  <div>
-    <div style="font-size:0.75rem;opacity:0.7;font-family:var(--font-titre);text-transform:uppercase;letter-spacing:0.08em;">Avant la visite</div>
-    <div style="font-family:var(--font-titre);font-size:1.3rem;font-weight:700;text-transform:uppercase;color:var(--blanc-casse);">5 règles d'or</div>
+<nav class="top-nav" aria-label="Navigation principale">
+  <a href="../index.html" class="top-nav__brand" aria-label="Retour à l’accueil">
+    <img src="../img/logo.png" alt="" class="top-nav__logo" onerror="this.style.display='none'">
+    <span class="top-nav__name">Visiter <strong>Sillans</strong></span>
+  </a>
+  <div class="top-nav__links" role="list">
+    <a href="carte.html" class="top-nav__item" role="listitem" aria-label="Carte">
+      <span class="top-nav__item-icon" aria-hidden="true">🗺️</span><span>Carte</span>
+    </a>
+    <a href="regles.html" class="top-nav__item active" role="listitem" aria-current="page" aria-label="Règles">
+      <span class="top-nav__item-icon" aria-hidden="true">📋</span><span>Règles</span>
+    </a>
+    <a href="qcm.html" class="top-nav__item" role="listitem" aria-label="Quiz">
+      <span class="top-nav__item-icon" aria-hidden="true">🎯</span><span>Quiz</span>
+    </a>
+    <a href="a-propos.html" class="top-nav__item" role="listitem" aria-label="À propos">
+      <span class="top-nav__item-icon" aria-hidden="true">ℹ️</span><span>À propos</span>
+    </a>
   </div>
-</header>
+</nav>
+
+<div class="page-eyebrow">Avant la visite — 5 règles d’or</div>
 
 <main class="regles-body animate-in">
 
   <div class="regle-card">
-    <div class="regle-icon">👟</div>
+    <div class="regle-icon">💟</div>
     <div class="regle-titre">Bonne préparation</div>
-    <p class="regle-desc">Portez des chaussures fermées adaptées aux terrains rocailleux. Emportez de l'eau en quantité suffisante, surtout en été. Le dénivelé peut être surprenant.</p>
+    <p class="regle-desc">Portez des chaussures fermées adaptées aux terrains rocailleux. Emportez de l’eau en quantité suffisante, surtout en été. Le dénivelé peut être surprenant.</p>
   </div>
 
   <div class="regle-card danger">
@@ -39,7 +57,7 @@
   <div class="regle-card">
     <div class="regle-icon">🔇</div>
     <div class="regle-titre">Silence et discrétion</div>
-    <p class="regle-desc">Parlez doucement. La faune — oiseaux, chauves-souris, libellules — est facilement perturbée. Plus vous serez discrets, plus vous aurez de chances d'observer des animaux.</p>
+    <p class="regle-desc">Parlez doucement. La faune — oiseaux, chauves-souris, libellules — est facilement perturbée. Plus vous serez discrets, plus vous aurez de chances d’observer des animaux.</p>
   </div>
 
   <div class="regle-card">
@@ -49,31 +67,12 @@
   </div>
 
   <div style="margin-top:1.5rem;">
-    <a href="carte.html" class="btn btn-primary btn-full">
-      🗺️ Démarrer la visite
-    </a>
+    <a href="carte.html" class="btn btn-primary btn-full">🗺️ Démarrer la visite</a>
   </div>
 
 </main>
 
-<nav class="bottom-nav">
-  <a href="carte.html" class="nav-item">
-    <span class="nav-icon">🗺️</span>
-    <span>Carte</span>
-  </a>
-  <a href="regles.html" class="nav-item active">
-    <span class="nav-icon">📋</span>
-    <span>Règles</span>
-  </a>
-  <a href="qcm.html" class="nav-item">
-    <span class="nav-icon">🎯</span>
-    <span>Quiz</span>
-  </a>
-  <a href="a-propos.html" class="nav-item">
-    <span class="nav-icon">ℹ️</span>
-    <span>À propos</span>
-  </a>
-</nav>
-
+<script src="../js/progress.js"></script>
+<script src="../js/app.js"></script>
 </body>
 </html>

@@ -4,279 +4,118 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#13433F">
-  <meta name="description" content="L'ENS de Sillans-la-Cascade, géré par le Département du Var. Informations sur le site, la politique Espaces Naturels Sensibles et les contacts pratiques.">
+  <meta name="description" content="L’ENS de Sillans-la-Cascade, géré par le Département du Var. Informations sur le site, la politique Espaces Naturels Sensibles et les contacts pratiques.">
+  <link rel="icon" type="image/png" href="/img/logo.png">
   <title>À propos — Visiter Sillans-la-Cascade</title>
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .ens-hero {
-      background: var(--vert-profond);
-      color: var(--blanc-casse);
-      padding: 2rem 1.25rem 1.5rem;
-      text-align: center;
-    }
+    .ens-hero { background: var(--vert-profond); color: var(--blanc-casse); padding: 2rem 1.25rem 1.5rem; text-align: center; }
     .ens-hero__icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    .ens-hero__title {
-      font-family: var(--font-titre);
-      font-size: 1.6rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      line-height: 1.1;
-      margin-bottom: 0.25rem;
-    }
-    .ens-hero__sub {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.65);
-      font-family: var(--font-titre);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .stat-band {
-      background: var(--lime);
-      display: flex;
-      justify-content: space-around;
-      padding: 1rem 0.5rem;
-    }
+    .ens-hero__title { font-family: var(--font-titre); font-size: 1.6rem; font-weight: 700; text-transform: uppercase; line-height: 1.1; margin-bottom: 0.25rem; }
+    .ens-hero__sub { font-size: 0.8rem; color: rgba(255,255,255,0.65); font-family: var(--font-titre); text-transform: uppercase; letter-spacing: 0.06em; }
+    .stat-band { background: var(--lime); display: flex; justify-content: space-around; padding: 1rem 0.5rem; }
     .stat-band__item { text-align: center; }
-    .stat-band__num {
-      display: block;
-      font-family: var(--font-titre);
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #2d4000;
-      line-height: 1;
-    }
-    .stat-band__lbl {
-      display: block;
-      font-family: var(--font-titre);
-      font-size: 0.62rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #3d5200;
-      margin-top: 0.2rem;
-    }
-
-    .info-section {
-      background: white;
-      border-radius: var(--radius);
-      padding: 1.25rem;
-      margin-bottom: 0.875rem;
-      box-shadow: var(--shadow);
-    }
-    .info-section__label {
-      font-family: var(--font-titre);
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--turquoise);
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    .info-section__title {
-      font-family: var(--font-titre);
-      font-size: 1.15rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--vert-profond);
-      margin-bottom: 0.5rem;
-    }
-    .info-section p {
-      font-size: 0.875rem;
-      color: var(--gris);
-      line-height: 1.65;
-      margin-bottom: 0.5rem;
-    }
+    .stat-band__num { display: block; font-family: var(--font-titre); font-size: 1.6rem; font-weight: 700; color: #2d4000; line-height: 1; }
+    .stat-band__lbl { display: block; font-family: var(--font-titre); font-size: 0.62rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #3d5200; margin-top: 0.2rem; }
+    .info-section { background: white; border-radius: var(--radius); padding: 1.25rem; margin-bottom: 0.875rem; box-shadow: var(--shadow); }
+    .info-section__label { font-family: var(--font-titre); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--turquoise); margin-bottom: 0.5rem; display: block; }
+    .info-section__title { font-family: var(--font-titre); font-size: 1.15rem; font-weight: 700; text-transform: uppercase; color: var(--vert-profond); margin-bottom: 0.5rem; }
+    .info-section p { font-size: 0.875rem; color: var(--gris); line-height: 1.65; margin-bottom: 0.5rem; }
     .info-section p:last-child { margin-bottom: 0; }
-
-    .contact-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      margin-top: 0.5rem;
-    }
-    .contact-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 0.875rem;
-      color: var(--gris);
-    }
-    .contact-list__icon {
-      font-size: 1rem;
-      flex-shrink: 0;
-      margin-top: 0.05rem;
-    }
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.5rem; }
+    .contact-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.875rem; color: var(--gris); }
+    .contact-list__icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.05rem; }
     .contact-list a { color: var(--turquoise); }
-
-    .regle-bande {
-      background: rgba(19,67,63,0.06);
-      border-left: 4px solid var(--vert-profond);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      padding: 0.875rem 1rem;
-      margin-bottom: 0.875rem;
-      font-size: 0.875rem;
-      color: var(--gris);
-      line-height: 1.55;
-    }
+    .regle-bande { background: rgba(19,67,63,0.06); border-left: 4px solid var(--vert-profond); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 0.875rem 1rem; margin-bottom: 0.875rem; font-size: 0.875rem; color: var(--gris); line-height: 1.55; }
   </style>
 </head>
 <body>
 
-<header class="apropos-header" role="banner">
-  <div>
-    <div style="font-size:0.75rem;opacity:0.7;font-family:var(--font-titre);text-transform:uppercase;letter-spacing:0.08em;">Informations</div>
-    <div style="font-family:var(--font-titre);font-size:1.3rem;font-weight:700;text-transform:uppercase;color:var(--blanc-casse);">À propos</div>
+<nav class="top-nav" aria-label="Navigation principale">
+  <a href="../index.html" class="top-nav__brand" aria-label="Retour à l’accueil">
+    <img src="../img/logo.png" alt="" class="top-nav__logo" onerror="this.style.display='none'">
+    <span class="top-nav__name">Visiter <strong>Sillans</strong></span>
+  </a>
+  <div class="top-nav__links" role="list">
+    <a href="carte.html" class="top-nav__item" role="listitem" aria-label="Carte">
+      <span class="top-nav__item-icon" aria-hidden="true">🗺️</span><span>Carte</span>
+    </a>
+    <a href="regles.html" class="top-nav__item" role="listitem" aria-label="Règles">
+      <span class="top-nav__item-icon" aria-hidden="true">📋</span><span>Règles</span>
+    </a>
+    <a href="qcm.html" class="top-nav__item" role="listitem" aria-label="Quiz">
+      <span class="top-nav__item-icon" aria-hidden="true">🎯</span><span>Quiz</span>
+    </a>
+    <a href="a-propos.html" class="top-nav__item active" role="listitem" aria-current="page" aria-label="À propos">
+      <span class="top-nav__item-icon" aria-hidden="true">ℹ️</span><span>À propos</span>
+    </a>
   </div>
-</header>
+</nav>
 
 <main class="apropos-body animate-in">
 
-  <!-- Hero ENS -->
   <div class="ens-hero">
     <div class="ens-hero__icon" aria-hidden="true">🌿</div>
     <h1 class="ens-hero__title">ENS de Sillans-la-Cascade</h1>
     <p class="ens-hero__sub">Espace Naturel Sensible — Département du Var</p>
   </div>
 
-  <!-- Chiffres clés -->
   <div class="stat-band" role="region" aria-label="Chiffres clés du site">
-    <div class="stat-band__item">
-      <span class="stat-band__num">44 m</span>
-      <span class="stat-band__lbl">Hauteur cascade</span>
-    </div>
-    <div class="stat-band__item">
-      <span class="stat-band__num">369 ha</span>
-      <span class="stat-band__lbl">Surface ENS</span>
-    </div>
-    <div class="stat-band__item">
-      <span class="stat-band__num">96 000</span>
-      <span class="stat-band__lbl">Visiteurs / été</span>
-    </div>
+    <div class="stat-band__item"><span class="stat-band__num">44 m</span><span class="stat-band__lbl">Hauteur cascade</span></div>
+    <div class="stat-band__item"><span class="stat-band__num">369 ha</span><span class="stat-band__lbl">Surface ENS</span></div>
+    <div class="stat-band__item"><span class="stat-band__num">96 000</span><span class="stat-band__lbl">Visiteurs / été</span></div>
   </div>
 
-  <div style="padding: 1.25rem; padding-bottom: calc(var(--nav-height) + 1.5rem);">
+  <div class="apropos-content">
 
-    <!-- Le site -->
     <div class="info-section">
       <span class="info-section__label">Le site</span>
       <h2 class="info-section__title">Sillans-la-Cascade</h2>
-      <p>
-        Nichée dans le Haut-Var, la cascade de Sillans-la-Cascade est l'une des plus hautes 
-        cascades permanentes de Provence — 44 mètres de chute dans un bassin aux reflets 
-        turquoise, alimenté par la Bresque.
-      </p>
-      <p>
-        Le site abrite une biodiversité remarquable : chauves-souris protégées dans les 
-        falaises de travertin, écrevisse à pattes blanches dans la rivière, ripisylve 
-        préservée le long des berges. Les 369 hectares de l'ENS intègrent également 
-        des éléments historiques majeurs — remparts médiévaux, lavoir communal, 
-        usine hydroélectrique du début du XX<sup>e</sup> siècle.
-      </p>
+      <p>Nichée dans le Haut-Var, la cascade de Sillans-la-Cascade est l’une des plus hautes cascades permanentes de Provence — 44 mètres de chute dans un bassin aux reflets turquoise, alimenté par la Bresque.</p>
+      <p>Le site abrite une biodiversité remarquable : chauves-souris protégées dans les falaises de travertin, écrevisse à pattes blanches dans la rivière, ripisylve préservée le long des berges. Les 369 hectares de l’ENS intègrent également des éléments historiques majeurs — remparts médiévaux, lavoir communal, usine hydroélectrique du début du XX<sup>e</sup> siècle.</p>
     </div>
 
-    <!-- Département du Var -->
     <div class="info-section">
       <span class="info-section__label">Commanditaire</span>
       <h2 class="info-section__title">Le Département du Var</h2>
-      <p>
-        Le Département du Var est propriétaire et gestionnaire de l'ENS de 
-        Sillans-la-Cascade. Sa mission : protéger les milieux naturels sensibles 
-        du territoire varois et en permettre l'accès au public dans le respect 
-        des écosystèmes.
-      </p>
-      <p>
-        Cette application a été réalisée à la demande du Service Espaces Naturels 
-        Sensibles du Département du Var, dans le cadre d'une démarche de médiation 
-        culturelle et environnementale.
-      </p>
+      <p>Le Département du Var est propriétaire et gestionnaire de l’ENS de Sillans-la-Cascade. Sa mission : protéger les milieux naturels sensibles du territoire varois et en permettre l’accès au public dans le respect des écosystèmes.</p>
+      <p>Cette application a été réalisée à la demande du Service Espaces Naturels Sensibles du Département du Var, dans le cadre d’une démarche de médiation culturelle et environnementale.</p>
     </div>
 
-    <!-- Politique ENS -->
     <div class="info-section">
       <span class="info-section__label">Les Espaces Naturels Sensibles</span>
       <h2 class="info-section__title">Une politique de préservation</h2>
-      <div class="regle-bande">
-        Les ENS sont des espaces naturels remarquables identifiés et protégés par 
-        les Départements français depuis la loi de 1985. Leur gestion vise à 
-        préserver la biodiversité tout en garantissant un accès pédagogique au grand public.
-      </div>
-      <p>
-        Le Var compte plus de 60 ENS couvrant 45 000 hectares. Sillans-la-Cascade 
-        en est l'un des sites les plus fréquentés — et l'un des plus fragiles face 
-        à la pression touristique estivale.
-      </p>
-      <p>
-        L'accès est libre et gratuit. Des agents du Département assurent une 
-        présence sur le site en haute saison pour accompagner les visiteurs et 
-        veiller au respect des milieux.
-      </p>
+      <div class="regle-bande">Les ENS sont des espaces naturels remarquables identifiés et protégés par les Départements français depuis la loi de 1985. Leur gestion vise à préserver la biodiversité tout en garantissant un accès pédagogique au grand public.</div>
+      <p>Le Var compte plus de 60 ENS couvrant 45 000 hectares. Sillans-la-Cascade en est l’un des sites les plus fréquentés — et l’un des plus fragiles face à la pression touristique estivale.</p>
+      <p>L’accès est libre et gratuit. Des agents du Département assurent une présence sur le site en haute saison pour accompagner les visiteurs et veiller au respect des milieux.</p>
     </div>
 
-    <!-- Bonnes pratiques -->
     <div class="info-section">
       <span class="info-section__label">Sur le site</span>
       <h2 class="info-section__title">Accès et recommandations</h2>
       <ul class="contact-list">
-        <li>
-          <span class="contact-list__icon" aria-hidden="true">📍</span>
-          <span>Village de Sillans-la-Cascade, Var (83) — parking à l'entrée du village</span>
-        </li>
-        <li>
-          <span class="contact-list__icon" aria-hidden="true">⏱</span>
-          <span>Circuit de 2 km aller-retour, dénivelé 80 m, durée 1h à 1h30</span>
-        </li>
-        <li>
-          <span class="contact-list__icon" aria-hidden="true">🚫</span>
-          <span>Baignade interdite — chutes de blocs et courants dangereux</span>
-        </li>
-        <li>
-          <span class="contact-list__icon" aria-hidden="true">🐕</span>
-          <span>Chiens autorisés tenus en laisse</span>
-        </li>
-        <li>
-          <span class="contact-list__icon" aria-hidden="true">📶</span>
-          <span>Peu ou pas de réseau au fond du vallon — contenu disponible hors connexion</span>
-        </li>
+        <li><span class="contact-list__icon" aria-hidden="true">📍</span><span>Village de Sillans-la-Cascade, Var (83) — parking à l’entrée du village</span></li>
+        <li><span class="contact-list__icon" aria-hidden="true">⏱</span><span>Circuit de 2 km aller-retour, dénivelé 80 m, durée 1h à 1h30</span></li>
+        <li><span class="contact-list__icon" aria-hidden="true">🚫</span><span>Baignade interdite — chutes de blocs et courants dangereux</span></li>
+        <li><span class="contact-list__icon" aria-hidden="true">🐕</span><span>Chiens autorisés tenus en laisse</span></li>
+        <li><span class="contact-list__icon" aria-hidden="true">📶</span><span>Peu ou pas de réseau au fond du vallon — contenu disponible hors connexion</span></li>
       </ul>
     </div>
 
-    <!-- Contact -->
     <div class="info-section">
       <span class="info-section__label">Contact</span>
       <h2 class="info-section__title">Département du Var — ENS</h2>
       <ul class="contact-list">
-        <li>
-          <span class="contact-list__icon" aria-hidden="true">🌐</span>
-          <a href="https://www.var.fr/nature-environnement/espaces-naturels" target="_blank" rel="noopener noreferrer">
-            var.fr — Espaces Naturels Sensibles
-          </a>
-        </li>
-        <li>
-          <span class="contact-list__icon" aria-hidden="true">📞</span>
-          <span>04 94 18 83 83 — Département du Var</span>
-        </li>
-        <li>
-          <span class="contact-list__icon" aria-hidden="true">✉️</span>
-          <span>Service ENS — M. Thibaud Fabre</span>
-        </li>
+        <li><span class="contact-list__icon" aria-hidden="true">🌐</span><a href="https://www.var.fr/nature-environnement/espaces-naturels" target="_blank" rel="noopener noreferrer">var.fr — Espaces Naturels Sensibles</a></li>
+        <li><span class="contact-list__icon" aria-hidden="true">📞</span><span>04 94 18 83 83 — Département du Var</span></li>
+        <li><span class="contact-list__icon" aria-hidden="true">✉️</span><span>Service ENS — M. Thibaud Fabre</span></li>
       </ul>
     </div>
 
-    <!-- Réinitialisation -->
     <div class="info-section">
       <span class="info-section__label">Données locales</span>
-      <p style="font-size:0.875rem;color:var(--gris);margin-bottom:1rem;line-height:1.5;">
-        Réinitialiser votre progression de visite et vos scores de quiz.
-      </p>
-      <button
-        class="btn btn-ghost btn-full"
-        onclick="confirmerReset()"
-        style="border-color:#EF4444;color:#EF4444;"
-        aria-label="Réinitialiser toute la progression et les scores"
-      >
+      <p style="font-size:0.875rem;color:var(--gris);margin-bottom:1rem;line-height:1.5;">Réinitialiser votre progression de visite et vos scores de quiz.</p>
+      <button class="btn btn-ghost btn-full" onclick="confirmerReset()" style="border-color:#EF4444;color:#EF4444;" aria-label="Réinitialiser toute la progression et les scores">
         🗑️ Réinitialiser la progression
       </button>
     </div>
@@ -284,29 +123,10 @@
   </div>
 </main>
 
-<nav class="bottom-nav" aria-label="Navigation principale">
-  <a href="carte.html" class="nav-item" aria-label="Carte du parcours">
-    <span class="nav-icon" aria-hidden="true">🗺️</span>
-    <span>Carte</span>
-  </a>
-  <a href="regles.html" class="nav-item" aria-label="Règles du site">
-    <span class="nav-icon" aria-hidden="true">📋</span>
-    <span>Règles</span>
-  </a>
-  <a href="qcm.html" class="nav-item" aria-label="Quiz de connaissances">
-    <span class="nav-icon" aria-hidden="true">🎯</span>
-    <span>Quiz</span>
-  </a>
-  <a href="a-propos.html" class="nav-item active" aria-current="page" aria-label="À propos et informations">
-    <span class="nav-icon" aria-hidden="true">ℹ️</span>
-    <span>À propos</span>
-  </a>
-</nav>
-
 <script src="../js/progress.js"></script>
 <script>
   function confirmerReset() {
-    if (confirm('Réinitialiser toute votre progression ? Cette action est irréversible.')) {
+    if (confirm('Réinitialiser toute votre progression ? Cette action est irréversible.')) {
       resetProgression();
       alert('Progression réinitialisée.');
     }
