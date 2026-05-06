@@ -416,7 +416,14 @@ p { font-size: 0.95rem; line-height: 1.6; }
   margin-bottom: 0.75rem;
   line-height: 1;
 }
-.poi-lieu { font-size: 0.875rem; color: var(--gris); margin-bottom: 1rem; }
+.poi-lieu {
+  font-size: 0.875rem;
+  color: var(--gris);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
 .poi-section-title {
   font-family: var(--font-titre);
   font-size: 0.8rem;
@@ -425,7 +432,18 @@ p { font-size: 0.95rem; line-height: 1.6; }
   letter-spacing: 0.1em;
   color: var(--gris);
   margin: 1.5rem 0 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
+.poi-section-icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gris);
+}
+.poi-lieu .poi-section-icon { color: var(--turquoise); }
 .poi-especes { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
 .poi-espece-tag {
   background: rgba(166,206,57,0.12);
@@ -454,6 +472,9 @@ p { font-size: 0.95rem; line-height: 1.6; }
   border: none;
   cursor: pointer;
   transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .visite-btn:hover { background: #b8dc3a; }
 .visite-btn.deja-visite { background: var(--gris-clair); color: var(--gris); cursor: default; }
@@ -466,7 +487,9 @@ p { font-size: 0.95rem; line-height: 1.6; }
   padding: 1rem 1.125rem;
 }
 .poi-conseil-label {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   font-family: var(--font-titre);
   font-size: 0.75rem;
   font-weight: 700;
@@ -951,3 +974,87 @@ p { font-size: 0.95rem; line-height: 1.6; }
    ============================================ */
 .hidden { display: none !important; }
 .text-center { text-align: center; }
+
+/* ============================================
+   PAGE TRANSITIONS
+   ============================================ */
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pageExit {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-8px); }
+}
+body {
+  animation: pageEnter 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+html.page-exit body {
+  animation: pageExit 0.22s ease forwards;
+  pointer-events: none;
+}
+
+/* ============================================
+   IMAGES DISSÉMINÉES (homepage)
+   ============================================ */
+.s-img-strip {
+  overflow: hidden;
+  line-height: 0;
+}
+.s-img-strip img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+}
+.s-img-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  line-height: 0;
+}
+.s-img-duo img {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================
+   PROGRESSION HOMEPAGE
+   ============================================ */
+.s-progress {
+  margin: 0 0 1.5rem;
+}
+.s-progress__label {
+  font-family: var(--font-titre);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.55);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.s-progress__count {
+  color: var(--lime);
+  font-family: var(--font-titre);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.s-progress__bar {
+  width: 100%;
+  height: 5px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.s-progress__fill {
+  height: 100%;
+  background: var(--lime);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
