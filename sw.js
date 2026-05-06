@@ -3,12 +3,13 @@
  * Stratégie : Cache First pour assets statiques, Network First pour poi.json
  */
 
-const CACHE_NAME = 'visiter-sillans-v7';
+const CACHE_NAME = 'visiter-sillans-v8';
 
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
   '/404.html',
+  '/manifest.json',
   '/html/carte.html',
   '/html/poi.html',
   '/html/qcm.html',
@@ -17,6 +18,7 @@ const PRECACHE_ASSETS = [
   '/css/style.css',
   '/js/app.js',
   '/js/progress.js',
+  '/js/transitions.js',
   '/js/carte.js',
   '/js/poi.js',
   '/js/qcm.js',
