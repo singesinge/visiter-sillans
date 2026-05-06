@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 — Visiter Sillans</title>
   <link rel="icon" type="image/png" href="/img/logo.png">
+  <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet" href="/css/style.css">
   <style>
     body {
@@ -14,7 +15,7 @@
       align-items: center;
       justify-content: center;
       background: var(--vert-profond);
-      color: var(--blanc);
+      color: var(--blanc-casse);
       text-align: center;
       padding: 2rem;
       font-family: var(--font-corps);
@@ -36,7 +37,7 @@
       font-size: 1.5rem;
       font-weight: 600;
       margin: 0.5rem 0 1rem;
-      color: var(--blanc);
+      color: var(--blanc-casse);
     }
     .err-desc {
       font-size: 0.95rem;
@@ -63,10 +64,11 @@
   </style>
 </head>
 <body>
-  <img src="/img/logo.png" alt="" class="err-logo" onerror="this.style.display='none'">
+  <img src="/img/logo-03.png" alt="" class="err-logo" onerror="this.style.display='none'">
   <p class="err-code">404</p>
   <p class="err-title">Page introuvable</p>
   <p class="err-desc">Cette page n'existe pas ou a été déplacée. Revenez à l'accueil pour continuer votre visite.</p>
   <a href="/index.html" class="err-btn">← Retour à l'accueil</a>
+  <script src="/js/transitions.js"></script>
 </body>
 </html>

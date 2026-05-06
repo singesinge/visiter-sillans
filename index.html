@@ -6,7 +6,8 @@
   <meta name="theme-color" content="#13433F">
   <link rel="icon" type="image/png" href="/img/logo.png">
   <link rel="apple-touch-icon" href="/img/logo.png">
-  <meta name="description" content="Explorez l'ENS de Sillans-la-Cascade : cascade de 42 mètres, biodiversité protégée, histoire médiévale. 14 points d'intérêt, carte GPS et quiz — utilisable hors connexion.">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="description" content="Explorez l'ENS de Sillans-la-Cascade : cascade de 42 mètres, biodiversité protégée, histoire médiévale. 14 points d'intérêt, carte GPS et quiz — utilisable hors connexion.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Visiter Sillans-la-Cascade — ENS du Var">
   <meta property="og:description" content="Explorez la cascade de 42 mètres et les 14 points d'intérêt de l'ENS de Sillans-la-Cascade.">
@@ -41,11 +42,6 @@
     .s-intro__tag { display: inline-block; font-family: var(--font-titre); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--turquoise); border-bottom: 2px solid var(--turquoise); padding-bottom: 0.15rem; margin-bottom: 0.75rem; }
     .s-intro__title { font-family: var(--font-titre); font-size: 1.7rem; font-weight: 700; text-transform: uppercase; color: var(--vert-profond); line-height: 1.1; margin-bottom: 0.875rem; }
     .s-intro__text { font-size: 0.92rem; color: var(--gris); line-height: 1.65; margin-bottom: 0.875rem; }
-    .s-gallery { padding: 0 1.5rem 2rem; background: var(--blanc-casse); }
-    .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-    .gallery-grid__item { border-radius: var(--radius-sm); overflow: hidden; aspect-ratio: 3/4; background: var(--gris-clair); }
-    .gallery-grid__item--wide { grid-column: 1/-1; aspect-ratio: 16/9; }
-    .gallery-grid__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .s-circuit { background: var(--vert-profond); padding: 2rem 1.5rem 3rem; }
     .circuit-tag { display: inline-block; font-family: var(--font-titre); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--lime); border-bottom: 2px solid var(--lime); padding-bottom: 0.15rem; margin-bottom: 0.75rem; }
     .circuit-title { font-family: var(--font-titre); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; color: var(--blanc-casse); margin-bottom: 1rem; }
@@ -104,7 +100,7 @@
   <div class="hero__content">
     <p class="hero__label">Espace Naturel Sensible · Var</p>
     <h1 class="hero__title">Visiter<span>Sillans</span></h1>
-    <p class="hero__desc">Une cascade de 42 mètres, une rivière d’exception, un village médiéval perché dans le Haut-Var.</p>
+    <p class="hero__desc">Une cascade de 42 mètres, une rivière d'exception, un village médiéval perché dans le Haut-Var.</p>
     <button class="hero__cta" onclick="lancerVisite()" aria-label="Commencer la visite guidée">Commencer la visite →</button>
   </div>
 </section>
@@ -113,74 +109,77 @@
 
   <section class="s-stats" aria-label="Chiffres clés">
     <div class="stat"><span class="stat__num">42 m</span><span class="stat__label">Hauteur de la cascade</span></div>
-    <div class="stat"><span class="stat__num">369 ha</span><span class="stat__label">Surface de l’ENS</span></div>
+    <div class="stat"><span class="stat__num">369 ha</span><span class="stat__label">Surface de l'ENS</span></div>
     <div class="stat"><span class="stat__num">96 k</span><span class="stat__label">Visiteurs par été</span></div>
   </section>
 
   <section class="s-intro">
     <span class="s-intro__tag">Le site</span>
     <h2 class="s-intro__title">Un sanctuaire naturel et historique</h2>
-    <p class="s-intro__text">Nichée dans un vallon du Haut-Var, la cascade de Sillans-la-Cascade est l’une des plus hautes cascades permanentes de Provence. La Bresque dévale 42 mètres dans un bassin aux reflets turquoise, coloré par les particules calcaires en suspension.</p>
-    <p class="s-intro__text">Classé Espace Naturel Sensible par le Département du Var, ce site de 369 hectares abrite une biodiversité remarquable et des vestiges historiques témoignant de siècles d’occupation humaine.</p>
+    <p class="s-intro__text">Nichée dans un vallon du Haut-Var, la cascade de Sillans-la-Cascade est l'une des plus hautes cascades permanentes de Provence. La Bresque dévale 42 mètres dans un bassin aux reflets turquoise, coloré par les particules calcaires en suspension.</p>
+    <p class="s-intro__text">Classé Espace Naturel Sensible par le Département du Var, ce site de 369 hectares abrite une biodiversité remarquable et des vestiges historiques témoignant de siècles d'occupation humaine.</p>
   </section>
 
-  <section class="s-gallery" aria-label="Photos du site">
-    <div class="gallery-grid">
-      <div class="gallery-grid__item gallery-grid__item--wide"><img src="img/poi/poi-05.jpg" alt="La cascade de Sillans, 42 mètres" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
-      <div class="gallery-grid__item"><img src="img/poi/poi-09.jpg" alt="La Bresque" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
-      <div class="gallery-grid__item"><img src="img/poi/poi-02.jpg" alt="Oliveraie historique" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
-      <div class="gallery-grid__item"><img src="img/poi/poi-01.jpg" alt="Entrée du site" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
-      <div class="gallery-grid__item"><img src="img/poi/poi-11.jpg" alt="Lavoir communal" onerror="this.parentElement.style.background='var(--gris-clair)'"></div>
-    </div>
+  <section class="s-img-strip" aria-hidden="true">
+    <img src="img/poi/poi-09.jpg" alt="La Bresque, rivière permanente du Haut-Var" onerror="this.style.display='none'">
   </section>
 
   <section class="s-content" aria-label="Géologie">
     <span class="s-content__tag s-content__tag--geo">Géologie</span>
-    <h2 class="s-content__title">La tufière : une formation rare</h2>
-    <p class="s-content__text">La cascade crée une <strong>tufière</strong>, formation géologique d’exception où le calcaire dissous dans la Bresque se dépose sur les mousses, les pétrifiant au fil des décennies. Ces dépôts de travertin, aux teintes crèmes et rosées, forment les falaises caractéristiques qui encadrent le bassin.</p>
-    <p class="s-content__text">Le contraste entre le rose du travertin et les reflets émeraude de l’eau est à l’origine de la réputation du site bien au-delà du Var.</p>
+    <h2 class="s-content__title">La tuffière : une formation rare</h2>
+    <p class="s-content__text">La cascade crée une <strong>tuffière</strong>, formation géologique d'exception où le calcaire dissous dans la Bresque se dépose sur les mousses, les pétrifiant au fil des décennies. Ces dépôts de travertin, aux teintes crèmes et rosées, forment les falaises caractéristiques qui encadrent le bassin.</p>
+    <p class="s-content__text">Le contraste entre le rose du travertin et les reflets émeraude de l'eau est à l'origine de la réputation du site bien au-delà du Var.</p>
     <div class="s-content__fact">
       <span class="s-content__fact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
-      <p class="s-content__fact-text"><strong>Extrême fragilité</strong> — les concrétions calcaires mettent des décennies à se former. Tout piétinement les détruit irrémédiablement. C’est la raison première de l’interdiction de baignade.</p>
+      <p class="s-content__fact-text"><strong>Extrême fragilité</strong> — les concrétions calcaires mettent des décennies à se former. Tout piétinement les détruit irrémédiablement. C'est la raison première de l'interdiction de baignade.</p>
     </div>
   </section>
 
   <section class="s-content s-content--alt" aria-label="Histoire">
     <span class="s-content__tag s-content__tag--histoire">Histoire</span>
-    <h2 class="s-content__title">Mille ans d’histoire médiévale</h2>
-    <p class="s-content__text">Sillans est mentionné dès le <strong>XI<sup>e</sup> siècle</strong>, lorsque l’abbaye de Saint-Victor de Marseille en devient propriétaire. Ses remparts et les ruines de son château témoignent encore de cette longue histoire — le fief passant successivement des Baux aux Pontevès, des Blacas aux Albert-Châteauneuf.</p>
-    <p class="s-content__text">Les maisons du village, construites en pierre de tuf locale, bordent des rues pavées qui mènent à l’église Notre-Dame. Ce n’est qu’en <strong>1929</strong> que « la Cascade » est officiellement ajoutée au nom de la commune.</p>
+    <h2 class="s-content__title">Mille ans d'histoire médiévale</h2>
+    <p class="s-content__text">Sillans est mentionné dès le <strong>XI<sup>e</sup> siècle</strong>, lorsque l'abbaye de Saint-Victor de Marseille en devient propriétaire. Ses remparts et les ruines de son château témoignent encore de cette longue histoire — le fief passant successivement des Baux aux Pontevès, des Blacas aux Albert-Châteauneuf.</p>
+    <p class="s-content__text">Les maisons du village, construites en pierre de tuf locale, bordent des rues pavées qui mènent à l'église Notre-Dame. Ce n'est qu'en <strong>1929</strong> que « la Cascade » est officiellement ajoutée au nom de la commune.</p>
     <div class="s-content__fact">
       <span class="s-content__fact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
-      <p class="s-content__fact-text"><strong>Patrimoine</strong> — remparts du XI<sup>e</sup> siècle, lavoir communal et usine hydroélectrique du début du XX<sup>e</sup> siècle qui exploita la force de la Bresque.</p>
+      <p class="s-content__fact-text"><strong>Patrimoine</strong> — remparts du XI<sup>e</sup> siècle, lavoir communal et usine hydroélectrique du début du XX<sup>e</sup> siècle qui exploita la force de la Bresque.</p>
     </div>
+  </section>
+
+  <section class="s-img-duo" aria-hidden="true">
+    <img src="img/poi/poi-02.jpg" alt="Oliveraie historique" onerror="this.style.display='none'">
+    <img src="img/poi/poi-01.jpg" alt="Entrée du site" onerror="this.style.display='none'">
   </section>
 
   <section class="s-content" aria-label="La Bresque">
     <span class="s-content__tag s-content__tag--bresque">La Bresque</span>
     <h2 class="s-content__title">Une rivière permanente, une exception</h2>
-    <p class="s-content__text">Dans un contexte méditerranéen où l’assèchement estival est la norme, la Bresque coule de façon <strong>permanente</strong> toute l’année. Elle offre un habitat stable à des espèces exigeantes sur la qualité de l’eau.</p>
+    <p class="s-content__text">Dans un contexte méditerranéen où l'assèchement estival est la norme, la Bresque coule de façon <strong>permanente</strong> toute l'année. Elle offre un habitat stable à des espèces exigeantes sur la qualité de l'eau.</p>
     <div class="s-content__fact">
       <span class="s-content__fact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></span>
-      <p class="s-content__fact-text"><strong>Baignade strictement interdite</strong> — les courants sont traîtres et les falaises de travertin instables. L’interdiction est absolue, y compris les pieds dans l’eau.</p>
+      <p class="s-content__fact-text"><strong>Baignade strictement interdite</strong> — les courants sont traîtres et les falaises de travertin instables. L'interdiction est absolue, y compris les pieds dans l'eau.</p>
     </div>
   </section>
 
   <section class="s-content s-content--alt" aria-label="Faune et biodiversité">
     <span class="s-content__tag s-content__tag--faune">Biodiversité</span>
-    <h2 class="s-content__title">Une faune d’exception</h2>
-    <p class="s-content__text">L’humidité permanente de la gorge crée un micro-climat unique. Les falaises de travertin abritent plusieurs espèces de <strong>chauves-souris protégées</strong> (Murin de Capaccini, Grand Murin) qui chassent au-dessus du bassin à la tombée de la nuit. Les fougères hygrophiles, dont la capillaire de Montpellier, tapissent les rochers humides.</p>
-    <p class="s-content__text">En observant attentivement la rivière, on peut apercevoir le <strong>cincle plongeur</strong> — seul passereau capable de marcher sous l’eau — et le vol coloré du <strong>martin-pêcheur d’Europe</strong>.</p>
+    <h2 class="s-content__title">Une faune d'exception</h2>
+    <p class="s-content__text">L'humidité permanente de la gorge crée un micro-climat unique. Les falaises de travertin abritent plusieurs espèces de <strong>chauves-souris protégées</strong> (Murin de Capaccini, Grand Murin) qui chassent au-dessus du bassin à la tombée de la nuit. Les fougères hygrophiles, dont la capillaire de Montpellier, tapissent les rochers humides.</p>
+    <p class="s-content__text">En observant attentivement la rivière, on peut apercevoir le <strong>cincle plongeur</strong> — seul passereau capable de marcher sous l'eau — et le vol coloré du <strong>martin-pêcheur d'Europe</strong>.</p>
     <div class="s-content__fact">
       <span class="s-content__fact-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6s-7.56-2.54-8.5-6Z"/><path d="M18 12h.5"/><path d="m6.5 12-3 3.5c-.83.83-2 1.5-3 2"/><path d="m6.5 12-3-3.5c-.83-.83-2-1.5-3-2"/></svg></span>
-      <p class="s-content__fact-text"><strong>Indicateur biologique</strong> — la présence de l’écrevisse à pattes blanches dans la Bresque témoigne de la qualité exceptionnelle de l’eau. Cette espèce protégée disparaît dès que la pollution ou la température dépasse un seuil critique.</p>
+      <p class="s-content__fact-text"><strong>Indicateur biologique</strong> — la présence de l'écrevisse à pattes blanches dans la Bresque témoigne de la qualité exceptionnelle de l'eau. Cette espèce protégée disparaît dès que la pollution ou la température dépasse un seuil critique.</p>
     </div>
+  </section>
+
+  <section class="s-img-strip" aria-hidden="true">
+    <img src="img/poi/poi-11.jpg" alt="Lavoir communal de Sillans" onerror="this.style.display='none'">
   </section>
 
   <section class="s-acces" aria-label="Accès et saisons">
     <h2 class="s-acces__title">Accès &amp; saisons</h2>
     <div class="s-acces__grid">
-      <div class="s-acces__item"><span class="s-acces__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg></span><span>Parking gratuit à l’entrée du village (D22)</span></div>
+      <div class="s-acces__item"><span class="s-acces__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg></span><span>Parking gratuit à l'entrée du village (D22)</span></div>
       <div class="s-acces__item"><span class="s-acces__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg></span><span>Printemps &amp; automne — débit optimal, moins de monde</span></div>
       <div class="s-acces__item"><span class="s-acces__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><path d="m9 20 3-6 3 6"/><path d="m6 8 6 2 3-3"/><path d="m9 12 6-1"/></svg></span><span>Chaussures fermées, eau recommandée</span></div>
       <div class="s-acces__item"><span class="s-acces__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span>15 min à pied du village, 1h30 de circuit</span></div>
@@ -205,7 +204,7 @@
 
   <section class="s-circuit">
     <span class="circuit-tag">Le parcours</span>
-    <h2 class="circuit-title">14 points d’intérêt à découvrir</h2>
+    <h2 class="circuit-title">14 points d'intérêt à découvrir</h2>
     <div class="themes-list">
       <span class="badge-theme badge-biodiversite"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg> Biodiversité</span>
       <span class="badge-theme badge-geologie"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> Géologie</span>
@@ -213,11 +212,20 @@
       <span class="badge-theme badge-securite"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Sécurité</span>
     </div>
     <ul class="circuit-info">
-      <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Circuit de 2 km aller-retour depuis le village</span></li>
+      <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span>Circuit de 2 km aller-retour depuis le village</span></li>
       <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span>1h à 1h30 selon le rythme</span></li>
       <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" x2="23" y1="1" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.56 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg></span><span>Application utilisable hors connexion sur le site</span></li>
       <li class="circuit-info__item"><span class="circuit-info__icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span><span>Quiz de 10 questions en fin de parcours</span></li>
     </ul>
+
+    <div class="s-progress" id="home-progress" style="display:none;" aria-live="polite" aria-label="Progression du parcours">
+      <div class="s-progress__label">
+        <span>Votre progression</span>
+        <span class="s-progress__count" id="progress-count">0/14</span>
+      </div>
+      <div class="s-progress__bar"><div class="s-progress__fill" id="progress-fill"></div></div>
+    </div>
+
     <button class="hero__cta" onclick="lancerVisite()">Commencer la visite →</button>
   </section>
 
@@ -235,13 +243,14 @@
   <div id="dl-label">Initialisation…</div>
 </div>
 
+<script src="js/progress.js"></script>
 <script src="js/app.js"></script>
 <script>
 function lancerVisite() {
-  const overlay = document.getElementById('loading-overlay');
-  const bar = document.getElementById('dl-progress');
-  const progressbar = document.getElementById('dl-progressbar');
-  const label = document.getElementById('dl-label');
+  var overlay = document.getElementById('loading-overlay');
+  var bar = document.getElementById('dl-progress');
+  var progressbar = document.getElementById('dl-progressbar');
+  var label = document.getElementById('dl-label');
   overlay.classList.add('visible');
   bar.style.width = '5%';
   function setProgress(pct, txt) {
@@ -251,16 +260,16 @@ function lancerVisite() {
   }
   function goToApp() {
     setProgress(100, '✓ Contenu disponible hors-ligne');
-    setTimeout(() => { window.location.href = 'html/carte.html'; }, 700);
+    setTimeout(function() { window.location.href = 'html/regles.html'; }, 700);
   }
   if (!('serviceWorker' in navigator)) { setTimeout(goToApp, 800); return; }
   navigator.serviceWorker.register('/sw.js')
-    .then(registration => {
-      const sw = registration.installing || registration.waiting;
+    .then(function(registration) {
+      var sw = registration.installing || registration.waiting;
       if (!sw) { label.textContent = 'Contenu en cache ✓'; goToApp(); return; }
       setProgress(15, 'Téléchargement des données…');
-      let pct = 15;
-      const tick = setInterval(() => {
+      var pct = 15;
+      var tick = setInterval(function() {
         if (pct < 88) {
           pct += (88 - pct) * 0.08;
           if (pct < 45) setProgress(pct, 'Pages et carte…');
@@ -269,13 +278,30 @@ function lancerVisite() {
           else setProgress(pct, 'Finalisation…');
         }
       }, 300);
-      sw.addEventListener('statechange', e => {
+      sw.addEventListener('statechange', function(e) {
         if (e.target.state === 'activated' || e.target.state === 'installed') { clearInterval(tick); goToApp(); }
       });
-      setTimeout(() => { clearInterval(tick); goToApp(); }, 20000);
+      setTimeout(function() { clearInterval(tick); goToApp(); }, 20000);
     })
-    .catch(() => { setTimeout(goToApp, 600); });
+    .catch(function() { setTimeout(goToApp, 600); });
 }
+</script>
+<script src="js/transitions.js"></script>
+<script>
+// Afficher la progression si des POI ont déjà été visités
+try {
+  var _n = nbVisites();
+  if (_n > 0) {
+    var _el = document.getElementById('home-progress');
+    if (_el) {
+      _el.style.display = '';
+      document.getElementById('progress-count').textContent = _n + '/14';
+      setTimeout(function() {
+        document.getElementById('progress-fill').style.width = Math.round(_n / 14 * 100) + '%';
+      }, 100);
+    }
+  }
+} catch(e) {}
 </script>
 </body>
 </html>
