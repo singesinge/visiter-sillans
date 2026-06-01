@@ -60,8 +60,12 @@
     .intro-modal {
       display: none; position: fixed; inset: 0;
       background: #000; z-index: 2000; overflow: hidden;
+      touch-action: none;        /* bloque le scroll tactile */
+      overscroll-behavior: none; /* empêche le rebond iOS */
     }
     .intro-modal.visible { display: block; }
+    /* Empêche le scroll du body pendant la vidéo */
+    body.intro-open { overflow: hidden; position: fixed; width: 100%; }
     /* iframe YouTube couvre tout l'écran en gardant le ratio 9:16 */
     .intro-yt-wrap {
       position: absolute; inset: 0; overflow: hidden;
@@ -306,6 +310,7 @@ function showIntro() {
       if (raf) cancelAnimationFrame(raf);
       if (autoClose) clearTimeout(autoClose);
       modal.classList.remove('visible');
+      document.body.classList.remove('intro-open'); // réactive le scroll
       iframe.src = '';
       resolve();
     }
@@ -324,6 +329,7 @@ function showIntro() {
 
     iframe.src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?' + params;
     modal.classList.add('visible');
+    document.body.classList.add('intro-open'); // bloque le scroll du body
     timerStart = Date.now();
     raf = requestAnimationFrame(tickTimer);
     autoClose = setTimeout(closeIntro, (DURATION + 1) * 1000);
