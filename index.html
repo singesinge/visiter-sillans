@@ -59,31 +59,12 @@
     /* === Vidéo intro === */
     .intro-modal {
       display: none; position: fixed; inset: 0;
-      background: #000; z-index: 2000; overflow: hidden;
-      touch-action: none;        /* bloque le scroll tactile */
-      overscroll-behavior: none; /* empêche le rebond iOS */
+      background: #000; z-index: 2000;
     }
     .intro-modal.visible { display: block; }
-    /* Empêche le scroll du body pendant la vidéo */
-    body.intro-open { overflow: hidden; }
-    /* iframe YouTube couvre tout l'écran en gardant le ratio 9:16 */
-    .intro-yt-wrap {
-      position: absolute; inset: 0; overflow: hidden;
-    }
-    .intro-yt-wrap iframe {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      /* Couvre toujours l'écran, portrait ou paysage */
-      width: 100vmax; height: calc(100vmax * 16 / 9);
-      min-width: calc(100vh * 9 / 16); min-height: 100vh;
-      border: none;
-    }
-    /* Masque l'interface YouTube (logo, titre…) */
-    .intro-yt-overlay {
-      position: absolute; inset: 0; z-index: 2;
-      /* transparent — bloque les clics sur l'UI YouTube */
-    }
+    .intro-yt-wrap { position: absolute; inset: 0; }
+    .intro-yt-wrap iframe { width: 100%; height: 100%; border: none; }
+    .intro-yt-overlay { display: none; }
     .intro-skip {
       position: absolute; top: 16px; right: 16px;
       background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
@@ -305,15 +286,11 @@ function showIntro() {
     var timerFill = document.getElementById('intro-timer-fill');
     var timerStart, raf, autoClose;
 
-    function noScroll(e) { e.preventDefault(); }
-
     function closeIntro() {
       try { localStorage.setItem(INTRO_KEY, '1'); } catch(e) {}
       if (raf) cancelAnimationFrame(raf);
       if (autoClose) clearTimeout(autoClose);
       modal.classList.remove('visible');
-      document.body.classList.remove('intro-open');
-      document.removeEventListener('touchmove', noScroll); // réactive le scroll iOS
       iframe.src = '';
       resolve();
     }
@@ -332,8 +309,6 @@ function showIntro() {
 
     iframe.src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?' + params;
     modal.classList.add('visible');
-    document.body.classList.add('intro-open');
-    document.addEventListener('touchmove', noScroll, { passive: false }); // bloque scroll iOS
     timerStart = Date.now();
     raf = requestAnimationFrame(tickTimer);
     autoClose = setTimeout(closeIntro, (DURATION + 1) * 1000);
