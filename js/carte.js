@@ -286,7 +286,8 @@ function loadTile(url) {
   if (tileCache.has(url)) return tileCache.get(url);
   const p = new Promise(resolve => {
     const img = new Image();
-    img.crossOrigin = 'anonymous';
+    // Pas de crossOrigin — Google Maps ne renvoie pas de headers CORS
+    // Le canvas sera "tainted" mais on ne lit jamais ses pixels
     img.onload  = () => resolve(img);
     img.onerror = () => resolve(null);
     img.src = url;
@@ -482,10 +483,17 @@ function renderPins(pois) {
     pin.appendChild(bubble);
     poiOverlay.appendChild(pin);
 
-    // Clic / clavier
+    // Clic souris + clavier
     pin.addEventListener('click', e => { e.stopPropagation(); showPopup(poi); });
     pin.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showPopup(poi); }
+    });
+    // Touch mobile — touchend direct sur le pin (pas de dépendance à la synthèse click)
+    let pinTouchMoved = false;
+    pin.addEventListener('touchstart', e => { pinTouchMoved = false; }, { passive: true });
+    pin.addEventListener('touchmove',  () => { pinTouchMoved = true; },  { passive: true });
+    pin.addEventListener('touchend',   e => {
+      if (!pinTouchMoved) { e.preventDefault(); e.stopPropagation(); showPopup(poi); }
     });
   });
 
@@ -722,6 +730,9 @@ function getTouchDist(touches) {
 }
 
 function onTouchStart(e) {
+  // Si le touch vise un pin POI → ne pas intercepter, laisser le click se propager
+  if (e.target.closest('.poi-pin')) return;
+
   if (e.touches.length === 1) {
     dragStartX = e.touches[0].clientX;
     dragStartY = e.touches[0].clientY;
