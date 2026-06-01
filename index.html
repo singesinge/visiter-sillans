@@ -65,7 +65,7 @@
     }
     .intro-modal.visible { display: block; }
     /* Empêche le scroll du body pendant la vidéo */
-    body.intro-open { overflow: hidden; position: fixed; width: 100%; }
+    body.intro-open { overflow: hidden; }
     /* iframe YouTube couvre tout l'écran en gardant le ratio 9:16 */
     .intro-yt-wrap {
       position: absolute; inset: 0; overflow: hidden;
@@ -305,12 +305,15 @@ function showIntro() {
     var timerFill = document.getElementById('intro-timer-fill');
     var timerStart, raf, autoClose;
 
+    function noScroll(e) { e.preventDefault(); }
+
     function closeIntro() {
       try { localStorage.setItem(INTRO_KEY, '1'); } catch(e) {}
       if (raf) cancelAnimationFrame(raf);
       if (autoClose) clearTimeout(autoClose);
       modal.classList.remove('visible');
-      document.body.classList.remove('intro-open'); // réactive le scroll
+      document.body.classList.remove('intro-open');
+      document.removeEventListener('touchmove', noScroll); // réactive le scroll iOS
       iframe.src = '';
       resolve();
     }
@@ -329,7 +332,8 @@ function showIntro() {
 
     iframe.src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?' + params;
     modal.classList.add('visible');
-    document.body.classList.add('intro-open'); // bloque le scroll du body
+    document.body.classList.add('intro-open');
+    document.addEventListener('touchmove', noScroll, { passive: false }); // bloque scroll iOS
     timerStart = Date.now();
     raf = requestAnimationFrame(tickTimer);
     autoClose = setTimeout(closeIntro, (DURATION + 1) * 1000);
