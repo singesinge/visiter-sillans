@@ -37,6 +37,7 @@ body {
   color: var(--noir);
   min-height: 100vh;
   overflow-x: hidden;
+  padding-top: var(--header-height); /* compense le header fixed */
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
@@ -110,8 +111,10 @@ p { font-size: 0.95rem; line-height: 1.6; }
    HEADER + BURGER
    ============================================ */
 .app-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 500;
   background: var(--vert-profond);
   height: var(--header-height);

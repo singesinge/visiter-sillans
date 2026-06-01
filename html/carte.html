@@ -8,21 +8,350 @@
   <link rel="icon" type="image/png" href="/img/logo.png">
   <link rel="manifest" href="/manifest.json">
   <title>Carte — Visiter Sillans-la-Cascade</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css?v=2">
   <style>
-    html, body { height: 100%; margin: 0; padding: 0; }
-    body { display: flex; flex-direction: column; }
-    #map { flex: 1; min-height: 0; }
-    .leaflet-popup-content-wrapper { border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.18); }
-    .popup-content { padding: 0.25rem; min-width: 160px; }
-    .popup-num { font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6B7280; margin-bottom: 0.1rem; }
-    .popup-titre { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; color: #13433F; margin-bottom: 0.5rem; }
-    .popup-btn { display: block; background: #13433F; color: #F7F6F2; text-align: center; border-radius: 999px; padding: 0.4rem 0.75rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; }
+    /* --- Layout plein écran --- */
+    html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
+    body { display: flex; flex-direction: column; padding-top: var(--header-height); box-sizing: border-box; }
+
+    /* --- Zone carte --- */
+    #carte-main {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      min-height: 0;
+    }
+    #carte-viewport {
+      width: 100%; height: 100%;
+      position: relative;
+      overflow: hidden;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      background: #1E4A18;
+    }
+    #carte-viewport.is-dragging { cursor: grabbing; }
+
+    /* --- Wrapper carte (transform appliqué ici) --- */
+    #map-wrapper {
+      position: absolute;
+      top: 0; left: 0;
+      width: 1508.72px;
+      height: 2915.79px;
+      transform-origin: 0 0;
+      will-change: transform;
+    }
+    #map-img {
+      width: 1508.72px;
+      height: 2915.79px;
+      display: block;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-drag: none;
+    }
+
+    /* --- Overlay markers (position écran, hors transform) --- */
+    #poi-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    /* --- Marqueurs POI --- */
+    .poi-pin {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      pointer-events: all;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      z-index: 10;
+    }
+    .poi-pin__bubble {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 3px solid white;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-titre);
+      font-size: 15px; font-weight: 700;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.35);
+      transition: transform 0.12s ease;
+      will-change: transform;
+    }
+    .poi-pin:active .poi-pin__bubble { transform: scale(0.86); }
+    .poi-pin--visite .poi-pin__bubble { opacity: 0.48; }
+
+    /* --- Marqueur GPS utilisateur --- */
+    #gps-dot {
+      position: absolute;
+      width: 18px; height: 18px;
+      background: #2CA6A4;
+      border: 3px solid white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      pointer-events: none;
+      z-index: 20;
+      animation: gps-pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes gps-pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(44,166,164,0.3); }
+      50%       { box-shadow: 0 0 0 12px rgba(44,166,164,0.06); }
+    }
+
+    /* --- Bouton GPS (FAB) --- */
+    .gps-fab {
+      position: absolute;
+      bottom: 20px; right: 16px;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: white;
+      border: none;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.18);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      z-index: 30;
+      color: var(--vert-profond);
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+    .gps-fab:active { transform: scale(0.92); box-shadow: 0 1px 6px rgba(0,0,0,0.12); }
+    .gps-fab.active { color: #2CA6A4; }
+
+    /* --- Bouton bascule fond de carte (bas gauche) --- */
+    .layer-fab {
+      position: absolute;
+      bottom: 20px; left: 16px;
+      height: 44px;
+      padding: 0 14px;
+      border-radius: 22px;
+      background: white;
+      border: none;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.18);
+      display: flex; align-items: center; gap: 7px;
+      cursor: pointer;
+      z-index: 30;
+      color: var(--vert-profond);
+      font-family: var(--font-titre);
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: transform 0.12s, box-shadow 0.12s;
+      white-space: nowrap;
+    }
+    .layer-fab:active { transform: scale(0.94); box-shadow: 0 1px 6px rgba(0,0,0,0.12); }
+    .layer-fab svg { flex-shrink: 0; }
+
+    /* --- Popup bas de page --- */
+    .poi-popup {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--blanc-casse);
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -4px 28px rgba(0,0,0,0.16);
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.34, 1.06, 0.64, 1);
+      z-index: 200;
+      max-height: 68vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .poi-popup.visible { transform: translateY(0); }
+
+    .poi-popup__handle {
+      width: 38px; height: 4px;
+      background: #D1D5DB;
+      border-radius: 2px;
+      margin: 12px auto 0;
+    }
+    .poi-popup__inner { padding: 1rem 1.25rem 2.5rem; }
+    .poi-popup__header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 0.7rem;
+    }
+    .poi-popup__meta { display: flex; align-items: center; gap: 0.5rem; }
+    .poi-badge {
+      display: inline-block;
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      font-family: var(--font-titre);
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+    .poi-popup__num {
+      font-family: var(--font-titre);
+      font-size: 0.78rem;
+      color: var(--gris);
+      font-weight: 600;
+    }
+    .poi-popup__close {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--gris-clair);
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--gris);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .poi-popup__titre {
+      font-size: 1.4rem;
+      color: var(--vert-profond);
+      margin-bottom: 0.45rem;
+      line-height: 1.15;
+    }
+    .poi-popup__desc {
+      font-size: 0.9rem;
+      color: #4B5563;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    /* --- Sheet détail POI --- */
+    .poi-detail {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--blanc-casse);
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -4px 32px rgba(0,0,0,0.22);
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.34, 1.06, 0.64, 1);
+      z-index: 300;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .poi-detail.visible { transform: translateY(0); }
+
+    .poi-detail__handle {
+      width: 38px; height: 4px;
+      background: #D1D5DB;
+      border-radius: 2px;
+      margin: 12px auto 0;
+      flex-shrink: 0;
+    }
+    .poi-detail__header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 1.25rem 0.5rem;
+      flex-shrink: 0;
+    }
+    .poi-detail__meta { display: flex; align-items: center; gap: 0.5rem; }
+    .poi-detail__close {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--gris-clair);
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--gris);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .poi-detail__scroll {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      flex: 1;
+      min-height: 0;
+    }
+    .poi-detail__photo {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: var(--gris-clair);
+    }
+    .poi-detail__photo-placeholder {
+      width: 100%; height: 160px;
+      background: linear-gradient(135deg, #2d5a27 0%, #4a8c3f 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .poi-detail__body { padding: 1.1rem 1.25rem 2.5rem; }
+    .poi-detail__titre {
+      font-size: 1.45rem;
+      color: var(--vert-profond);
+      margin-bottom: 0.4rem;
+      line-height: 1.15;
+    }
+    .poi-detail__desc {
+      font-size: 0.9rem;
+      color: #4B5563;
+      line-height: 1.6;
+      margin-bottom: 1.1rem;
+    }
+    .poi-detail__section-label {
+      font-family: var(--font-titre);
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--vert-profond);
+      margin-bottom: 0.45rem;
+    }
+    .poi-detail__contenu {
+      font-size: 0.88rem;
+      color: #374151;
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+    .poi-detail__conseil {
+      background: #f0f7ee;
+      border-left: 3px solid var(--vert-doux);
+      border-radius: 0 8px 8px 0;
+      padding: 0.75rem 1rem;
+      font-size: 0.86rem;
+      color: #2d4a2a;
+      line-height: 1.55;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+    .poi-detail__especes {
+      list-style: none;
+      padding: 0; margin: 0 0 1.2rem;
+    }
+    .poi-detail__especes li {
+      font-size: 0.82rem;
+      color: #4B5563;
+      font-style: italic;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .poi-detail__especes li:last-child { border-bottom: none; }
+
+    /* --- Lecteur audio POI --- */
+    .poi-audio {
+      display: flex; align-items: center; gap: 12px;
+      background: #eef6ee;
+      border-radius: 12px;
+      padding: 11px 14px;
+      margin-bottom: 1.2rem;
+    }
+    .poi-audio.hidden { display: none; }
+    .poi-audio__btn {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--vert-profond); border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: #fff; flex-shrink: 0;
+      transition: transform 0.12s, background 0.15s;
+    }
+    .poi-audio__btn:active { transform: scale(0.88); }
+    .poi-audio__btn.playing { background: #2CA6A4; }
+    .poi-audio__track { flex: 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+    .poi-audio__label { font-family: var(--font-titre); font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em; color: var(--vert-profond); }
+    .poi-audio__bar {
+      height: 4px; background: #d1d5db; border-radius: 2px;
+      cursor: pointer; position: relative;
+    }
+    .poi-audio__fill {
+      height: 100%; background: var(--vert-profond); border-radius: 2px;
+      width: 0%; transition: width 0.15s linear; pointer-events: none;
+    }
+    .poi-audio__time {
+      font-size: 0.72rem; color: var(--gris);
+      font-family: var(--font-titre); flex-shrink: 0; min-width: 32px; text-align: right;
+    }
   </style>
 </head>
 <body>
 
+<!-- ===== EN-TÊTE ===== -->
 <header class="app-header">
   <a href="../index.html" class="app-header__logo" aria-label="Retour à l'accueil">
     <img src="../img/logo-03.png" alt="Visiter Sillans"
@@ -34,6 +363,7 @@
   </button>
 </header>
 
+<!-- ===== MENU TIROIR ===== -->
 <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 <nav class="nav-drawer" id="nav-drawer" aria-label="Menu principal">
   <div class="nav-drawer__header">
@@ -55,21 +385,134 @@
   <div class="nav-drawer__footer">ENS · Département du Var</div>
 </nav>
 
+<!-- ===== LÉGENDE ===== -->
 <div class="legende" role="list" aria-label="Légende des thèmes">
   <div class="legende-item" role="listitem"><div class="legende-dot dot-biodiversite" aria-hidden="true"></div>Biodiversité</div>
   <div class="legende-item" role="listitem"><div class="legende-dot dot-geologie" aria-hidden="true"></div>Géologie</div>
   <div class="legende-item" role="listitem"><div class="legende-dot dot-histoire" aria-hidden="true"></div>Histoire</div>
   <div class="legende-item" role="listitem"><div class="legende-dot dot-securite" aria-hidden="true"></div>Sécurité</div>
-  <span class="carte-progress" id="progress-display" aria-live="polite" style="margin-left:auto;">0 / 14</span>
+  <span class="carte-progress" id="progress-display" aria-live="polite" style="margin-left:auto;">0 / 14</span>
 </div>
 
-<main id="map" aria-label="Carte interactive des points d'intérêt"></main>
+<!-- ===== CARTE ===== -->
+<main id="carte-main" aria-label="Carte interactive des points d'intérêt">
+  <div id="carte-viewport">
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="../js/progress.js"></script>
-<script src="../js/app.js"></script>
-<script src="../js/carte.js"></script>
-<script src="../js/proximity.js"></script>
-<script src="../js/transitions.js"></script>
+    <!-- Image SVG + transform pan/zoom -->
+    <div id="map-wrapper">
+      <img id="map-img" src="../img/Map.svg" alt="Carte illustrée du parcours Sillans-la-Cascade" draggable="false">
+    </div>
+
+    <!-- Fond satellite (tuiles, z-index sous le tracé) -->
+    <canvas id="satellite-canvas" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;z-index:2;display:none;"></canvas>
+
+    <!-- Canvas chemin entre POI -->
+    <canvas id="path-canvas" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;z-index:5;"></canvas>
+
+    <!-- Overlay markers (coordonnées écran, pas transformées) -->
+    <div id="poi-overlay" aria-hidden="true">
+      <!-- injecté par carte.js -->
+    </div>
+
+    <!-- Marqueur position GPS utilisateur -->
+    <div id="gps-dot" aria-hidden="true"></div>
+
+    <!-- Bouton bascule fond de carte -->
+    <button id="layer-btn" class="layer-fab" aria-label="Changer le fond de carte">
+      <!-- icône satellite (visible en mode illustré) -->
+      <svg id="layer-icon-sat" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+      </svg>
+      <!-- icône carte (visible en mode satellite) -->
+      <svg id="layer-icon-map" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/>
+      </svg>
+      <span id="layer-label">Satellite</span>
+    </button>
+
+    <!-- Bouton GPS -->
+    <button id="gps-btn" class="gps-fab" aria-label="Centrer sur ma position">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <line x1="12" y1="2"  x2="12" y2="6"/>
+        <line x1="12" y1="18" x2="12" y2="22"/>
+        <line x1="2"  y1="12" x2="6"  y2="12"/>
+        <line x1="18" y1="12" x2="22" y2="12"/>
+      </svg>
+    </button>
+
+  </div><!-- #carte-viewport -->
+</main>
+
+<!-- ===== POPUP BAS DE PAGE ===== -->
+<div id="poi-popup" class="poi-popup" role="dialog" aria-modal="true" aria-labelledby="popup-titre" aria-hidden="true">
+  <div class="poi-popup__handle"></div>
+  <div class="poi-popup__inner">
+    <div class="poi-popup__header">
+      <div class="poi-popup__meta">
+        <span id="popup-badge" class="poi-badge"></span>
+        <span id="popup-num" class="poi-popup__num"></span>
+      </div>
+      <button class="poi-popup__close" id="popup-close-btn" aria-label="Fermer">✕</button>
+    </div>
+    <h2 id="popup-titre" class="poi-popup__titre"></h2>
+    <p id="popup-desc" class="poi-popup__desc"></p>
+    <button id="popup-link" class="btn btn-primary btn-full">Découvrir →</button>
+  </div>
+</div>
+
+<!-- ===== SHEET DÉTAIL POI ===== -->
+<div id="poi-detail" class="poi-detail" role="dialog" aria-modal="true" aria-labelledby="detail-titre" aria-hidden="true">
+  <div class="poi-detail__handle" id="detail-handle"></div>
+  <div class="poi-detail__header">
+    <div class="poi-detail__meta">
+      <span id="detail-badge" class="poi-badge"></span>
+      <span id="detail-num" class="poi-popup__num"></span>
+    </div>
+    <button class="poi-detail__close" id="detail-close-btn" aria-label="Fermer">✕</button>
+  </div>
+  <div class="poi-detail__scroll" id="detail-scroll">
+    <div id="detail-photo-wrap"></div>
+    <div class="poi-detail__body">
+      <h2 id="detail-titre" class="poi-detail__titre"></h2>
+
+      <!-- Lecteur audio narration -->
+      <div class="poi-audio hidden" id="detail-audio-wrap">
+        <button class="poi-audio__btn" id="audio-play-btn" aria-label="Lire la narration">
+          <!-- play icon -->
+          <svg id="audio-icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <!-- pause icon -->
+          <svg id="audio-icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <div class="poi-audio__track">
+          <span class="poi-audio__label">🎧 Écouter la description</span>
+          <div class="poi-audio__bar" id="audio-bar">
+            <div class="poi-audio__fill" id="audio-fill"></div>
+          </div>
+        </div>
+        <span class="poi-audio__time" id="audio-time">0:00</span>
+        <audio id="detail-audio" preload="none"></audio>
+      </div>
+
+      <p id="detail-desc" class="poi-detail__desc"></p>
+      <p class="poi-detail__section-label">En savoir plus</p>
+      <p id="detail-contenu" class="poi-detail__contenu"></p>
+      <div id="detail-conseil-wrap">
+        <p class="poi-detail__section-label">Bon geste</p>
+        <p id="detail-conseil" class="poi-detail__conseil"></p>
+      </div>
+      <div id="detail-especes-wrap">
+        <p class="poi-detail__section-label">Espèces observables</p>
+        <ul id="detail-especes" class="poi-detail__especes"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/progress.js?v=11"></script>
+<script src="../js/app.js?v=11"></script>
+<script src="../js/carte.js?v=11"></script>
+<script src="../js/proximity.js?v=11"></script>
+<script src="../js/transitions.js?v=11"></script>
 </body>
 </html>
