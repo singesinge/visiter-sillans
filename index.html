@@ -291,6 +291,8 @@ function showIntro() {
       if (raf) cancelAnimationFrame(raf);
       if (autoClose) clearTimeout(autoClose);
       modal.classList.remove('visible');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
       iframe.src = '';
       resolve();
     }
@@ -309,6 +311,8 @@ function showIntro() {
 
     iframe.src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?' + params;
     modal.classList.add('visible');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
     timerStart = Date.now();
     raf = requestAnimationFrame(tickTimer);
     autoClose = setTimeout(closeIntro, (DURATION + 1) * 1000);
