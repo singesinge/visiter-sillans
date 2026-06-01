@@ -383,9 +383,12 @@ try {
 <!-- ===== VIDÉO INTRO ===== -->
 <div id="intro-modal" class="intro-modal" aria-label="Vidéo de présentation" role="dialog">
   <video id="intro-video" class="intro-video"
-         src="video/intro.mp4"
          playsinline webkit-playsinline
          preload="auto">
+    <!-- GitHub Pages ne sert pas les fichiers LFS → on pointe directement sur le CDN GitHub -->
+    <source src="https://media.githubusercontent.com/media/singesinge/visiter-sillans/main/video/intro.mp4" type="video/mp4">
+    <!-- Fallback local (fonctionne en dev) -->
+    <source src="video/intro.mp4" type="video/mp4">
   </video>
   <button id="intro-skip" class="intro-skip" aria-label="Passer la vidéo">
     Passer
