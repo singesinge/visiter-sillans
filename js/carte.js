@@ -860,7 +860,7 @@ async function initCarte() {
 
   // Chargement des POI
   try {
-    const data = await fetch('/data/poi.json').then(r => r.json());
+    const data = await fetch('../data/poi.json').then(r => r.json());
     poisData = data.pois ?? [];
   } catch (e) {
     console.error('Impossible de charger poi.json :', e);

@@ -306,10 +306,10 @@ async function lancerVisite() {
     // ── Étape 1 : assets critiques (carte, données, pages) ──────────
     setProgress(8, 'Carte et données…');
     var coreAssets = [
-      '/data/poi.json', '/img/Map.svg',
-      '/html/carte.html', '/html/regles.html', '/html/qcm.html', '/html/a-propos.html',
-      '/css/style.css', '/js/carte.js', '/js/app.js', '/js/progress.js',
-      '/js/proximity.js', '/js/transitions.js'
+      'data/poi.json', 'img/Map.svg',
+      'html/carte.html', 'html/regles.html', 'html/qcm.html', 'html/a-propos.html',
+      'css/style.css?v=2', 'js/carte.js', 'js/app.js', 'js/progress.js',
+      'js/proximity.js', 'js/transitions.js'
     ];
     await Promise.allSettled(coreAssets.map(function(url) {
       return fetch(url).then(function(r) {
@@ -325,7 +325,7 @@ async function lancerVisite() {
 
     for (var i = 1; i <= POI_TOTAL; i++) {
       var num  = String(i).padStart(2, '0');
-      var url  = '/img/poi/poi-' + num + '.jpg';
+      var url  = 'img/poi/poi-' + num + '.jpg';
       try {
         var resp = await fetch(url);
         if (resp.ok) {
@@ -350,7 +350,7 @@ async function lancerVisite() {
     setProgress(93, 'Finalisation…');
     if ('serviceWorker' in navigator) {
       try {
-        await navigator.serviceWorker.register('/sw.js');
+        await navigator.serviceWorker.register('sw.js');
       } catch(e) {}
     }
 
