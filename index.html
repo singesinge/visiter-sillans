@@ -18,8 +18,8 @@
   <style>
     .skip-link { position: absolute; top: -100%; left: 1rem; background: var(--vert-profond); color: var(--blanc-casse); padding: 0.5rem 1rem; border-radius: 0 0 var(--radius-sm) var(--radius-sm); font-family: var(--font-titre); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; z-index: 9999; text-decoration: none; transition: top 0.2s; }
     .skip-link:focus { top: 0; }
-    html, body { margin: 0; padding: 0; overflow-x: hidden; }
-    .hero { position: relative; width: 100%; height: calc(100svh - var(--header-height)); min-height: 460px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+    html, body { margin: 0; overflow-x: hidden; }
+    .hero { position: relative; width: 100%; height: 100dvh; min-height: 460px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
     .hero__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
     .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(19,67,63,0.92) 0%, rgba(19,67,63,0.4) 45%, rgba(0,0,0,0.15) 100%); }
     .hero__content { position: relative; z-index: 2; padding: 0 1.5rem 2.5rem; color: var(--blanc-casse); }
@@ -51,8 +51,7 @@
     .circuit-info__icon { width: 24px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.8); }
     .loading-overlay { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--vert-profond); z-index: 1000; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; color: var(--blanc-casse); box-sizing: border-box; }
     .loading-overlay.visible { display: flex; }
-    .loading-overlay .app-logo { font-family: var(--font-titre); font-size: 2.5rem; font-weight: 700; text-transform: uppercase; color: var(--blanc-casse); margin-bottom: 0.25rem; }
-    .loading-overlay .app-logo span { color: var(--lime); }
+    .loading-logo__img { height: 80px; width: auto; }
     .loading-overlay p { opacity: 0.7; font-size: 0.9rem; margin-bottom: 2rem; }
     .loading-overlay .progress-bar-outer { width: 100%; max-width: 280px; }
     #dl-label { margin-top: 0.75rem; font-size: 0.8rem; opacity: 0.6; }
@@ -60,13 +59,26 @@
     /* === Vidéo intro === */
     .intro-modal {
       display: none; position: fixed; inset: 0;
-      background: #000; z-index: 2000;
-      align-items: center; justify-content: center;
+      background: #000; z-index: 2000; overflow: hidden;
     }
-    .intro-modal.visible { display: flex; }
-    .intro-video {
-      width: 100%; height: 100%;
-      object-fit: cover;
+    .intro-modal.visible { display: block; }
+    /* iframe YouTube couvre tout l'écran en gardant le ratio 9:16 */
+    .intro-yt-wrap {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .intro-yt-wrap iframe {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      /* Couvre toujours l'écran, portrait ou paysage */
+      width: 100vmax; height: calc(100vmax * 16 / 9);
+      min-width: calc(100vh * 9 / 16); min-height: 100vh;
+      border: none;
+    }
+    /* Masque l'interface YouTube (logo, titre…) */
+    .intro-yt-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      /* transparent — bloque les clics sur l'UI YouTube */
     }
     .intro-skip {
       position: absolute; top: 16px; right: 16px;
@@ -264,8 +276,7 @@
 
 <div class="loading-overlay" id="loading-overlay" role="status" aria-live="polite">
   <div class="loading-logo">
-    <img src="img/logo-03.png" alt="" class="loading-logo__img" onerror="this.style.display='none'">
-    <div class="app-logo" aria-hidden="true">Visiter <span>Sillans</span></div>
+    <img src="img/logo-03.png" alt="Visiter Sillans" class="loading-logo__img" onerror="this.style.display='none'">
   </div>
   <p>Préparation du contenu hors-ligne…</p>
   <div class="progress-bar-outer" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="dl-progressbar">
@@ -380,60 +391,83 @@ try {
 } catch(e) {}
 </script>
 
-<!-- ===== VIDÉO INTRO ===== -->
+<!-- ===== VIDÉO INTRO (YouTube, sans interface) ===== -->
 <div id="intro-modal" class="intro-modal" aria-label="Vidéo de présentation" role="dialog">
-  <video id="intro-video" class="intro-video"
-         playsinline webkit-playsinline
-         preload="auto">
-    <!-- GitHub Pages ne sert pas les fichiers LFS → on pointe directement sur le CDN GitHub -->
-    <source src="https://media.githubusercontent.com/media/singesinge/visiter-sillans/main/video/intro.mp4" type="video/mp4">
-    <!-- Fallback local (fonctionne en dev) -->
-    <source src="video/intro.mp4" type="video/mp4">
-  </video>
-  <button id="intro-skip" class="intro-skip" aria-label="Passer la vidéo">
+  <div class="intro-yt-wrap">
+    <iframe id="yt-player"
+      src=""
+      frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+    <!-- Overlay transparent : masque le logo YouTube et empêche les clics sur l'UI -->
+    <div class="intro-yt-overlay"></div>
+  </div>
+  <button id="intro-skip" class="intro-skip" aria-label="Passer la vidéo" style="z-index:10">
     Passer
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
   </button>
-  <div class="intro-timer"><div id="intro-timer-fill" class="intro-timer__fill"></div></div>
+  <div class="intro-timer" style="z-index:10"><div id="intro-timer-fill" class="intro-timer__fill"></div></div>
 </div>
 
 <script>
 (function() {
-  var INTRO_KEY = 'sillans_intro_seen';
-  var modal     = document.getElementById('intro-modal');
-  var video     = document.getElementById('intro-video');
-  var skipBtn   = document.getElementById('intro-skip');
-  var timerFill = document.getElementById('intro-timer-fill');
-  var raf       = null;
+  var INTRO_KEY  = 'sillans_intro_seen';
+  var VIDEO_ID   = 'bWzCYK1e1iI';
+  var DURATION   = 30; // durée approximative en secondes
+
+  var modal      = document.getElementById('intro-modal');
+  var iframe     = document.getElementById('yt-player');
+  var skipBtn    = document.getElementById('intro-skip');
+  var timerFill  = document.getElementById('intro-timer-fill');
+  var timerStart = null;
+  var raf        = null;
+  var autoClose  = null;
 
   function closeIntro() {
     try { localStorage.setItem(INTRO_KEY, '1'); } catch(e) {}
-    video.pause();
     if (raf) cancelAnimationFrame(raf);
+    if (autoClose) clearTimeout(autoClose);
     modal.classList.remove('visible');
+    // Arrête la lecture YouTube en vidant le src
+    iframe.src = '';
   }
 
   function tickTimer() {
-    if (video.duration && video.duration > 0) {
-      timerFill.style.width = (video.currentTime / video.duration * 100) + '%';
-    }
-    if (!video.paused && !video.ended) raf = requestAnimationFrame(tickTimer);
+    var elapsed = (Date.now() - timerStart) / 1000;
+    var pct = Math.min(elapsed / DURATION * 100, 100);
+    timerFill.style.width = pct + '%';
+    if (pct < 100) raf = requestAnimationFrame(tickTimer);
   }
 
   function showIntro() {
+    // Construit l'URL YouTube avec paramètres "no-UI"
+    var params = [
+      'autoplay=1',
+      'mute=1',          // obligatoire pour autoplay sans interaction
+      'controls=0',      // pas de barre de contrôle
+      'rel=0',           // pas de vidéos suggérées
+      'modestbranding=1',// branding minimal
+      'iv_load_policy=3',// pas d'annotations
+      'playsinline=1',   // lecture inline sur iOS
+      'showinfo=0',
+      'origin=https://singesinge.github.io'
+    ].join('&');
+
+    iframe.src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?' + params;
     modal.classList.add('visible');
-    video.play().then(function() {
-      raf = requestAnimationFrame(tickTimer);
-    }).catch(function() {
-      // Autoplay bloqué → ferme l'intro directement
-      closeIntro();
-    });
+
+    // Barre de progression basée sur le temps (durée connue)
+    timerStart = Date.now();
+    raf = requestAnimationFrame(tickTimer);
+
+    // Fermeture automatique après la durée + 1s de marge
+    autoClose = setTimeout(closeIntro, (DURATION + 1) * 1000);
   }
 
   skipBtn.addEventListener('click', closeIntro);
-  video.addEventListener('ended', closeIntro);
 
-  // Ne montre l'intro qu'une seule fois
+  // Affiche seulement au premier chargement
   try {
     if (!localStorage.getItem(INTRO_KEY)) showIntro();
   } catch(e) {
