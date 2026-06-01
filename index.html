@@ -58,15 +58,15 @@
 
     /* === Vidéo intro === */
     .intro-modal {
-      display: none; position: fixed; inset: 0;
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
       background: #000; z-index: 2000;
-      overflow: hidden;
     }
-    .intro-modal.visible { display: flex; }
+    .intro-modal.visible { display: block; }
     .intro-video {
+      position: absolute; top: 0; left: 0;
       width: 100%; height: 100%;
       object-fit: contain;
-      display: block;
     }
     .intro-skip {
       position: absolute; top: 16px; right: 16px;
