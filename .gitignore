@@ -11,6 +11,9 @@ npm-debug.log*
 # Médias lourds (à ne pas versionner)
 assets/videos/
 assets/photos-originales/
+# Vidéo intro — >100 Mo, hors limite GitHub. Compresser < 50 Mo puis push manuellement.
+vidéo/
+video/*.mp4
 
 # Secrets
 *.local
