@@ -19,7 +19,7 @@
     .skip-link { position: absolute; top: -100%; left: 1rem; background: var(--vert-profond); color: var(--blanc-casse); padding: 0.5rem 1rem; border-radius: 0 0 var(--radius-sm) var(--radius-sm); font-family: var(--font-titre); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; z-index: 9999; text-decoration: none; transition: top 0.2s; }
     .skip-link:focus { top: 0; }
     html, body { margin: 0; overflow-x: hidden; }
-    .hero { position: relative; width: 100%; height: 100dvh; min-height: 460px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero { position: relative; width: 100%; height: calc(100dvh - var(--header-height)); min-height: 460px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
     .hero__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
     .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(19,67,63,0.92) 0%, rgba(19,67,63,0.4) 45%, rgba(0,0,0,0.15) 100%); }
     .hero__content { position: relative; z-index: 2; padding: 0 1.5rem 2.5rem; color: var(--blanc-casse); }
@@ -288,7 +288,57 @@
 <script src="js/progress.js"></script>
 <script src="js/app.js"></script>
 <script>
+/* ─── Vidéo intro YouTube ──────────────────────────────────────────── */
+var INTRO_KEY = 'sillans_intro_seen';
+var VIDEO_ID  = 'bWzCYK1e1iI';
+var DURATION  = 30;
+
+function showIntro() {
+  return new Promise(function(resolve) {
+    var modal     = document.getElementById('intro-modal');
+    var iframe    = document.getElementById('yt-player');
+    var skipBtn   = document.getElementById('intro-skip');
+    var timerFill = document.getElementById('intro-timer-fill');
+    var timerStart, raf, autoClose;
+
+    function closeIntro() {
+      try { localStorage.setItem(INTRO_KEY, '1'); } catch(e) {}
+      if (raf) cancelAnimationFrame(raf);
+      if (autoClose) clearTimeout(autoClose);
+      modal.classList.remove('visible');
+      iframe.src = '';
+      resolve();
+    }
+
+    function tickTimer() {
+      var pct = Math.min((Date.now() - timerStart) / DURATION / 10, 100);
+      timerFill.style.width = pct + '%';
+      if (pct < 100) raf = requestAnimationFrame(tickTimer);
+    }
+
+    var params = [
+      'autoplay=1', 'mute=1', 'controls=0', 'rel=0',
+      'modestbranding=1', 'iv_load_policy=3', 'playsinline=1', 'showinfo=0',
+      'origin=https://singesinge.github.io'
+    ].join('&');
+
+    iframe.src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?' + params;
+    modal.classList.add('visible');
+    timerStart = Date.now();
+    raf = requestAnimationFrame(tickTimer);
+    autoClose = setTimeout(closeIntro, (DURATION + 1) * 1000);
+    skipBtn.onclick = closeIntro;
+  });
+}
+
+/* ─── Lancer la visite ─────────────────────────────────────────────── */
 async function lancerVisite() {
+  // 1. Vidéo intro au premier lancement uniquement
+  try {
+    if (!localStorage.getItem(INTRO_KEY)) await showIntro();
+  } catch(e) {}
+
+  // 2. Écran de chargement
   var overlay   = document.getElementById('loading-overlay');
   var bar       = document.getElementById('dl-progress');
   var pbEl      = document.getElementById('dl-progressbar');
@@ -410,70 +460,5 @@ try {
   <div class="intro-timer" style="z-index:10"><div id="intro-timer-fill" class="intro-timer__fill"></div></div>
 </div>
 
-<script>
-(function() {
-  var INTRO_KEY  = 'sillans_intro_seen';
-  var VIDEO_ID   = 'bWzCYK1e1iI';
-  var DURATION   = 30; // durée approximative en secondes
-
-  var modal      = document.getElementById('intro-modal');
-  var iframe     = document.getElementById('yt-player');
-  var skipBtn    = document.getElementById('intro-skip');
-  var timerFill  = document.getElementById('intro-timer-fill');
-  var timerStart = null;
-  var raf        = null;
-  var autoClose  = null;
-
-  function closeIntro() {
-    try { localStorage.setItem(INTRO_KEY, '1'); } catch(e) {}
-    if (raf) cancelAnimationFrame(raf);
-    if (autoClose) clearTimeout(autoClose);
-    modal.classList.remove('visible');
-    // Arrête la lecture YouTube en vidant le src
-    iframe.src = '';
-  }
-
-  function tickTimer() {
-    var elapsed = (Date.now() - timerStart) / 1000;
-    var pct = Math.min(elapsed / DURATION * 100, 100);
-    timerFill.style.width = pct + '%';
-    if (pct < 100) raf = requestAnimationFrame(tickTimer);
-  }
-
-  function showIntro() {
-    // Construit l'URL YouTube avec paramètres "no-UI"
-    var params = [
-      'autoplay=1',
-      'mute=1',          // obligatoire pour autoplay sans interaction
-      'controls=0',      // pas de barre de contrôle
-      'rel=0',           // pas de vidéos suggérées
-      'modestbranding=1',// branding minimal
-      'iv_load_policy=3',// pas d'annotations
-      'playsinline=1',   // lecture inline sur iOS
-      'showinfo=0',
-      'origin=https://singesinge.github.io'
-    ].join('&');
-
-    iframe.src = 'https://www.youtube.com/embed/' + VIDEO_ID + '?' + params;
-    modal.classList.add('visible');
-
-    // Barre de progression basée sur le temps (durée connue)
-    timerStart = Date.now();
-    raf = requestAnimationFrame(tickTimer);
-
-    // Fermeture automatique après la durée + 1s de marge
-    autoClose = setTimeout(closeIntro, (DURATION + 1) * 1000);
-  }
-
-  skipBtn.addEventListener('click', closeIntro);
-
-  // Affiche seulement au premier chargement
-  try {
-    if (!localStorage.getItem(INTRO_KEY)) showIntro();
-  } catch(e) {
-    showIntro();
-  }
-})();
-</script>
 </body>
 </html>
