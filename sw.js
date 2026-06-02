@@ -3,7 +3,7 @@
  * Stratégie : Cache First pour assets statiques, Network First pour poi.json
  */
 
-const CACHE_NAME = 'visiter-sillans-v9';
+const CACHE_NAME = 'visiter-sillans-v10';
 
 const PRECACHE_ASSETS = [
   './',
@@ -46,6 +46,22 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
+
+  // Navigations + pages HTML → Network First : on récupère toujours la dernière
+  // version quand le réseau est disponible, et on retombe sur le cache hors-ligne.
+  // Évite de rester bloqué sur une page (ex. carte.html) servie depuis un cache périmé.
+  if (event.request.mode === 'navigate' || url.pathname.endsWith('.html')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          return response;
+        })
+        .catch(() => caches.match(event.request).then(c => c || caches.match('./index.html')))
+    );
+    return;
+  }
 
   if (url.pathname.endsWith('poi.json')) {
     event.respondWith(

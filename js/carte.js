@@ -409,6 +409,15 @@ function drawPath() {
 
   if (pts.length < 2) return;
 
+  // Progression du visiteur : le tracé s'estompe au fur et à mesure des POI
+  // visités, sans jamais disparaître (plancher à 30 % de l'opacité initiale).
+  let progress = 0;
+  if (poisData.length && typeof estVisite === 'function') {
+    const visites = poisData.filter(p => estVisite(p.id)).length;
+    progress = visites / poisData.length;
+  }
+  const fade = 1 - progress * 0.7;   // 1 (aucun visité) → 0.3 (tous visités)
+
   // Construit le path Catmull-Rom → Bezier cubique
   const tension = 0.4;
 
@@ -436,7 +445,7 @@ function drawPath() {
 
   // 1re passe — ombre sombre (lisibilité sur fond clair comme le beige du village)
   buildPath();
-  ctx.strokeStyle = 'rgba(30, 50, 30, 0.30)';
+  ctx.strokeStyle = `rgba(30, 50, 30, ${(0.30 * fade).toFixed(3)})`;
   ctx.lineWidth   = 5;
   ctx.lineCap     = 'round';
   ctx.lineJoin    = 'round';
@@ -446,7 +455,7 @@ function drawPath() {
 
   // 2e passe — tiret clair par-dessus (lisibilité sur fond sombre)
   buildPath();
-  ctx.strokeStyle = 'rgba(255, 252, 240, 0.88)';
+  ctx.strokeStyle = `rgba(255, 252, 240, ${(0.88 * fade).toFixed(3)})`;
   ctx.lineWidth   = 2.5;
   ctx.setLineDash([9, 7]);
   ctx.stroke();
@@ -464,13 +473,16 @@ function renderPins(pois) {
     const { x: svgX, y: svgY } = gpsToSVG(poi.coords.lat, poi.coords.lng);
     const colors = THEME_COLORS[poi.theme] ?? THEME_COLORS.securite;
     const visite = typeof estVisite === 'function' && estVisite(poi.id);
+    const isDepart = poi.ordre === 1;
 
     const pin = document.createElement('div');
-    pin.className = 'poi-pin' + (visite ? ' poi-pin--visite' : '');
+    pin.className = 'poi-pin'
+      + (isDepart ? ' poi-pin--depart' : '')
+      + (visite ? ' poi-pin--visite' : '');
     pin.dataset.svgX  = svgX;
     pin.dataset.svgY  = svgY;
     pin.dataset.poiId = poi.id;
-    pin.setAttribute('aria-label', `POI ${poi.ordre} — ${poi.titre}`);
+    pin.setAttribute('aria-label', `${isDepart ? 'Départ' : 'POI'} ${poi.ordre} — ${poi.titre}`);
     pin.setAttribute('role', 'button');
     pin.setAttribute('tabindex', '0');
 
@@ -478,9 +490,23 @@ function renderPins(pois) {
     bubble.className = 'poi-pin__bubble';
     bubble.style.background = colors.bg;
     bubble.style.color       = colors.text;
-    bubble.textContent       = poi.ordre;
+    // Contenu enveloppé dans un span pour pouvoir le redresser (la goutte du
+    // marqueur départ est pivotée à -45°).
+    const num = document.createElement('span');
+    num.className = 'poi-pin__num';
+    num.textContent = poi.ordre;
+    bubble.appendChild(num);
 
     pin.appendChild(bubble);
+
+    // Étiquette « Départ » sous le marqueur 1 pour rendre le point de départ évident
+    if (isDepart) {
+      const tag = document.createElement('span');
+      tag.className = 'poi-pin__depart-label';
+      tag.textContent = 'Départ';
+      pin.appendChild(tag);
+    }
+
     poiOverlay.appendChild(pin);
 
     // Clic souris + clavier
@@ -527,6 +553,8 @@ function showPopup(poi) {
     marquerPoiVisite(poi.id);
     const pin = poiOverlay.querySelector(`[data-poi-id="${poi.id}"]`);
     if (pin) pin.classList.add('poi-pin--visite');
+    // Met à jour le fondu du tracé selon la nouvelle progression
+    drawPath();
   }
   if (typeof nbVisites === 'function') {
     const prog = document.getElementById('progress-display');

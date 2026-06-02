@@ -3,7 +3,10 @@
  * Chargement JSON + SW + burger menu + PWA install banner
  */
 
-const DATA_URL = '/data/poi.json';
+// Chemin relatif selon la profondeur de la page (racine vs html/), pour rester
+// valide sur GitHub Pages servi depuis un sous-dossier (/visiter-sillans/).
+const BASE_REL = location.pathname.includes('/html/') ? '../' : './';
+const DATA_URL = BASE_REL + 'data/poi.json';
 let _poiData = null;
 
 /* --- Chargement des données --- */
@@ -51,7 +54,7 @@ function themeLabel(theme) {
 /* --- Service Worker (hors-ligne) --- */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
+    navigator.serviceWorker.register(BASE_REL + 'sw.js')
       .then(() => console.log('SW enregistré'))
       .catch(err => console.warn('SW non disponible :', err));
   });

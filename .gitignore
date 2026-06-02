@@ -21,3 +21,6 @@ config.local.js
 # IDE
 .vscode/
 .idea/
+audio/.DS_Store
+.DS_Store
+.claude/
