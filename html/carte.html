@@ -7,8 +7,8 @@
   <meta name="description" content="Carte interactive des 14 points d'intérêt de l'ENS de Sillans-la-Cascade.">
   <link rel="icon" type="image/png" href="/img/logo.png">
   <link rel="manifest" href="/manifest.json">
-  <title>Carte — Visiter Sillans-la-Cascade</title>
-  <link rel="stylesheet" href="../css/style.css?v=3">
+  <title>Carte · Visiter Sillans-la-Cascade</title>
+  <link rel="stylesheet" href="../css/style.css?v=6">
   <style>
     /* --- Layout plein écran --- */
     html, body { margin: 0; padding: 0; overflow: hidden; }
@@ -158,29 +158,6 @@
     }
     .gps-fab:active { transform: scale(0.92); box-shadow: 0 1px 6px rgba(0,0,0,0.12); }
     .gps-fab.active { color: #2CA6A4; }
-
-    /* --- Bouton bascule fond de carte (bas gauche) --- */
-    .layer-fab {
-      position: absolute;
-      bottom: calc(20px + env(safe-area-inset-bottom, 0px)); left: 16px;
-      height: 44px;
-      padding: 0 14px;
-      border-radius: 22px;
-      background: white;
-      border: none;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.18);
-      display: flex; align-items: center; gap: 7px;
-      cursor: pointer;
-      z-index: 30;
-      color: var(--vert-profond);
-      font-family: var(--font-titre);
-      font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.04em;
-      transition: transform 0.12s, box-shadow 0.12s;
-      white-space: nowrap;
-    }
-    .layer-fab:active { transform: scale(0.94); box-shadow: 0 1px 6px rgba(0,0,0,0.12); }
-    .layer-fab svg { flex-shrink: 0; }
 
     /* --- Popup bas de page --- */
     .poi-popup {
@@ -342,6 +319,33 @@
       font-style: italic;
       margin-bottom: 1.2rem;
     }
+    /* --- Encadré « Le bon geste » mis en avant --- */
+    .poi-conseil-card {
+      background: linear-gradient(135deg, rgba(166,206,57,0.20), rgba(166,206,57,0.07));
+      border: 1.5px solid rgba(166,206,57,0.55);
+      border-radius: 14px;
+      padding: 0.9rem 1rem 1rem;
+      margin: 0 0 1.4rem;
+    }
+    .poi-conseil-card__head {
+      display: flex; align-items: center; gap: 0.55rem;
+      margin-bottom: 0.5rem;
+    }
+    .poi-conseil-card__icon {
+      width: 30px; height: 30px; flex-shrink: 0;
+      background: var(--lime); color: #2d4000;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .poi-conseil-card__label {
+      font-family: var(--font-titre);
+      font-size: 0.82rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      color: #3d5200;
+    }
+    .poi-conseil-card__text {
+      font-size: 0.92rem; color: #2d4a2a; line-height: 1.6;
+    }
     .poi-detail__especes {
       list-style: none;
       padding: 0; margin: 0 0 1.2rem;
@@ -444,9 +448,6 @@
       <img id="map-img" src="../img/Map.svg" alt="Carte illustrée du parcours Sillans-la-Cascade" draggable="false">
     </div>
 
-    <!-- Fond satellite (tuiles, z-index sous le tracé) -->
-    <canvas id="satellite-canvas" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;z-index:2;display:none;"></canvas>
-
     <!-- Canvas chemin entre POI -->
     <canvas id="path-canvas" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;z-index:5;"></canvas>
 
@@ -457,19 +458,6 @@
 
     <!-- Marqueur position GPS utilisateur -->
     <div id="gps-dot" aria-hidden="true"></div>
-
-    <!-- Bouton bascule fond de carte -->
-    <button id="layer-btn" class="layer-fab" aria-label="Changer le fond de carte">
-      <!-- icône satellite (visible en mode illustré) -->
-      <svg id="layer-icon-sat" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-      </svg>
-      <!-- icône carte (visible en mode satellite) -->
-      <svg id="layer-icon-map" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
-        <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" x2="9" y1="3" y2="18"/><line x1="15" x2="15" y1="6" y2="21"/>
-      </svg>
-      <span id="layer-label">Satellite</span>
-    </button>
 
     <!-- Bouton GPS -->
     <button id="gps-btn" class="gps-fab" aria-label="Centrer sur ma position">
@@ -536,12 +524,20 @@
       </div>
 
       <p id="detail-desc" class="poi-detail__desc"></p>
+
+      <!-- Le bon geste : message clé, mis en avant juste sous l'intro -->
+      <div id="detail-conseil-wrap" class="poi-conseil-card">
+        <div class="poi-conseil-card__head">
+          <span class="poi-conseil-card__icon" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          </span>
+          <span class="poi-conseil-card__label">Le bon geste</span>
+        </div>
+        <p id="detail-conseil" class="poi-conseil-card__text"></p>
+      </div>
+
       <p class="poi-detail__section-label">En savoir plus</p>
       <p id="detail-contenu" class="poi-detail__contenu"></p>
-      <div id="detail-conseil-wrap">
-        <p class="poi-detail__section-label">Bon geste</p>
-        <p id="detail-conseil" class="poi-detail__conseil"></p>
-      </div>
       <div id="detail-especes-wrap">
         <p class="poi-detail__section-label">Espèces observables</p>
         <ul id="detail-especes" class="poi-detail__especes"></ul>
@@ -552,7 +548,7 @@
 
 <script src="../js/progress.js?v=11"></script>
 <script src="../js/app.js?v=12"></script>
-<script src="../js/carte.js?v=13"></script>
+<script src="../js/carte.js?v=14"></script>
 <script src="../js/proximity.js?v=11"></script>
 <script src="../js/transitions.js?v=11"></script>
 </body>

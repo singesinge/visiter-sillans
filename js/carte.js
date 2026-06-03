@@ -250,137 +250,6 @@ function updateOverlay() {
 
   // Redessine le chemin entre POI
   drawPath();
-
-  // Redessine les tuiles satellite si actif
-  drawSatellite();
-}
-
-/* ============================================================
-   FOND SATELLITE — tuiles ESRI World Imagery
-   ============================================================ */
-
-const TILE_URL  = 'https://mt0.google.com/vt/lyrs=m&x={x}&y={y}&z={z}';
-const TILE_ZOOM = 16;    // zoom tuile fixe (bon rapport détail/quantité pour cette zone)
-const tileCache = new Map(); // url → Promise<HTMLImageElement|null>
-let satCanvas  = null;
-let mapMode    = 'illustrated'; // 'illustrated' | 'satellite'
-
-/* Conversions Web Mercator ↔ lat/lng (nécessaires pour l'adressage des tuiles) */
-function lngToTileX(lng, z) {
-  return Math.floor((lng + 180) / 360 * Math.pow(2, z));
-}
-function latToTileY(lat, z) {
-  const r = lat * Math.PI / 180;
-  return Math.floor((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2 * Math.pow(2, z));
-}
-function tileXToLng(x, z) {
-  return x / Math.pow(2, z) * 360 - 180;
-}
-function tileYToLat(y, z) {
-  const n = Math.PI - 2 * Math.PI * y / Math.pow(2, z);
-  return 180 / Math.PI * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n)));
-}
-
-/** Charge une tuile (avec cache en mémoire). Renvoie une Promise<Image|null>. */
-function loadTile(url) {
-  if (tileCache.has(url)) return tileCache.get(url);
-  const p = new Promise(resolve => {
-    const img = new Image();
-    // Pas de crossOrigin — Google Maps ne renvoie pas de headers CORS
-    // Le canvas sera "tainted" mais on ne lit jamais ses pixels
-    img.onload  = () => resolve(img);
-    img.onerror = () => resolve(null);
-    img.src = url;
-  });
-  tileCache.set(url, p);
-  return p;
-}
-
-/** Inverse gpsToSVG : coordonnées SVG → lat/lng */
-function svgToGps(svgX, svgY) {
-  const lng = LNG_MIN + (svgX - SVG_X_MIN) / (SVG_X_MAX - SVG_X_MIN) * (LNG_MAX - LNG_MIN);
-  const lat = LAT_MAX - (svgY - SVG_Y_TOP) / (SVG_Y_BOT - SVG_Y_TOP) * (LAT_MAX - LAT_MIN);
-  return { lat, lng };
-}
-
-/** Dessine les tuiles satellite sur satCanvas selon le pan/zoom courant */
-function drawSatellite() {
-  if (!satCanvas || mapMode !== 'satellite') return;
-
-  const vw = viewport.clientWidth;
-  const vh = viewport.clientHeight;
-  satCanvas.width  = vw;
-  satCanvas.height = vh;
-
-  const ctx = satCanvas.getContext('2d');
-  ctx.clearRect(0, 0, vw, vh);
-  ctx.fillStyle = '#1a2a1a';
-  ctx.fillRect(0, 0, vw, vh);
-
-  // Convertit les coins de l'écran en lat/lng pour savoir quelles tuiles charger
-  const toGps = (sx, sy) => {
-    const svgX = (sx - panX) / zoom;
-    const svgY = (sy - panY) / zoom;
-    return svgToGps(svgX, svgY);
-  };
-  const nw = toGps(0,  0);
-  const se = toGps(vw, vh);
-
-  const z  = TILE_ZOOM;
-  const x0 = lngToTileX(nw.lng, z);
-  const x1 = lngToTileX(se.lng, z);
-  const y0 = latToTileY(nw.lat, z); // y augmente vers le sud
-  const y1 = latToTileY(se.lat, z);
-
-  for (let tx = x0; tx <= x1; tx++) {
-    for (let ty = y0; ty <= y1; ty++) {
-      const url = TILE_URL.replace('{z}', z).replace('{y}', ty).replace('{x}', tx);
-
-      // Limites géographiques de la tuile
-      const tileLngW = tileXToLng(tx,     z);
-      const tileLngE = tileXToLng(tx + 1, z);
-      const tileLatN = tileYToLat(ty,     z);
-      const tileLatS = tileYToLat(ty + 1, z);
-
-      // Conversion en coordonnées écran via gpsToSVG + svgToScreen
-      const { sx: dstX, sy: dstY } = svgToScreen(gpsToSVG(tileLatN, tileLngW).x, gpsToSVG(tileLatN, tileLngW).y);
-      const { sx: dstX2,sy: dstY2} = svgToScreen(gpsToSVG(tileLatS, tileLngE).x, gpsToSVG(tileLatS, tileLngE).y);
-      const dstW = dstX2 - dstX;
-      const dstH = dstY2 - dstY;
-
-      // Dessine la tuile dès qu'elle est chargée
-      loadTile(url).then(img => {
-        if (!img || mapMode !== 'satellite') return;
-        const c = satCanvas.getContext('2d');
-        c.drawImage(img, dstX, dstY, dstW, dstH);
-      });
-    }
-  }
-}
-
-/** Bascule entre fond illustré et fond satellite */
-function toggleMapMode() {
-  const mapImg    = document.getElementById('map-img');
-  const iconSat   = document.getElementById('layer-icon-sat');
-  const iconMap   = document.getElementById('layer-icon-map');
-  const label     = document.getElementById('layer-label');
-
-  if (mapMode === 'illustrated') {
-    mapMode = 'satellite';
-    mapImg.style.opacity    = '0';
-    satCanvas.style.display = 'block';
-    iconSat.style.display   = 'none';
-    iconMap.style.display   = '';
-    label.textContent       = 'Carte';
-    drawSatellite();
-  } else {
-    mapMode = 'illustrated';
-    mapImg.style.opacity    = '';
-    satCanvas.style.display = 'none';
-    iconSat.style.display   = '';
-    iconMap.style.display   = 'none';
-    label.textContent       = 'Satellite';
-  }
 }
 
 /* ============================================================
@@ -482,7 +351,7 @@ function renderPins(pois) {
     pin.dataset.svgX  = svgX;
     pin.dataset.svgY  = svgY;
     pin.dataset.poiId = poi.id;
-    pin.setAttribute('aria-label', `${isDepart ? 'Départ' : 'POI'} ${poi.ordre} — ${poi.titre}`);
+    pin.setAttribute('aria-label', `${isDepart ? 'Départ' : 'POI'} ${poi.ordre}, ${poi.titre}`);
     pin.setAttribute('role', 'button');
     pin.setAttribute('tabindex', '0');
 
@@ -876,7 +745,6 @@ async function initCarte() {
   popup      = document.getElementById('poi-popup');
   gpsBtn     = document.getElementById('gps-btn');
   pathCanvas = document.getElementById('path-canvas');
-  satCanvas  = document.getElementById('satellite-canvas');
 
   // Le gpsDot est dans l'overlay pour être positionné comme les pins
   poiOverlay.appendChild(gpsDot);
@@ -959,9 +827,6 @@ async function initCarte() {
 
   // Lecteur audio
   initAudioPlayer();
-
-  // Bascule fond de carte
-  document.getElementById('layer-btn').addEventListener('click', toggleMapMode);
 
   // GPS
   initGPS();

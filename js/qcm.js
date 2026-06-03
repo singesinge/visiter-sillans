@@ -69,7 +69,7 @@ function afficherQuestion() {
 
   // Reset UI
   document.getElementById('explication').classList.remove('visible');
-  document.getElementById('explication').textContent = '';
+  document.getElementById('explication-text').textContent = '';
   document.getElementById('btn-suivant').classList.remove('visible');
   reponduCette = false;
 
@@ -105,7 +105,7 @@ function choisirReponse(card, correcte, explication) {
 
   // Afficher l'explication
   const explEl = document.getElementById('explication');
-  explEl.textContent = explication;
+  document.getElementById('explication-text').textContent = explication;
   explEl.classList.add('visible');
 
   // Bouton suivant

@@ -87,7 +87,7 @@ function _envoyerNotification(poi) {
     ? poi.description.slice(0, 97) + '…'
     : poi.description;
 
-  const notif = new Notification(`📍 POI ${poi.ordre} — ${poi.titre}`, {
+  const notif = new Notification(`📍 POI ${poi.ordre} · ${poi.titre}`, {
     body,
     icon:      `/img/poi/poi-${num}.jpg`,
     tag:       poi.id,   // Évite les doublons si notif déjà affichée

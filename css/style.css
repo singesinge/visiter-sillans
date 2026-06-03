@@ -1061,3 +1061,211 @@ html.page-exit body {
   width: 0%;
   transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
+/* ============================================
+   PAGE HERO — en-tête immersif réutilisable
+   (réemploie le vocabulaire visuel de l'accueil)
+   ============================================ */
+.page-hero {
+  position: relative;
+  padding: 2.4rem 1.5rem 1.9rem;
+  background: var(--vert-profond);
+  overflow: hidden;
+  isolation: isolate;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  z-index: -2;
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(19,67,63,0.45) 0%, rgba(19,67,63,0.9) 100%);
+}
+.page-hero__eyebrow {
+  font-family: var(--font-titre);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--lime);
+  margin-bottom: 0.45rem;
+}
+.page-hero__title {
+  font-family: var(--font-titre);
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: #fff;
+  margin: 0;
+}
+.page-hero__title span { color: var(--lime); }
+.page-hero__sub {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.74);
+  line-height: 1.5;
+  margin-top: 0.6rem;
+  max-width: 36ch;
+}
+
+/* ============================================
+   RÈGLES — cartes à image (refonte émotion)
+   ============================================ */
+.regle-card {
+  grid-template-columns: 118px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 0;
+  padding: 0;
+  overflow: hidden;
+  align-items: stretch;
+  animation: fadeSlideUp 0.45s ease both;
+}
+.regles-body .regle-card:nth-child(2) { animation-delay: 0.05s; }
+.regles-body .regle-card:nth-child(3) { animation-delay: 0.10s; }
+.regles-body .regle-card:nth-child(4) { animation-delay: 0.15s; }
+.regles-body .regle-card:nth-child(5) { animation-delay: 0.20s; }
+.regle-photo {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  width: 118px;
+  height: 100%;
+  min-height: 128px;
+  object-fit: cover;
+  display: block;
+  background: var(--gris-clair);
+}
+.regle-icon {
+  position: absolute;
+  left: 118px;
+  top: 0.85rem;
+  transform: translateX(-50%);
+  width: 38px;
+  height: 38px;
+  background: var(--lime);
+  border: 3px solid #fff;
+  color: var(--vert-profond);
+  box-shadow: var(--shadow);
+  z-index: 2;
+}
+.regle-card.danger .regle-icon {
+  background: var(--lime);
+  color: var(--vert-profond);
+}
+.regle-titre {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 1rem 1.1rem 0 1.45rem;
+  margin-bottom: 0.35rem;
+}
+.regle-desc {
+  grid-column: 2;
+  grid-row: 2;
+  padding: 0 1.1rem 1rem 1.45rem;
+}
+
+/* ============================================
+   QCM — émotion (en-tête coloré, animations, score immersif)
+   ============================================ */
+.qcm-sub-header {
+  background: var(--vert-profond);
+  color: rgba(255,255,255,0.85);
+  border-bottom: none;
+}
+.qcm-sub-header span:first-child { color: var(--lime); }
+
+.qcm-question { animation: fadeSlideUp 0.4s ease both; }
+.reponse-card.selected-correct { animation: pulse 0.45s ease; }
+
+.score-screen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  min-height: calc(100dvh - var(--header-height));
+  padding-top: 3rem;
+}
+.score-screen.visible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.score-screen__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  z-index: -2;
+}
+.score-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(19,67,63,0.78) 0%, rgba(19,67,63,0.94) 100%);
+}
+.score-screen .score-mascotte { animation: float 3s ease-in-out infinite; }
+.score-screen .score-nombre { animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
+.score-screen .score-niveau { color: var(--lime); }
+.score-screen .score-desc { color: rgba(255,255,255,0.8); max-width: 30ch; margin-left: auto; margin-right: auto; }
+.score-screen .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.5); }
+.score-screen .btn-ghost:hover { background: rgba(255,255,255,0.12); color: #fff; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes popIn { 0% { transform: scale(0.4); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+/* Complément de réponse : même habillage que le « bon geste » des POI */
+.qcm-explication {
+  background: linear-gradient(135deg, rgba(166,206,57,0.20), rgba(166,206,57,0.07));
+  border: 1.5px solid rgba(166,206,57,0.55);
+  border-radius: 14px;
+  padding: 0.9rem 1rem 1rem;
+  margin: 0.75rem 0;
+}
+.qcm-explication__head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.5rem;
+}
+.qcm-explication__icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  background: var(--lime);
+  color: #2d4000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qcm-explication__label {
+  font-family: var(--font-titre);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #3d5200;
+}
+.qcm-explication__text {
+  font-size: 0.9rem;
+  color: #2d4a2a;
+  line-height: 1.6;
+}
+
+/* ============================================
+   ACCENTS DE TEXTE (cohérence avec le hero)
+   - lime : uniquement sur fond foncé (lisibilité)
+   - vert profond : mots-clés sur fond clair
+   ============================================ */
+.accent-lime { color: var(--lime); font-weight: 700; }
+.s-content__text strong,
+.s-intro__text strong { color: var(--vert-profond); }

@@ -52,7 +52,7 @@ function afficherPOI(poi) {
   // Header (via textContent — jamais d'innerHTML ici)
   document.getElementById('poi-header-num').textContent = `POI ${String(poi.ordre).padStart(2, '0')}`;
   document.getElementById('poi-header-titre').textContent = poi.titre;
-  document.title = `${escapeHTML(poi.titre)} — Visiter Sillans`;
+  document.title = `${escapeHTML(poi.titre)} · Visiter Sillans`;
 
   const visite = estVisite(poi.id);
 

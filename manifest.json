@@ -1,7 +1,7 @@
 {
   "name": "Visiter Sillans-la-Cascade",
   "short_name": "Visiter Sillans",
-  "description": "Explorez l'ENS de Sillans-la-Cascade : cascade de 42 mètres, biodiversité protégée, histoire médiévale. 14 points d'intérêt, carte GPS et quiz — utilisable hors connexion.",
+  "description": "Explorez l'ENS de Sillans-la-Cascade : cascade de 44 mètres, biodiversité protégée, histoire médiévale. 14 points d'intérêt, carte GPS et quiz, le tout utilisable hors connexion.",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#13433F",
