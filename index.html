@@ -14,7 +14,7 @@
   <meta property="og:image" content="/img/poi/poi-05.jpg">
   <meta property="og:locale" content="fr_FR">
   <title>Visiter Sillans-la-Cascade · ENS du Var</title>
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=12">
   <style>
     .skip-link { position: absolute; top: -100%; left: 1rem; background: var(--vert-profond); color: var(--blanc-casse); padding: 0.5rem 1rem; border-radius: 0 0 var(--radius-sm) var(--radius-sm); font-family: var(--font-titre); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; z-index: 9999; text-decoration: none; transition: top 0.2s; }
     .skip-link:focus { top: 0; }
@@ -30,9 +30,6 @@
     .hero__cta { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--lime); color: #2d4000; font-family: var(--font-titre); font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.9rem 1.75rem; border-radius: 999px; border: none; cursor: pointer; width: 100%; justify-content: center; transition: background 0.2s, transform 0.15s; }
     .hero__cta:active { transform: scale(0.98); }
     .hero__cta:hover { background: #b8dc3a; }
-    .hero__scroll { position: absolute; bottom: 5.5rem; right: 1.5rem; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; font-family: var(--font-titre); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
-    .hero__scroll-line { width: 1px; height: 32px; background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent); animation: scrollPulse 2s ease-in-out infinite; }
-    @keyframes scrollPulse { 0%,100%{opacity:.5;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.15)} }
     .s-stats { background: var(--vert-profond); color: var(--blanc-casse); padding: 1.5rem 2rem; display: flex; flex-direction: column; align-items: center; gap: 0; }
     .stat { text-align: center; width: 100%; padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
     .stat:last-child { border-bottom: none; }
@@ -127,7 +124,6 @@
 
 <section class="hero" aria-label="Présentation du site de Sillans-la-Cascade">
   <img class="hero__photo" src="img/poi/poi-05.jpg" alt="La cascade de Sillans-la-Cascade, 44 mètres, Var" onerror="this.style.display='none'">
-  <div class="hero__scroll" aria-hidden="true"><div class="hero__scroll-line"></div><span>Découvrir</span></div>
   <div class="hero__content">
     <p class="hero__label">Espace Naturel Sensible · Var</p>
     <h1 class="hero__title">Visiter<span>Sillans</span></h1>
@@ -257,7 +253,11 @@
       <div class="s-progress__bar"><div class="s-progress__fill" id="progress-fill"></div></div>
     </div>
 
-    <button class="hero__cta" onclick="lancerVisite()">Commencer la visite →</button>
+    <p class="cta-peek-label">On vous attend sur le sentier&nbsp;!</p>
+    <div class="cta-peek">
+      <img class="cta-peek__mascotte" src="img/mascotte-07.svg" alt="" aria-hidden="true" onerror="this.style.display='none'">
+      <button class="hero__cta" onclick="lancerVisite()">Commencer la visite →</button>
+    </div>
   </section>
 
 </main>
@@ -354,7 +354,7 @@ async function lancerVisite() {
     var coreAssets = [
       'data/poi.json', 'img/Map.svg',
       'html/carte.html', 'html/regles.html', 'html/qcm.html', 'html/a-propos.html',
-      'css/style.css?v=6', 'js/carte.js', 'js/app.js', 'js/progress.js',
+      'css/style.css?v=12', 'js/carte.js', 'js/app.js', 'js/progress.js',
       'js/proximity.js', 'js/transitions.js'
     ];
     await Promise.allSettled(coreAssets.map(function(url) {

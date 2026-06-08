@@ -3,7 +3,7 @@
  * Stratégie : Cache First pour assets statiques, Network First pour poi.json
  */
 
-const CACHE_NAME = 'visiter-sillans-v11';
+const CACHE_NAME = 'visiter-sillans-v17';
 
 const PRECACHE_ASSETS = [
   './',
@@ -25,6 +25,9 @@ const PRECACHE_ASSETS = [
   './img/Map.svg',
   './img/logo.png',
   './img/logo-03.png',
+  './img/mascotte-06.svg',
+  './img/mascotte-07.svg',
+  './img/logodeptvar.svg',
 ];
 
 self.addEventListener('install', event => {

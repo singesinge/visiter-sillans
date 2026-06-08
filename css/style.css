@@ -513,7 +513,7 @@ p { font-size: 0.95rem; line-height: 1.6; }
 /* ============================================
    QCM
    ============================================ */
-.qcm-body { padding: 1.25rem 1.25rem 6rem; }
+.qcm-body { padding: 1.25rem 1.25rem 6rem; position: relative; min-height: calc(100dvh - var(--header-height) - 42px); overflow: hidden; }
 .qcm-dots { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
 .qcm-dot {
   width: 28px; height: 5px;
@@ -1269,3 +1269,83 @@ html.page-exit body {
 .accent-lime { color: var(--lime); font-weight: 700; }
 .s-content__text strong,
 .s-intro__text strong { color: var(--vert-profond); }
+
+/* ============================================
+   MASCOTTE
+   ============================================ */
+
+/* Mascotte cachée derrière le bouton : yeux + mains qui dépassent */
+.cta-peek-label {
+  font-family: var(--font-titre);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.65);
+  text-align: center;
+  margin: 0.25rem 0 0;
+}
+.cta-peek {
+  position: relative;
+  padding-top: 112px;
+  overflow: hidden;
+}
+.cta-peek .hero__cta,
+.cta-peek .btn { position: relative; z-index: 2; }
+.cta-peek__mascotte {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  width: 184px;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 5px 9px rgba(0,0,0,0.28));
+  animation: peek 5s ease-in-out infinite;
+}
+@keyframes peek {
+  0%, 100% { transform: translateX(-50%) translateY(6px); }
+  50%      { transform: translateX(-50%) translateY(-3px); }
+}
+/* Mascotte du quiz : grosse, dans le coin bas-droite, coupée par le bord */
+.qcm-mascotte {
+  position: absolute;
+  right: -38px;
+  bottom: -14px;
+  width: 270px;
+  max-width: 76vw;
+  margin: 0;
+  z-index: -1;            /* derrière les cartes de réponse (qui la masquent) */
+  pointer-events: none;
+  animation: float 5s ease-in-out infinite;
+}
+.qcm-mascotte img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.16));
+}
+/* Quand on a répondu (explication affichée), l'écran se remplit : on efface la mascotte */
+.qcm-explication.visible ~ .qcm-mascotte {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+/* Mascotte qui jette un œil derrière le bandeau de chiffres (à propos) */
+.hero-peek { position: relative; }
+.hero-peek .stat-band { position: relative; z-index: 1; }
+.hero-peek__mascotte {
+  position: absolute;
+  right: 22px;
+  bottom: 42px;
+  width: 74px;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+  animation: peek-side 5s ease-in-out infinite;
+}
+@keyframes peek-side {
+  0%, 100% { transform: translateY(5px); }
+  50%      { transform: translateY(-2px); }
+}
