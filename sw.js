@@ -3,7 +3,7 @@
  * Stratégie : Cache First pour assets statiques, Network First pour poi.json
  */
 
-const CACHE_NAME = 'visiter-sillans-v29';
+const CACHE_NAME = 'visiter-sillans-v30';
 // Cache média (photos + audio des POI), conservé entre les versions :
 // rempli par l'écran de chargement, jamais purgé à l'activation.
 const MEDIA_CACHE = 'visiter-sillans-media';
