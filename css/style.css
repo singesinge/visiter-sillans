@@ -1414,7 +1414,7 @@ html.page-exit body {
 /* Mascotte posée sur le bord bas-droite, penchée vers l'écran (pas de rond) */
 .acces-fab {
   position: fixed;
-  right: -20px;
+  right: -48px;
   bottom: 50px;
   width: 100px; height: auto;
   background: none; border: none; padding: 0;
