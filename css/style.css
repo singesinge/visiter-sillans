@@ -801,7 +801,7 @@ p { font-size: 0.95rem; line-height: 1.6; }
   background: var(--blanc-casse);
   border-top: 1px solid var(--gris-clair);
 }
-.s-content--alt { background: white; }
+.s-content--alt { background: var(--blanc-casse); }
 .s-content__tag {
   display: inline-block;
   font-family: var(--font-titre);
@@ -983,13 +983,15 @@ p { font-size: 0.95rem; line-height: 1.6; }
 /* ============================================
    PAGE TRANSITIONS
    ============================================ */
+/* Opacité seule : pas de transform sur body, sinon il devient le bloc conteneur
+   des éléments position:fixed (mascotte accès, nav-drawer) → mauvais ancrage. */
 @keyframes pageEnter {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 @keyframes pageExit {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(-8px); }
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 body {
   /* backwards (et non both) : le transform ne PERSISTE pas après l'animation,
@@ -1404,3 +1406,68 @@ html.page-exit body {
   0%, 100% { transform: translateY(5px); }
   50%      { transform: translateY(-2px); }
 }
+
+
+/* ============================================
+   ACCÈS & SAISONS — mascotte fixe + overlay (accueil)
+   ============================================ */
+/* Mascotte posée sur le bord bas-droite, penchée vers l'écran (pas de rond) */
+.acces-fab {
+  position: fixed;
+  right: -20px;
+  bottom: 26px;
+  width: 100px; height: auto;
+  background: none; border: none; padding: 0;
+  cursor: pointer;
+  z-index: 90;
+  transform-origin: 72% 100%;
+  filter: drop-shadow(-3px 3px 7px rgba(0,0,0,0.3));
+  animation: acces-lean 4.5s ease-in-out infinite;
+}
+.acces-fab img { width: 100%; height: auto; display: block; pointer-events: none; }
+.acces-fab:active { animation: none; transform: rotate(-14deg) scale(0.96); }
+@keyframes acces-lean {
+  0%, 100% { transform: rotate(-14deg); }
+  50%      { transform: rotate(-7deg); }
+}
+
+.acces-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10,30,28,0.55);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  z-index: 1500;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+.acces-overlay.visible { opacity: 1; }
+.acces-overlay[hidden] { display: none; }
+.acces-modal {
+  position: relative;
+  width: 100%; max-width: 420px;
+  max-height: 88vh;
+  background: var(--vert-profond);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+  display: flex; flex-direction: column;
+  transform: translateY(18px) scale(0.97);
+  transition: transform 0.32s cubic-bezier(0.34,1.3,0.64,1);
+}
+.acces-overlay.visible .acces-modal { transform: none; }
+.acces-modal__close {
+  position: absolute; top: 10px; right: 10px;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(0,0,0,0.45); color: #fff; border: none;
+  font-size: 1rem; cursor: pointer; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+}
+.acces-modal__img { width: 100%; height: 152px; object-fit: cover; display: block; flex-shrink: 0; }
+.acces-modal__body { padding: 1.1rem 1.25rem 1.5rem; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.acces-modal__head { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.1rem; }
+.acces-modal__mascotte { width: 74px; height: auto; flex-shrink: 0; margin-top: 0; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+.acces-modal__eyebrow { font-family: var(--font-titre); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--lime); margin-bottom: 0.15rem; }
+.acces-modal__title { font-family: var(--font-titre); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; color: #fff; line-height: 1; }
+.acces-modal__grid { grid-template-columns: 1fr; gap: 0.9rem; }

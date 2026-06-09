@@ -3,7 +3,7 @@
  * Stratégie : Cache First pour assets statiques, Network First pour poi.json
  */
 
-const CACHE_NAME = 'visiter-sillans-v26';
+const CACHE_NAME = 'visiter-sillans-v29';
 // Cache média (photos + audio des POI), conservé entre les versions :
 // rempli par l'écran de chargement, jamais purgé à l'activation.
 const MEDIA_CACHE = 'visiter-sillans-media';
@@ -37,6 +37,7 @@ const PRECACHE_ASSETS = [
   './img/bassinbas.jpeg',
   './img/sentierombre.jpeg',
   './img/cascadebas.jpeg',
+  './img/parking.jpg',
 ];
 
 self.addEventListener('install', event => {
