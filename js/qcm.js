@@ -130,6 +130,43 @@ function afficherResultat() {
   document.getElementById('score-nombre').textContent = `${score}/${questions.length}`;
   document.getElementById('score-niveau').textContent = niveau.titre;
   document.getElementById('score-desc').textContent = niveau.desc;
+
+  const total = questions.length;
+  const pct = total ? Math.round((score / total) * 100) : 0;
+
+  // Mascotte selon le score : émerveillée si bon score, questionneuse sinon
+  const bon = pct >= 60;
+  const mascEl = document.getElementById('score-mascotte');
+  if (mascEl) {
+    mascEl.src = bon ? '../img/mascotte-09.svg' : '../img/mascotte-06.svg';
+    mascEl.style.display = '';
+  }
+
+  // Accroche dynamique selon le score
+  const eyebrow = document.getElementById('score-eyebrow');
+  if (eyebrow) {
+    let txt = 'Bon début !';
+    if (pct === 100)      txt = 'Sans-faute ! ✨';
+    else if (pct >= 80)   txt = 'Bravo ! ✨';
+    else if (pct >= 60)   txt = 'Bien joué !';
+    else if (pct >= 40)   txt = 'Pas mal !';
+    eyebrow.textContent = txt;
+  }
+
+  // Anneau de progression autour du score
+  const ring = document.getElementById('score-ring');
+  if (ring) ring.style.setProperty('--pct', pct);
+
+  // Points : un par question, allumés selon le nombre de bonnes réponses
+  const dots = document.getElementById('score-dots');
+  if (dots) {
+    dots.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+      const s = document.createElement('span');
+      if (i < score) s.className = 'on';
+      dots.appendChild(s);
+    }
+  }
 }
 
 function relancerQCM() {

@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="/img/logo.png">
   <link rel="manifest" href="/manifest.json">
   <title>Carte · Visiter Sillans-la-Cascade</title>
-  <link rel="stylesheet" href="../css/style.css?v=12">
+  <link rel="stylesheet" href="../css/style.css?v=19">
   <style>
     /* --- Layout plein écran --- */
     html, body { margin: 0; padding: 0; overflow: hidden; }
@@ -346,28 +346,41 @@
     .poi-conseil-card__text {
       font-size: 0.92rem; color: #2d4a2a; line-height: 1.6;
     }
-    .poi-detail__especes {
-      list-style: none;
-      padding: 0; margin: 0 0 1.2rem;
-    }
-    .poi-detail__especes li {
-      font-size: 0.82rem;
-      color: #4B5563;
-      font-style: italic;
-      padding: 0.25rem 0;
-      border-bottom: 1px solid #f3f4f6;
-    }
-    .poi-detail__especes li:last-child { border-bottom: none; }
-
     /* --- Lecteur audio POI --- */
     .poi-audio {
       display: flex; align-items: center; gap: 12px;
-      background: #eef6ee;
-      border-radius: 12px;
-      padding: 11px 14px;
-      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, #eaf6ef, #d6ecdd);
+      border: 1.5px solid rgba(44,166,164,0.4);
+      border-radius: 14px;
+      padding: 13px 15px;
+      box-shadow: 0 8px 22px rgba(19,67,63,0.20);
+      animation: audio-attn 2.6s ease-in-out infinite;
+    }
+    @keyframes audio-attn {
+      0%, 100% { box-shadow: 0 8px 22px rgba(19,67,63,0.20), 0 0 0 0 rgba(44,166,164,0.45); }
+      50%      { box-shadow: 0 8px 22px rgba(19,67,63,0.20), 0 0 0 7px rgba(44,166,164,0); }
     }
     .poi-audio.hidden { display: none; }
+
+    /* Mascotte qui jette un œil par-dessus le lecteur audio (comme le bandeau À propos) */
+    .poi-audio-peek { position: relative; margin-bottom: 1.2rem; }
+    .poi-audio-peek.hidden { display: none; }
+    .poi-audio-peek .poi-audio { position: relative; z-index: 1; }
+    .poi-audio-peek__mascotte {
+      position: absolute;
+      right: 12px;
+      bottom: 54px;
+      width: 74px;
+      height: auto;
+      z-index: 0;                  /* derrière le lecteur opaque */
+      pointer-events: none;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.22));
+      animation: poi-audio-peek-float 5s ease-in-out infinite;
+    }
+    @keyframes poi-audio-peek-float {
+      0%, 100% { transform: translateY(4px); }
+      50%      { transform: translateY(-2px); }
+    }
     .poi-audio__btn {
       width: 42px; height: 42px; border-radius: 50%;
       background: var(--vert-profond); border: none;
@@ -506,7 +519,9 @@
       <h2 id="detail-titre" class="poi-detail__titre"></h2>
 
       <!-- Lecteur audio narration -->
-      <div class="poi-audio hidden" id="detail-audio-wrap">
+      <div class="poi-audio-peek hidden" id="detail-audio-wrap">
+      <img class="poi-audio-peek__mascotte" src="../img/mascotte-08.svg" alt="" aria-hidden="true" onerror="this.style.display='none'">
+      <div class="poi-audio">
         <button class="poi-audio__btn" id="audio-play-btn" aria-label="Lire la narration">
           <!-- play icon -->
           <svg id="audio-icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -521,6 +536,7 @@
         </div>
         <span class="poi-audio__time" id="audio-time">0:00</span>
         <audio id="detail-audio" preload="none"></audio>
+      </div>
       </div>
 
       <p id="detail-desc" class="poi-detail__desc"></p>
@@ -538,17 +554,13 @@
 
       <p class="poi-detail__section-label">En savoir plus</p>
       <p id="detail-contenu" class="poi-detail__contenu"></p>
-      <div id="detail-especes-wrap">
-        <p class="poi-detail__section-label">Espèces observables</p>
-        <ul id="detail-especes" class="poi-detail__especes"></ul>
-      </div>
     </div>
   </div>
 </div>
 
 <script src="../js/progress.js?v=11"></script>
 <script src="../js/app.js?v=12"></script>
-<script src="../js/carte.js?v=14"></script>
+<script src="../js/carte.js?v=17"></script>
 <script src="../js/proximity.js?v=11"></script>
 <script src="../js/transitions.js?v=11"></script>
 </body>

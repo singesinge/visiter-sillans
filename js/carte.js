@@ -492,16 +492,6 @@ function showDetail(poi) {
     conseilWrap.style.display = 'none';
   }
 
-  // Espèces
-  const especesWrap = document.getElementById('detail-especes-wrap');
-  const especesList = document.getElementById('detail-especes');
-  if (poi.especes && poi.especes.length) {
-    especesList.innerHTML = poi.especes.map(e => `<li>${e}</li>`).join('');
-    especesWrap.style.display = '';
-  } else {
-    especesWrap.style.display = 'none';
-  }
-
   // Reset scroll
   document.getElementById('detail-scroll').scrollTop = 0;
 

@@ -634,7 +634,7 @@ p { font-size: 0.95rem; line-height: 1.6; }
   padding: 2rem 1.5rem 5rem;
 }
 .score-screen.visible { display: block; }
-.score-mascotte { font-size: 3rem; margin: 0.25rem 0; }
+.score-mascotte { width: 104px; height: auto; display: block; margin: 0.25rem auto 0.5rem; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.18)); }
 .score-nombre {
   display: flex;
   align-items: center;
@@ -831,10 +831,12 @@ p { font-size: 0.95rem; line-height: 1.6; }
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 0.875rem 1rem;
-  background: rgba(19,67,63,0.05);
+  padding: 0.95rem 1.05rem;
+  background: #fff;
   border-radius: var(--radius-sm);
-  margin-top: 0.75rem;
+  margin-top: 0.9rem;
+  box-shadow: 0 6px 18px rgba(19,67,63,0.13);
+  border: 1px solid rgba(19,67,63,0.05);
 }
 .s-content__fact-icon {
   flex-shrink: 0;
@@ -990,7 +992,10 @@ p { font-size: 0.95rem; line-height: 1.6; }
   to   { opacity: 0; transform: translateY(-8px); }
 }
 body {
-  animation: pageEnter 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  /* backwards (et non both) : le transform ne PERSISTE pas après l'animation,
+     sinon body devient le bloc conteneur des éléments position:fixed (nav-drawer)
+     qui se retrouvent ancrés au document au lieu du viewport → menu hors écran. */
+  animation: pageEnter 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards;
 }
 html.page-exit body {
   animation: pageExit 0.22s ease forwards;
@@ -1186,10 +1191,11 @@ html.page-exit body {
 
 .score-screen {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   isolation: isolate;
   min-height: calc(100dvh - var(--header-height));
-  padding-top: 3rem;
+  padding-top: 2.25rem;
 }
 .score-screen.visible {
   display: flex;
@@ -1213,10 +1219,76 @@ html.page-exit body {
   z-index: -1;
   background: linear-gradient(180deg, rgba(19,67,63,0.78) 0%, rgba(19,67,63,0.94) 100%);
 }
-.score-screen .score-mascotte { animation: float 3s ease-in-out infinite; }
-.score-screen .score-nombre { animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
-.score-screen .score-niveau { color: var(--lime); }
-.score-screen .score-desc { color: rgba(255,255,255,0.8); max-width: 30ch; margin-left: auto; margin-right: auto; }
+/* ── Écran de résultat : grande mascotte + anneau + badge + points ── */
+.score-mascotte-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: -0.25rem;
+}
+.score-mascotte-wrap::before {            /* halo lumineux derrière la mascotte */
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 260px; height: 260px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(166,206,57,0.38) 0%, rgba(166,206,57,0) 62%);
+  z-index: -1;
+  pointer-events: none;
+}
+.score-screen .score-mascotte {
+  width: 188px;
+  margin: 0;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+  animation: float 3.4s ease-in-out infinite;
+}
+.score-eyebrow {
+  font-family: var(--font-titre);
+  font-size: 1rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--lime);
+  margin-bottom: 0.7rem;
+  animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.score-ring {
+  --pct: 0;
+  width: 158px; height: 158px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  margin: 0 auto 0.85rem;
+  background: conic-gradient(var(--lime) calc(var(--pct) * 1%), rgba(255,255,255,0.16) 0);
+  box-shadow: 0 10px 34px rgba(0,0,0,0.28);
+  transition: background 0.6s ease;
+}
+.score-screen .score-nombre {
+  width: 128px; height: 128px;
+  border: none;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.08);
+  margin: 0;
+  font-size: 2.4rem;
+  animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.score-dots {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 7px; max-width: 220px; margin: 0 auto 1.1rem;
+}
+.score-dots span {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: rgba(255,255,255,0.22);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.score-dots span.on { background: var(--lime); box-shadow: 0 0 9px rgba(166,206,57,0.65); }
+.score-screen .score-niveau {
+  display: inline-block;
+  background: var(--lime);
+  color: #2d4000;
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.7rem;
+}
+.score-screen .score-desc { color: rgba(255,255,255,0.82); max-width: 30ch; margin-left: auto; margin-right: auto; }
 .score-screen .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.5); }
 .score-screen .btn-ghost:hover { background: rgba(255,255,255,0.12); color: #fff; }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
@@ -1274,49 +1346,33 @@ html.page-exit body {
    MASCOTTE
    ============================================ */
 
-/* Mascotte cachée derrière le bouton : yeux + mains qui dépassent */
-.cta-peek-label {
-  font-family: var(--font-titre);
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(255,255,255,0.65);
-  text-align: center;
-  margin: 0.25rem 0 0;
-}
-.cta-peek {
-  position: relative;
-  padding-top: 112px;
-  overflow: hidden;
-}
-.cta-peek .hero__cta,
-.cta-peek .btn { position: relative; z-index: 2; }
-.cta-peek__mascotte {
+/* Mascotte qui jette un œil derrière le bouton « Commencer la visite » (accueil) */
+.hero-cta-peek { position: relative; }
+.hero-cta-peek .hero__cta { position: relative; z-index: 1; }
+.hero-cta-peek__mascotte {
   position: absolute;
-  left: 50%;
-  bottom: 10px;
-  width: 184px;
+  right: 18px;
+  bottom: 20px;
+  width: 72px;
   height: auto;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
-  filter: drop-shadow(0 5px 9px rgba(0,0,0,0.28));
-  animation: peek 5s ease-in-out infinite;
-}
-@keyframes peek {
-  0%, 100% { transform: translateX(-50%) translateY(6px); }
-  50%      { transform: translateX(-50%) translateY(-3px); }
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.35));
+  animation: peek-side 5s ease-in-out infinite;
 }
 /* Mascotte du quiz : grosse, dans le coin bas-droite, coupée par le bord */
 .qcm-mascotte {
   position: absolute;
-  right: -38px;
+  right: -22px;
   bottom: -14px;
   width: 270px;
   max-width: 76vw;
   margin: 0;
   z-index: -1;            /* derrière les cartes de réponse (qui la masquent) */
   pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
   animation: float 5s ease-in-out infinite;
 }
 .qcm-mascotte img {
@@ -1325,11 +1381,10 @@ html.page-exit body {
   height: auto;
   filter: drop-shadow(0 6px 14px rgba(0,0,0,0.16));
 }
-/* Quand on a répondu (explication affichée), l'écran se remplit : on efface la mascotte */
+/* Quand on a répondu (explication affichée), l'écran se remplit : on efface la mascotte en fondu */
 .qcm-explication.visible ~ .qcm-mascotte {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease;
 }
 /* Mascotte qui jette un œil derrière le bandeau de chiffres (à propos) */
 .hero-peek { position: relative; }

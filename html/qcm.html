@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#13433F">
   <link rel="icon" type="image/png" href="/img/logo.png">
   <link rel="manifest" href="/manifest.json">
   <title>Quiz · Visiter Sillans</title>
-  <link rel="stylesheet" href="../css/style.css?v=12">
+  <link rel="stylesheet" href="../css/style.css?v=19">
 </head>
 <body>
 
@@ -71,8 +71,14 @@
 
 <div class="score-screen" id="score-screen">
   <img class="score-screen__bg" src="../img/poi/poi-05.jpg" alt="" aria-hidden="true">
-  <div class="score-mascotte">🦇</div>
-  <div class="score-nombre" id="score-nombre">0/10</div>
+  <div class="score-mascotte-wrap">
+    <img class="score-mascotte" id="score-mascotte" src="../img/mascotte-09.svg" alt="" aria-hidden="true" onerror="this.style.display='none'">
+  </div>
+  <p class="score-eyebrow" id="score-eyebrow">Quiz terminé&nbsp;!</p>
+  <div class="score-ring" id="score-ring">
+    <div class="score-nombre" id="score-nombre">0/10</div>
+  </div>
+  <div class="score-dots" id="score-dots" aria-hidden="true"></div>
   <div class="score-niveau" id="score-niveau">Découvreur</div>
   <p class="score-desc" id="score-desc"></p>
   <button class="btn btn-secondary btn-full" onclick="relancerQCM()" style="max-width:280px;margin:0 auto 0.75rem;">
@@ -85,7 +91,7 @@
 
 <script src="../js/progress.js"></script>
 <script src="../js/app.js"></script>
-<script src="../js/qcm.js?v=2"></script>
+<script src="../js/qcm.js?v=5"></script>
 <script src="../js/transitions.js"></script>
 </body>
 </html>

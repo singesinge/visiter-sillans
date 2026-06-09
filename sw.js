@@ -3,7 +3,10 @@
  * Stratégie : Cache First pour assets statiques, Network First pour poi.json
  */
 
-const CACHE_NAME = 'visiter-sillans-v17';
+const CACHE_NAME = 'visiter-sillans-v26';
+// Cache média (photos + audio des POI), conservé entre les versions :
+// rempli par l'écran de chargement, jamais purgé à l'activation.
+const MEDIA_CACHE = 'visiter-sillans-media';
 
 const PRECACHE_ASSETS = [
   './',
@@ -27,7 +30,13 @@ const PRECACHE_ASSETS = [
   './img/logo-03.png',
   './img/mascotte-06.svg',
   './img/mascotte-07.svg',
+  './img/mascotte-08.svg',
+  './img/mascotte-09.svg',
   './img/logodeptvar.svg',
+  './img/vuecomplete.jpg',
+  './img/bassinbas.jpeg',
+  './img/sentierombre.jpeg',
+  './img/cascadebas.jpeg',
 ];
 
 self.addEventListener('install', event => {
@@ -42,7 +51,10 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+      Promise.all(
+        keys.filter(k => k !== CACHE_NAME && k !== MEDIA_CACHE)
+            .map(k => caches.delete(k))
+      )
     ).then(() => self.clients.claim())
   );
 });
@@ -79,21 +91,10 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  if (url.hostname.includes('tile.openstreetmap.org')) {
-    event.respondWith(
-      fetch(event.request)
-        .then(response => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-          return response;
-        })
-        .catch(() => caches.match(event.request))
-    );
-    return;
-  }
-
+  // Reste (CSS, JS, images, audio…) → Cache First.
+  // ignoreSearch : un fichier demandé avec ?v=N correspond à l'entrée pré-cachée sans query.
   event.respondWith(
-    caches.match(event.request)
+    caches.match(event.request, { ignoreSearch: true })
       .then(cached => cached || fetch(event.request)
         .then(response => {
           if (response && response.status === 200) {
