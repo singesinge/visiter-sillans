@@ -80,6 +80,7 @@
       transition: background 0.15s;
     }
     .intro-skip:active { background: rgba(0,0,0,0.8); }
+    .intro-sound { right: 110px; padding: 8px 12px; }
     .intro-timer {
       position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
       width: 180px; height: 3px; background: rgba(255,255,255,0.25); border-radius: 2px;
@@ -289,8 +290,18 @@ function showIntro() {
     var modal     = document.getElementById('intro-modal');
     var video     = document.getElementById('intro-video');
     var skipBtn   = document.getElementById('intro-skip');
+    var soundBtn  = document.getElementById('intro-sound');
+    var iconOn    = document.getElementById('intro-sound-on');
+    var iconOff   = document.getElementById('intro-sound-off');
     var timerFill = document.getElementById('intro-timer-fill');
     var raf;
+
+    function refreshSoundBtn() {
+      iconOn.style.display  = video.muted ? 'none' : '';
+      iconOff.style.display = video.muted ? '' : 'none';
+      soundBtn.setAttribute('aria-pressed', String(video.muted));
+      soundBtn.setAttribute('aria-label', video.muted ? 'Activer le son' : 'Couper le son');
+    }
 
     function closeIntro() {
       try { localStorage.setItem(INTRO_KEY, '1'); } catch(e) {}
@@ -314,8 +325,21 @@ function showIntro() {
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
     video.currentTime = 0;
-    video.play().catch(function() {});
+    // Son activé : le clic « Commencer la visite » est un geste utilisateur,
+    // la lecture avec son est donc autorisée. Si le navigateur refuse quand
+    // même, on repasse en muet pour que la vidéo démarre.
+    video.muted = false;
+    refreshSoundBtn();
+    video.play().catch(function() {
+      video.muted = true;
+      refreshSoundBtn();
+      video.play().catch(function() {});
+    });
     raf = requestAnimationFrame(tickTimer);
+    soundBtn.onclick = function() {
+      video.muted = !video.muted;
+      refreshSoundBtn();
+    };
     skipBtn.onclick = closeIntro;
     video.addEventListener('ended', closeIntro, { once: true });
   });
@@ -425,10 +449,14 @@ try {
 <!-- ===== VIDÉO INTRO ===== -->
 <div id="intro-modal" class="intro-modal" aria-label="Vidéo de présentation" role="dialog">
   <video id="intro-video" class="intro-video"
-    autoplay muted playsinline webkit-playsinline>
+    playsinline webkit-playsinline>
     <source src="https://media.githubusercontent.com/media/singesinge/visiter-sillans/main/video/intro.mp4" type="video/mp4">
     <source src="video/intro.mp4" type="video/mp4">
   </video>
+  <button id="intro-sound" class="intro-skip intro-sound" aria-label="Couper le son" aria-pressed="false">
+    <svg id="intro-sound-on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+    <svg id="intro-sound-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  </button>
   <button id="intro-skip" class="intro-skip" aria-label="Passer la vidéo">
     Passer
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
