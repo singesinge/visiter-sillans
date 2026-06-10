@@ -7,7 +7,7 @@
       "lieu": "Église de Sillans-la-Cascade",
       "theme": "securite",
       "description": "Bienvenue sur l'ENS de Sillans-la-Cascade. En plein été, ce site accueille jusqu'à 2 500 visiteurs par jour, et votre façon de le parcourir fait toute la différence.",
-      "contenu": "Le circuit débute au pied de l'église du village, monument classé du XIIe siècle. Le parcours descend vers le fond de vallon en une boucle d'environ 2 km, avec un dénivelé de 80 mètres. Comptez 1h à 1h30 selon votre rythme. Il est déconseillé aux personnes enceintes, cardiaques ou sujettes au vertige. Prévoyez de l'eau, des chaussures fermées et un chapeau en été. Sur 369 hectares, l'ENS accueille près de 96 000 visiteurs chaque été : une fréquentation qui pèse sur les berges et sur la biodiversité du vallon.",
+      "contenu": "Le circuit débute au pied de l'église du village, monument classé du XIIe siècle. Le parcours descend vers le fond de vallon en une boucle d’environ 3 km, avec un dénivelé de 80 mètres. Comptez 1h à 1h30 selon votre rythme. Il est déconseillé aux personnes enceintes, cardiaques ou sujettes au vertige. Prévoyez de l'eau, des chaussures fermées et un chapeau en été. Sur 369 hectares, l'ENS accueille près de 96 000 visiteurs chaque été : une fréquentation qui pèse sur les berges et sur la biodiversité du vallon.",
       "conseil": "Les sentiers balisés protègent ce que vous êtes venu admirer. En gardant vos pas sur le tracé, vous épargnez les plantes des berges et vous laissez le vallon résister à l'érosion.",
       "photo": "img/poi/poi-01.jpg",
       "especes": [],
@@ -62,8 +62,8 @@
       "titre": "Panorama sur la cascade",
       "lieu": "Belvédère de la cascade",
       "theme": "biodiversite",
-      "description": "44 mètres de chute libre. La cascade de Sillans est l'une des plus hautes de Provence, et l'une des plus menacées par sa propre popularité.",
-      "contenu": "La Bresque plonge ici de 44 mètres dans un bassin aux reflets turquoise. Cette couleur si particulière vient des particules de calcaire en suspension, qui diffusent la lumière à la manière d'un prisme. Les parois humides autour de la cascade abritent le Capillaire de Montpellier (Adiantum capillus-veneris), une fougère rare qui ne pousse que dans ces conditions de brouillard permanent. La baignade n'est pas autorisée : les concrétions de travertin sur les bords sont extrêmement fragiles et instables, et les courants du bassin restent imprévisibles. Chaque année, des blocs de plusieurs tonnes se détachent sans prévenir.",
+      "description": "42 mètres de chute libre. La cascade de Sillans est l'une des plus hautes de Provence, et l'une des plus menacées par sa propre popularité.",
+      "contenu": "La Bresque plonge ici de 42 mètres dans un bassin aux reflets turquoise. Cette couleur si particulière vient des particules de calcaire en suspension, qui diffusent la lumière à la manière d'un prisme. Les parois humides autour de la cascade abritent le Capillaire de Montpellier (Adiantum capillus-veneris), une fougère rare qui ne pousse que dans ces conditions de brouillard permanent. La baignade n'est pas autorisée : les concrétions de travertin sur les bords sont extrêmement fragiles et instables, et les courants du bassin restent imprévisibles. Chaque année, des blocs de plusieurs tonnes se détachent sans prévenir.",
       "conseil": "Les ganivelles marquent la limite du terrain stable. En restant derrière, vous vous tenez à l'écart des blocs qui se détachent et des courants imprévisibles du bassin.",
       "photo": "img/poi/poi-05.jpg",
       "especes": ["Adiantum capillus-veneris (Capillaire de Montpellier)", "Pinguicula vulgaris (Grassette commune)"],
@@ -202,12 +202,12 @@
       "id": "q01",
       "question": "Quelle est la hauteur de la cascade de Sillans ?",
       "reponses": [
-        { "id": "r1", "texte": "44 mètres", "correcte": true },
+        { "id": "r1", "texte": "42 mètres", "correcte": true },
         { "id": "r2", "texte": "22 mètres", "correcte": false },
         { "id": "r3", "texte": "67 mètres", "correcte": false },
         { "id": "r4", "texte": "30 mètres", "correcte": false }
       ],
-      "explication": "La cascade de Sillans tombe de 44 mètres dans un bassin naturel, ce qui en fait l'une des plus hautes cascades permanentes de Provence."
+      "explication": "La cascade de Sillans tombe de 42 mètres dans un bassin naturel, ce qui en fait l'une des plus hautes cascades permanentes de Provence."
     },
     {
       "id": "q02",
