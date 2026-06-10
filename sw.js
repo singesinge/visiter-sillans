@@ -3,7 +3,7 @@
  * Stratégie : Cache First pour assets statiques, Network First pour poi.json
  */
 
-const CACHE_NAME = 'visiter-sillans-v31';
+const CACHE_NAME = 'visiter-sillans-v34';
 // Cache média (photos + audio des POI), conservé entre les versions :
 // rempli par l'écran de chargement, jamais purgé à l'activation.
 const MEDIA_CACHE = 'visiter-sillans-media';
@@ -24,6 +24,8 @@ const PRECACHE_ASSETS = [
   './js/transitions.js',
   './js/carte.js',
   './js/proximity.js',
+  './js/qcm.js',
+  './js/poi.js',
   './data/poi.json',
   './img/Map.svg',
   './img/logo.png',
@@ -34,10 +36,11 @@ const PRECACHE_ASSETS = [
   './img/mascotte-09.svg',
   './img/logodeptvar.svg',
   './img/vuecomplete.jpg',
-  './img/bassinbas.jpeg',
-  './img/sentierombre.jpeg',
-  './img/cascadebas.jpeg',
   './img/parking.jpg',
+  './img/baignade.webp',
+  './img/balise.png',
+  './img/regles/equipement.webp',
+  './img/regles/dechets.webp',
 ];
 
 self.addEventListener('install', event => {
@@ -62,6 +65,10 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
+
+  // Hors périmètre (POST, autres origines comme Google Fonts ou le CDN vidéo) :
+  // laisser le navigateur gérer, sinon respondWith échoue bruyamment hors ligne.
+  if (event.request.method !== 'GET' || url.origin !== location.origin) return;
 
   // Navigations + pages HTML → Network First : on récupère toujours la dernière
   // version quand le réseau est disponible, et on retombe sur le cache hors-ligne.

@@ -105,6 +105,13 @@ const TRAIL_COORDS = [
   [43.5670273, 6.1803424],[43.5669629, 6.1804071], // ≈ POI 1
 ];
 
+// Parkings publics (positions OpenStreetMap) — chacun équipé de toilettes
+const PARKINGS = [
+  { nom: 'Parking du Village',  lat: 43.566712, lng: 6.179482 }, // près du départ (POI 1)
+  { nom: 'Parking du 8 Mai 1945', lat: 43.568086, lng: 6.181771 }, // côté est, place du 8 Mai
+  { nom: 'Parking La Cascade',  lat: 43.566265, lng: 6.177889 }  // entrée ouest du village
+];
+
 // Couleurs par thème
 const THEME_COLORS = {
   biodiversite: { bg: '#A6CE39', text: '#2d4a00' },
@@ -229,7 +236,7 @@ function centerOn(svgX, svgY, targetZoom) {
 
 /** Repositionne tous les marqueurs .poi-pin en coordonnées écran */
 function updateOverlay() {
-  const pins = poiOverlay.querySelectorAll('.poi-pin');
+  const pins = poiOverlay.querySelectorAll('.poi-pin, .parking-pin');
   pins.forEach(pin => {
     const svgX = parseFloat(pin.dataset.svgX);
     const svgY = parseFloat(pin.dataset.svgY);
@@ -393,6 +400,33 @@ function renderPins(pois) {
   });
 
   updateOverlay();
+}
+
+/** Crée les marqueurs fixes des parkings (avec toilettes) */
+function renderParkings() {
+  poiOverlay.querySelectorAll('.parking-pin').forEach(p => p.remove());
+
+  PARKINGS.forEach(parking => {
+    const { x: svgX, y: svgY } = gpsToSVG(parking.lat, parking.lng);
+
+    const pin = document.createElement('div');
+    pin.className = 'parking-pin';
+    pin.dataset.svgX = svgX;
+    pin.dataset.svgY = svgY;
+    pin.setAttribute('aria-label', `${parking.nom}, avec toilettes`);
+
+    const bubble = document.createElement('div');
+    bubble.className = 'parking-pin__bubble';
+    bubble.textContent = 'P';
+
+    const wc = document.createElement('span');
+    wc.className = 'parking-pin__wc';
+    wc.textContent = 'WC';
+    bubble.appendChild(wc);
+
+    pin.appendChild(bubble);
+    poiOverlay.appendChild(pin);
+  });
 }
 
 /* ============================================================
@@ -765,6 +799,7 @@ async function initCarte() {
   }
 
   renderPins(poisData);
+  renderParkings();
 
   // Cadrage initial sur l'ensemble des POI (vue mobile)
   fitToPois(poisData);

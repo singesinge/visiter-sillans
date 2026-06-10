@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#13433F">
-  <link rel="icon" type="image/png" href="/img/logo.png">
-  <link rel="apple-touch-icon" href="/img/logo.png">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="apple-touch-icon" href="img/logo.png">
+  <link rel="manifest" href="manifest.json">
   <meta name="description" content="Explorez l'ENS de Sillans-la-Cascade : cascade de 44 mètres, biodiversité protégée, histoire médiévale. 14 points d'intérêt, carte GPS et quiz, le tout utilisable hors connexion.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Visiter Sillans-la-Cascade · ENS du Var">
   <meta property="og:description" content="Explorez la cascade de 44 mètres et les 14 points d'intérêt de l'ENS de Sillans-la-Cascade.">
-  <meta property="og:image" content="/img/poi/poi-05.jpg">
+  <meta property="og:image" content="https://singesinge.github.io/visiter-sillans/img/poi/poi-05.jpg">
   <meta property="og:locale" content="fr_FR">
   <title>Visiter Sillans-la-Cascade · ENS du Var</title>
-  <link rel="stylesheet" href="css/style.css?v=24">
+  <link rel="stylesheet" href="css/style.css?v=25">
   <style>
     .skip-link { position: absolute; top: -100%; left: 1rem; background: var(--vert-profond); color: var(--blanc-casse); padding: 0.5rem 1rem; border-radius: 0 0 var(--radius-sm) var(--radius-sm); font-family: var(--font-titre); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; z-index: 9999; text-decoration: none; transition: top 0.2s; }
     .skip-link:focus { top: 0; }
@@ -95,7 +95,7 @@
 <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
 
 <header class="app-header">
-  <a href="/index.html" class="app-header__logo" aria-label="Accueil, Visiter Sillans">
+  <a href="index.html" class="app-header__logo" aria-label="Accueil, Visiter Sillans">
     <img src="img/logo-03.png" alt="Visiter Sillans"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
     <span class="app-header__logo-fallback">Visiter <strong>Sillans</strong></span>
@@ -425,7 +425,7 @@ try {
 <!-- ===== VIDÉO INTRO ===== -->
 <div id="intro-modal" class="intro-modal" aria-label="Vidéo de présentation" role="dialog">
   <video id="intro-video" class="intro-video"
-    autoplay muted playsinline webkit-playsinline loop>
+    autoplay muted playsinline webkit-playsinline>
     <source src="https://media.githubusercontent.com/media/singesinge/visiter-sillans/main/video/intro.mp4" type="video/mp4">
     <source src="video/intro.mp4" type="video/mp4">
   </video>

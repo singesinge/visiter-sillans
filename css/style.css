@@ -1127,6 +1127,9 @@ html.page-exit body {
    RÈGLES — cartes à image (refonte émotion)
    ============================================ */
 .regle-card {
+  /* relative : ancre fiable pour .regle-icon en absolute (ne pas dépendre
+     du transform résiduel de l'animation pour créer le bloc conteneur) */
+  position: relative;
   grid-template-columns: 118px 1fr;
   grid-template-rows: auto auto;
   column-gap: 0;

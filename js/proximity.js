@@ -89,17 +89,17 @@ function _envoyerNotification(poi) {
 
   const notif = new Notification(`📍 POI ${poi.ordre} · ${poi.titre}`, {
     body,
-    icon:      `/img/poi/poi-${num}.jpg`,
+    icon:      `../img/poi/poi-${num}.jpg`,
     tag:       poi.id,   // Évite les doublons si notif déjà affichée
     renotify:  false,
     silent:    false,
     data:      { poiId: poi.id }
   });
 
-  // Clic sur la notification → ouvre la fiche POI
+  // Clic sur la notification → ouvre la fiche POI (chemin relatif à html/carte.html)
   notif.onclick = () => {
     window.focus();
-    window.location.href = `/html/poi.html?id=${poi.id}`;
+    window.location.href = `poi.html?id=${poi.id}`;
   };
 }
 

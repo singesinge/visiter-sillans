@@ -56,10 +56,10 @@ function afficherPOI(poi) {
 
   const visite = estVisite(poi.id);
 
-  // Photo terrain — chemin absolu depuis la racine du site
+  // Photo terrain — chemin relatif depuis html/ (compatible sous-dossier GitHub Pages)
   const photoHTML = poi.photo
     ? `<div class="poi-photo-wrap">
-         <img class="poi-photo" src="/${escapeHTML(poi.photo)}" alt="${escapeHTML(poi.titre)}" loading="lazy" onerror="this.parentElement.style.display='none'">
+         <img class="poi-photo" src="../${escapeHTML(poi.photo)}" alt="${escapeHTML(poi.titre)}" loading="lazy" onerror="this.parentElement.style.display='none'">
        </div>`
     : '';
 
